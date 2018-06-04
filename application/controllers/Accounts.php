@@ -43,7 +43,7 @@ class Accounts extends CI_Controller {
         if($expired_tokens == 0)
             $this->accounts_model->set_accounts_alert($this->user_id, NO);
         $data['expired_tokens'] = $expired_tokens;
-        $this->load->library('facebook/myfacebook');
+        $this->load->library('myfacebook');
         $data['fb_login_url'] = $this->myfacebook->get_login_url( site_url('accounts/token') );
         $this->load->view('template', $data);
     }
@@ -53,7 +53,7 @@ class Accounts extends CI_Controller {
     */
     public function token()
     {
-        $this->load->library('facebook/myfacebook');
+        $this->load->library('myfacebook');
         $token = $this->myfacebook->get_access_token();
         if($token !== true || $this->input->get('error') || $this->input->get('error_code'))
         {
@@ -71,7 +71,7 @@ class Accounts extends CI_Controller {
     */
     public function auth()
     {
-        $this->load->library('facebook/myfacebook');
+        $this->load->library('myfacebook');
         $fb_login_url = $this->myfacebook->get_login_url( site_url('accounts/refresh') );
         redirect( $fb_login_url );
     }
@@ -81,7 +81,7 @@ class Accounts extends CI_Controller {
     */
     public function refresh()
     {
-        $this->load->library('facebook/myfacebook');
+        $this->load->library('myfacebook');
         $token = $this->myfacebook->get_access_token();
         if($token !== true || $this->input->get('error') || $this->input->get('error_code'))
         {
@@ -126,7 +126,7 @@ class Accounts extends CI_Controller {
         $access_token = $this->session->userdata('profile_token');
         if(empty($access_token))
         {
-            $this->load->library('facebook/myfacebook');
+            $this->load->library('myfacebook');
             $fb_login_url = $this->myfacebook->get_login_url( site_url('accounts/token') );
             redirect( $fb_login_url );
         }

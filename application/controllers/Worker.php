@@ -33,7 +33,7 @@ class Worker extends CI_Controller {
             elseif ($item->post_type == POST_TYPE_VIDEO)
                 $videos = array_merge($videos, $item->attachments);
         }
-        $this->load->library('aws/myaws');
+        $this->load->library('myaws');
         if(!empty($images))
         {
             $keys = [];
@@ -148,8 +148,8 @@ class Worker extends CI_Controller {
         $api_request_count = 0;
         $total_batches = 0; 
         $total_api_requests=0;
-        $this->load->library('aws/myaws');
-        $this->load->library('facebook/myfacebook');
+        $this->load->library('myaws');
+        $this->load->library('myfacebook');
         foreach($posts as $key => $post)
         {
             $publish_buffer = false;

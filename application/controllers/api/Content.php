@@ -21,7 +21,7 @@ class Content extends REST_Controller {
         $response = [];
         $image_types = ['image/jpeg', 'image/gif', 'image/png'];
         $video_types = ['video/mp4', 'video/quicktime'];
-        $this->load->library('aws/myaws');
+        $this->load->library('myaws');
         $time = time();
         foreach($files as $file)
         {
@@ -50,7 +50,7 @@ class Content extends REST_Controller {
         $files = $this->post('files');
         $image_types = ['image/jpeg', 'image/gif', 'image/png'];
         $video_types = ['video/mp4', 'video/quicktime'];
-        $this->load->library('aws/myaws');
+        $this->load->library('myaws');
         foreach($files as $file)
         {
             if(empty($file['key'])) continue;
@@ -132,7 +132,7 @@ class Content extends REST_Controller {
         );
         if(in_array($content->post_type, [POST_TYPE_PHOTO, POST_TYPE_VIDEO]))
         {
-            $this->load->library('aws/myaws');
+            $this->load->library('myaws');
         }
         if($content->post_type == POST_TYPE_PHOTO)
         {
@@ -185,7 +185,7 @@ class Content extends REST_Controller {
         if(!empty($to_be_deleted))
         {
             $bucket = $content->post_type == POST_TYPE_PHOTO ? getenv('AWS_IMG_BUCKET') : getenv('AWS_VIDEO_BUCKET');
-            $this->load->library('aws/myaws');
+            $this->load->library('myaws');
             $this->myaws->delete_multi_objects($bucket, $to_be_deleted);
         }
         $this->load->model('accounts_model');
@@ -223,7 +223,7 @@ class Content extends REST_Controller {
         $filters = $this->post('filters');
         $items = $this->content_model->get_list($this->user_id, $filters);
         $count = $this->content_model->get_list($this->user_id, $filters, true);
-        $this->load->library('aws/myaws');
+        $this->load->library('myaws');
         foreach ($items as $item)
         {
             $item->accounts = json_decode($item->accounts);
@@ -322,7 +322,7 @@ class Content extends REST_Controller {
                 $videos = array_merge($videos, $item->attachments);
             }
         }
-        $this->load->library('aws/myaws');
+        $this->load->library('myaws');
         if(!empty($images))
         {
             $keys = [];

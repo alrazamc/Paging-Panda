@@ -95,7 +95,7 @@ class Users extends CI_Controller {
             $this->session->set_userdata('last_name', $user->last_name);
             $this->session->set_userdata('time_zone', $user->time_zone);
             $this->session->set_userdata('email', $user->email);
-            $this->load->library('aws/myaws');
+            $this->load->library('myaws');
             $data['name'] = $user->first_name;
             $message = $this->load->view('emails/welcome', $data, true);
             $this->myaws->send_email($user->email, 'Welcome to '.$this->config->item('site_name'), $message);
@@ -138,7 +138,7 @@ class Users extends CI_Controller {
             $data['name'] = $user->first_name;
             $data['hash'] = md5(uniqid().uniqid());
             $this->users_model->save_hash($user->user_id, $data['hash']);
-            $this->load->library('aws/myaws');
+            $this->load->library('myaws');
             $message = $this->load->view('emails/forgot_password', $data, true);
             $sent = $this->myaws->send_email($user->email, 'Reset Password', $message);
             if($sent)
@@ -175,7 +175,7 @@ class Users extends CI_Controller {
             $this->users_model->save_hash($user->user_id, "");//empty hash column
 
             $data['name'] = $user->first_name;
-            $this->load->library('aws/myaws');
+            $this->load->library('myaws');
             $message = $this->load->view('emails/password_changed', $data, true);
             $sent = $this->myaws->send_email($user->email, 'Password changed Successfully', $message);
             $this->session->set_flashdata('alert', get_alert_html('Password changed successully, Please login with new password', ALERT_TYPE_SUCCESS));

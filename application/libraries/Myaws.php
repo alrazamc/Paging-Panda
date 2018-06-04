@@ -4,8 +4,6 @@ define('AWS_SSL_CERTIFICATE', APPPATH.'libraries'.DIRECTORY_SEPARATOR.'aws'.DIRE
 * My custom AWS library
 */
 
-// use Aws\Ses\SesClient;
-// use Aws\Ses\Exception\SesException;
 class Myaws
 {
 	var $charset = 'UTF-8';

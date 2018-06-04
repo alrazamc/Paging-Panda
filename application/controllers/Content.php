@@ -98,7 +98,7 @@ class Content extends CI_Controller {
             if(!empty($to_be_deleted))
             {
                 $bucket = $content->post_type == POST_TYPE_PHOTO ? getenv('AWS_IMG_BUCKET') : getenv('AWS_VIDEO_BUCKET');
-                $this->load->library('aws/myaws');
+                $this->load->library('myaws');
                 $this->myaws->delete_multi_objects($bucket, $to_be_deleted);
             }
         }

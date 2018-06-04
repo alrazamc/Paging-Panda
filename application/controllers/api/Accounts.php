@@ -29,7 +29,7 @@ class Accounts extends REST_Controller {
         $before = $this->get('before', TRUE);
         $after = $this->get('after', TRUE);
         
-        $this->load->library('facebook/myfacebook');
+        $this->load->library('myfacebook');
         $this->myfacebook->set_token($access_token);
         
         $fb_response = $this->myfacebook->get_manage_pages($before, $after);

@@ -83,3 +83,75 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+define('FACEBOOK_SDK_SRC_DIR', APPPATH.'libraries/facebook/Facebook/');
+
+define('ALERT_TYPE_ERROR', 'danger');
+define('ALERT_TYPE_SUCCESS', 'success');
+define('ALERT_TYPE_INFO', 'info');
+define('ALERT_TYPE_WARNING', 'warning');
+define('ALERT_TYPE_ANNOUNCEMENT', 'info');
+
+define('USER_STATUS_ADDED', 1); //added
+define('USER_STATUS_ACTIVE', 2); // active user
+define('USER_STATUS_SUSPENDED', 3);
+define('USER_STATUS_CANCELLED', 4);
+
+//AJAX response type
+define('AJAX_RESPONSE_TYPE_REDIRECT', 0);
+define('AJAX_RESPONSE_TYPE_SUCCESS', 1);
+define('AJAX_RESPONSE_TYPE_ERROR', 2);
+
+//Account Types
+define('ACCOUNT_TYPE_FB_PAGE', 1);
+
+
+//Boolean flags
+define('NO', 0);
+define('YES', 1);
+
+define('OFF', 0);
+define('ON', 1);
+
+//Graph API URL
+define('GRAPH_API_URL', 'https://graph.facebook.com/');
+//Graph API enum for editor role
+define('FB_POST_PERMISSION', 'CREATE_CONTENT');
+
+
+//metric Types
+define('METRIC_TYPE_PAGE', 1);
+define('METRIC_TYPE_POST', 2);
+
+//graph Type
+define('GRAPH_TYPE_LINE', 1);
+define('GRAPH_TYPE_MULTI_LINE', 2);
+define('GRAPH_TYPE_BAR', 3);
+define('GRAPH_TYPE_PIE', 4);
+
+//Post Types
+define('POST_TYPE_TEXT', 1);
+define('POST_TYPE_LINK', 2);
+define('POST_TYPE_PHOTO', 3);
+define('POST_TYPE_VIDEO', 4);
+
+define('CONTENT_MODERATION_PENDING', 1);
+define('CONTENT_MODERATION_APPROVED', 2);
+define('CONTENT_MODERATION_DECLINED', 3);
+
+
+define('POST_STATUS_PENDING', 1);
+define('POST_STATUS_PUBLISHED', 2);
+define('POST_STATUS_ERROR', 3);
+
+define("CATEGORY_GENERAL", '0');
+define("CATEGORY_USE_ONCE", '-1');
+define("CATEGORY_RANDOM", '-2');
+
+
+define("REBUILD_RANDOM_YES", 1);
+define("REBUILD_RANDOM_NO", 0);
+
+define('CRON_QUEUE_PROCESSOR', 1);
+define('CRON_QUEUE_BATCH_PROCESSOR', 2);
+define('CRON_DAILY_UPDATE', 3);

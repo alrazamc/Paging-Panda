@@ -1,0 +1,35 @@
+[{
+	"title" : "Today",
+	"period" : "today"
+},
+{
+	"title" : "Yesterday",
+	"period" : "yesterday"
+},{
+	"title" : "This Week",
+	"period" : "this_week_mon_today"
+},{
+	"title" : "Last Week",
+	"period" : "last_week_mon_sun"
+},{
+	"title" : "This Month",
+	"period" : "this_month"
+},{
+	"title" : "Last Month",
+	"period" : "last_month"
+},{
+	"title" : "This Quarter",
+	"period" : "this_quarter"
+},{
+	"title" : "Last Quarter",
+	"period" : "last_quarter"
+},{
+	"title" : "This Year",
+	"period" : "this_year"
+},{
+	"title" : "Last Year",
+	"period" : "last_year"
+},{
+	"title" : "Custom",
+	"period" : "custom"
+}]

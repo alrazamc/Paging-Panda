@@ -68,6 +68,9 @@ switch (ENVIRONMENT)
 	case 'development':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
+		require_once('./vendor/autoload.php');
+		$dotenv = new Dotenv\Dotenv(__DIR__);
+		$dotenv->load();
 	break;
 
 	case 'testing':
@@ -312,4 +315,12 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+function is_cli(){
+    
+    if( isset($_SERVER['argv']) && count($_SERVER['argv']) > 1) 
+    {
+        return true; 
+    };
+    return false;
+}
 require_once BASEPATH.'core/CodeIgniter.php';

@@ -72,14 +72,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
+$dbopts = parse_url(getenv('DATABASE_URL'));
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'mysqli',
+	'hostname' => $dbopts["host"],
+	'port' => $dbopts["port"],
+	'username' => $dbopts["user"],
+	'password' => $dbopts["pass"],
+	'database' => ltrim($dbopts["path"], '/'),
+	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

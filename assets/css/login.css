@@ -1,0 +1,43 @@
+/*primary color #4CAF50*/
+body{
+    background: linear-gradient(-90deg, #4CAF50, #388E3C);
+    font-family: Roboto;
+}
+.navbar{
+    -webkit-box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+}
+.navbar .nav-link{
+    font-weight: 500;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #4CAF50;
+}
+
+.form-control:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 0 0.2rem #4caf5057;
+}
+.form-group label{
+    font-weight: 500;
+}
+.font-weight-500{
+    font-weight: 500;
+}
+
+.btn-green{
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 500;
+    -webkit-box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+}
+.form-group label.error{
+    color: red;
+    font-weight: 300;
+}
+
+.btn-green.focus, .btn-green:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #4caf5057;
+}

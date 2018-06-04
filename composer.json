@@ -1,0 +1,20 @@
+{
+    "name": "paging-panda/app",
+    "description": "Main application",
+    "type": "project",
+    "license": "Private",
+    "authors": [
+        {
+            "name": "alrazamc",
+            "email": "alrazamc@gmail.com"
+        }
+    ],
+    "require": {
+        "php" : "^7.1.0",
+        "facebook/graph-sdk": "^5.6",
+        "aws/aws-sdk-php": "^3.60"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^2.4"
+    }
+}

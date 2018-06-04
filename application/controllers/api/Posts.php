@@ -19,7 +19,7 @@ class Posts extends REST_Controller {
         $filters = $this->post('filters');
         $items = $this->posts_model->get_list($this->user_id, $filters);
         $count = $this->posts_model->get_list($this->user_id, $filters, true);
-        $this->load->library('aws/myaws');
+        $this->load->library('aws/Myaws');
         foreach ($items as $item)
         {
             $item->attachments = json_decode($item->attachments);

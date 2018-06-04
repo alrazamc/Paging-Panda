@@ -323,4 +323,5 @@ function is_cli(){
     };
     return false;
 }
+date_default_timezone_set('UTC');
 require_once BASEPATH.'core/CodeIgniter.php';

@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo getenv('ASSET_BASE_URL') ?>">Login</a>
+            <a class="nav-link" href="<?php echo site_url('users/login') ?>">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('users/signup') ?>">Register</a>

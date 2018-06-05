@@ -1,6 +1,7 @@
 RewriteEngine on
 RewriteBase /
 Options -Indexes
+<<<<<<< HEAD
 
 # If we receive a forwarded http request from a proxy...
 RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
@@ -15,6 +16,8 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
+=======
+>>>>>>> wamp
 RewriteCond $1 !^(index\.php|robots\.txt|assets)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

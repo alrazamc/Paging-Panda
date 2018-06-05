@@ -17,23 +17,16 @@
     };
   });
   angapp.controller('pageController', function($scope, $http, $sce){
-    $scope.metrics = [];
+    $scope.metrics = <?php echo json_encode($metrics) ?>;
     $scope.favorites = <?php echo json_encode($favorites) ?>;
     $scope.fav_metrics = [];
-    $scope.page_preloader = true;
+    $scope.page_preloader = false;
     $scope.alert = '';
-    $scope.get_metrics = function(){
-      
-      $http.get(api_base_url+'insights/metrics').success(function(data){
-    		$scope.page_preloader = false;
-        $scope.metrics = data;
-        for(var i = 0; i < $scope.favorites.length; i++)
-        {
-          for(var j = 0; j < $scope.metrics.length; j++)
-            if($scope.metrics[j].metric_id == $scope.favorites[i].metric_id)
-              $scope.fav_metrics.push( $scope.metrics[j] );
-        }
-      });
+    for(var i = 0; i < $scope.favorites.length; i++)
+    {
+      for(var j = 0; j < $scope.metrics.length; j++)
+        if($scope.metrics[j].metric_id == $scope.favorites[i].metric_id)
+          $scope.fav_metrics.push( $scope.metrics[j] );
     }
 
     $scope.move_down = function(index){
@@ -68,7 +61,6 @@
       return;
     }
 
-    $scope.get_metrics();
     
     $scope.save_favorites = function(){
       $scope.save_preloader = true;

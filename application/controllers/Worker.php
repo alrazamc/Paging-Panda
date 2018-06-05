@@ -255,10 +255,23 @@ class Worker extends CI_Controller {
         echo 'I am Ok';
     }
 
-    public function rabbit()
+    public function send()
     {
         $this->load->library('myrabbit');
-        var_dump($this->myrabbit->channel);
+        $test = array(
+            'start_user_id' => mt_rand(1, 10),
+            'end_user_id' => mt_rand(11, 20)
+        );
+        $this->myrabbit->basic_publish(getenv('FACEBOOK_QUEUE'), json_encode($test));
+        $this->myrabbit->close();
+        echo "DOne";
+    }
+
+    public function receive()
+    {
+        $this->load->library('myrabbit');
+        $this->myrabbit->basic_consume(getenv('FACEBOOK_QUEUE'));
+        $this->myrabbit->close();
     }
 
 }

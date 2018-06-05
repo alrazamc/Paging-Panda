@@ -36,12 +36,13 @@
   angapp.controller('pageController', function($scope, $http, $sce, $filter, $timeout){
   	$scope.graph_url = '<?php echo GRAPH_API_URL ?>';
     $scope.page_preloader = true;
-    $scope.pages = [];
-    $scope.metrics = [];
+    $scope.pages = <?php echo json_encode($accounts) ?>;
+    $scope.metrics = <?php echo json_encode($favorites) ?>;
     $scope.favorites = [];
     $scope.date_ranges = [];
     $scope.selected_page = '';
-    
+    if($scope.pages.length)
+    	$scope.selected_page = $scope.pages[0];
     $scope.current_favorite_index = 0;
     $scope.favorites_loading = false;
 
@@ -54,14 +55,8 @@
     $scope.graph_type_pie = <?php echo GRAPH_TYPE_PIE ?>;
 
 
-    $http.get(api_base_url+'insights/fav_metrics').then(function(response){
-		$scope.metrics = response.data;
-		return $http.get(api_base_url+'accounts/all');
-	}).then(function(response){
-		$scope.pages = response.data;
-		$scope.selected_page = $scope.pages[0];
-		return $http.get('<?php echo getenv('ASSET_BASE_URL') ?>assets/js/metric_date_ranges.json');
-	}).then(function(response){
+   
+	$http.get('<?php echo getenv('ASSET_BASE_URL') ?>assets/js/metric_date_ranges.json').then(function(response){
 		$scope.date_ranges = response.data;
 		$scope.selected_date_range = $scope.date_ranges[6];
 		$scope.page_preloader = false;

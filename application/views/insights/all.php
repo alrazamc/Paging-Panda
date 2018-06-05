@@ -37,13 +37,16 @@
   	$scope.graph_url = '<?php echo GRAPH_API_URL ?>';
     $scope.page_preloader = true;
     $scope.alert = '';
-    $scope.pages = [];
-    $scope.metrics = [];
+    $scope.pages = <?php echo json_encode($accounts) ?>;
+    $scope.metrics = <?php echo json_encode($metrics) ?>;
     $scope.date_ranges = [];
     $scope.selected_page = '';
     $scope.selected_metric = '';
     $scope.selected_date_range = '';
-
+    if($scope.metrics.length)
+		$scope.selected_metric = $scope.metrics[0];
+    if($scope.pages.length)
+    	$scope.selected_page = $scope.pages[0];
     $scope.graph_data = [];
 
     $scope.single_date = '<?php echo date('Y-m-d', strtotime('-2 day')) ?>';
@@ -56,15 +59,7 @@
 
     $scope.graph_preloader = false;
 
-    $http.get(api_base_url+'insights/metrics').then(function(response){
-		$scope.metrics = response.data;
-		$scope.selected_metric = $scope.metrics[0];
-		return $http.get(api_base_url+'accounts/all');
-	}).then(function(response){
-		$scope.pages = response.data;
-		$scope.selected_page = $scope.pages[0];
-		return $http.get('<?php echo getenv('ASSET_BASE_URL') ?>assets/js/metric_date_ranges.json');
-	}).then(function(response){
+    $http.get('<?php echo getenv('ASSET_BASE_URL') ?>assets/js/metric_date_ranges.json').then(function(response){
 		$scope.date_ranges = response.data;
 		$scope.selected_date_range = $scope.date_ranges[6];
 		$scope.page_preloader = false;

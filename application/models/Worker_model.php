@@ -69,8 +69,8 @@ class Worker_model extends CI_Model{
         $this->db->where('users.queue_paused', NO);
         $this->db->where('accounts.token_expired', NO);
         $this->db->where('accounts.post_perms', YES);
-        //$this->db->where('posts.scheduled_time < ', $scheduled_time);
-        $this->db->where('posts.scheduled_time < ', '2018-06-10 04:00:00');
+        $this->db->where('posts.scheduled_time', $scheduled_time);
+        //$this->db->where('posts.scheduled_time < ', '2018-06-10 04:00:00');
         $this->db->group_by('posts.user_id');
         $this->db->order_by('posts.user_id', 'DESC'); //important, change algo in worker if changed
         return $this->db->get()->result();
@@ -93,8 +93,8 @@ class Worker_model extends CI_Model{
         $this->db->where('accounts.post_perms', YES);
         $this->db->where('posts.user_id >=', $start_user_id);
         $this->db->where('posts.user_id <=', $end_user_id);
-        //$this->db->where('posts.scheduled_time < ', $scheduled_time);
-        $this->db->where('posts.scheduled_time < ', '2018-06-10 04:00:00');
+        $this->db->where('posts.scheduled_time', $scheduled_time);
+        //$this->db->where('posts.scheduled_time < ', '2018-06-10 04:00:00');
         $this->db->order_by('posts.user_id DESC, posts.post_id ASC'); //sort order important to synchronize queue pointers
         return $this->db->get()->result();
     }

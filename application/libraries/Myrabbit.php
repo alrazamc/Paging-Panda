@@ -35,26 +35,7 @@ class Myrabbit
 	public function basic_publish($queue, $message)
 	{
 		$this->channel->queue_declare($queue, false, false, false, false);
-
 		$msg = new AMQPMessage($message);
 		$this->channel->basic_publish($msg, '', $queue);
-	}
-
-	public function basic_consume($queue)
-	{
-		$this->channel->queue_declare($queue, false, false, false, false);
-		$callback = function ($message) {
-		  var_dump($message->body);
-		  	//$message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
-		    //cancel consumer
-		    $message->delivery_info['channel']->basic_cancel($message->delivery_info['consumer_tag']);
-		  //$this->channel->basic_cancel($message->delivery_info['consumer_tag']);
-		};
-
-		$this->channel->basic_consume($queue, '', false, true, false, false, $callback);
-
-		while (count($this->channel->callbacks)) {
-		    $this->channel->wait();
-		}
 	}
 }

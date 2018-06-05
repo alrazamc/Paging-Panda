@@ -1,13 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Worker Class
- *
- * @package   PHP_FMT
- * @subpackage  Controllers
- * @category  Worker
- * @author    alrazamc
- * @link    http://phpfm.jcatpk.com
  */
+use HerokuClient\Client as HerokuClient;
+
 class Worker extends CI_Controller {
 
     public function __construct()
@@ -210,69 +206,97 @@ class Worker extends CI_Controller {
     }
 
     //Cron Schedule queue Batches
-    public function process_queues()
+    public function watch_queues()
     {
         date_default_timezone_set('UTC');
-        $scheduled_time = date('Y-m-d H:i:00');
-        $this->load->model('worker_model'); 
-        $users = $this->worker_model->get_queue_load($scheduled_time); //desc user ids
-        $total_users = count($users);
-        $total_posts = 0;
-        $total_batches = 0;
-        $batch_post_count = 0;
-        $end_user_id = $total_users > 0 ? $users[0]->user_id : 0;
-        foreach ($users as $key => $user)
+        $this->load->model('worker_model');
+        $this->load->library('myrabbit');
+        $heroku = new HerokuClient();
+        $app_name = getenv('HEROKU_APP_NAME');
+        while(true)
         {
-            $total_posts += $user->post_count;
-            if( ($batch_post_count + $user->post_count) > 50  || $key+1 == $total_users )
+            while(date('s') != '55') sleep(1); // wait until 55 second
+
+            $scheduled_time = date('Y-m-d H:i:00', strtotime("+1 minute")); //get the next minute
+            $users = $this->worker_model->get_queue_load($scheduled_time); //get queue load for next minute
+            $total_users = count($users);
+            $total_posts = 0;
+            $total_batches = 0;
+            $batch_post_count = 0;
+            $end_user_id = $total_users > 0 ? $users[0]->user_id : 0;
+            $messages = array();
+            foreach ($users as $key => $user)
             {
-                if($key+1 == $total_users)
-                    $start_user_id = $user->user_id;
-                //$this->publish_batch($start_user_id, $end_user_id);
-                start_background_process("worker publish_batch $start_user_id $end_user_id");
-                $total_batches++;
-                $batch_post_count = 0;
-                $end_user_id = $user->user_id;
-                continue;
+                $total_posts += $user->post_count;
+                if( ($batch_post_count + $user->post_count) > 50  || $key+1 == $total_users )
+                {
+                    if($key+1 == $total_users)
+                        $start_user_id = $user->user_id;
+                    $messages[] = array('start_user_id' => $start_user_id, 'end_user_id' => $end_user_id);
+                    $total_batches++;
+                    $batch_post_count = 0;
+                    $end_user_id = $user->user_id;
+                    continue;
+                }
+                $batch_post_count += $user->post_count;
+                $start_user_id = $user->user_id;
             }
-            $batch_post_count += $user->post_count;
-            $start_user_id = $user->user_id;
-        }
-        $this->worker_model->set_post_error_with_expired_tokens($scheduled_time);
-        if($total_posts == 0) return;
-        $stats = array(
-            'total_users' => $total_users,
-            'total_posts' => $total_posts,
-            'total_batches' => $total_batches
-        );
-        $this->worker_model->log_cron(CRON_QUEUE_PROCESSOR, $stats);
+            if($total_batches > 0)
+            {
+                //scale workers to $total_batches
+                $heroku->patch(
+                    "apps/$app_name/formation/fbworker",
+                    ['quantity' => $total_batches]
+                );
+                while(date('s') != '00') sleep(1); // wait until 00 start of next minute
+                foreach ($messages as $message)
+                    $this->myrabbit->basic_publish(getenv('FACEBOOK_QUEUE'), json_encode($message)); //start distributing work to worker
+            }else
+            {
+                //scale workers to 0
+                $heroku->patch(
+                    "apps/$app_name/formation/fbworker",
+                    ['quantity' => 0]
+                );
+            }
+            $this->worker_model->set_post_error_with_expired_tokens($scheduled_time);
+            if($total_posts == 0) continue;
+            $stats = array(
+                'total_users' => $total_users,
+                'total_posts' => $total_posts,
+                'total_batches' => $total_batches
+            );
+            $this->worker_model->log_cron(CRON_QUEUE_PROCESSOR, $stats);
+        }//end contineous while loop
+        $this->myrabbit->close();
     }
     
     //run in browser for syntax errors
     public function poke()
     {
-        start_background_process("worker process_queues");
         echo 'I am Ok';
     }
 
-    public function send()
+    public function fb_worker()
     {
         $this->load->library('myrabbit');
-        $test = array(
-            'start_user_id' => mt_rand(1, 10),
-            'end_user_id' => mt_rand(11, 20)
-        );
-        $this->myrabbit->basic_publish(getenv('FACEBOOK_QUEUE'), json_encode($test));
-        $this->myrabbit->close();
-        echo "DOne";
+        $queue = getenv('FACEBOOK_QUEUE');
+        $this->myrabbit->channel->queue_declare($queue, false, false, false, false);
+        $worker =& $this;
+        $callback = function ($message) {
+            $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
+            $msg_content = json_decode($message->body, true);
+            if( is_array($msg_content) && isset($msg_content['start_user_id']) && isset($msg_content['end_user_id']) )
+                $worker->publish_batch($msg_content['start_user_id'], $msg_content['end_user_id']);
+            $message->delivery_info['channel']->basic_cancel($message->delivery_info['consumer_tag']);
+        };
+
+        $this->myrabbit->channel->basic_consume($queue, '', false, false, false, false, $callback);
+        while (count($this->myrabbit->channel->callbacks)) {
+            $this->myrabbit->channel->wait();
+        }
     }
 
-    public function receive()
-    {
-        $this->load->library('myrabbit');
-        $this->myrabbit->basic_consume(getenv('FACEBOOK_QUEUE'));
-        $this->myrabbit->close();
-    }
 
 }
 

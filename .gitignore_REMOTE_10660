@@ -4,7 +4,6 @@ assets/fonts/
 assets/images/
 assets/webfonts/
 .env
-<<<<<<< HEAD
-=======
 .htaccess
->>>>>>> wamp
+\!RABBITMQ*/
+\!RABBITMQ*

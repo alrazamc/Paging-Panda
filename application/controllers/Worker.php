@@ -255,6 +255,12 @@ class Worker extends CI_Controller {
         echo 'I am Ok';
     }
 
+    public function rabbit()
+    {
+        $this->load->library('myrabbit');
+        var_dump($this->myrabbit->channel);
+    }
+
 }
 
 /* End of file Worker.php */

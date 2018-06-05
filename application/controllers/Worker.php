@@ -9,8 +9,8 @@ class Worker extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // if(!is_cli()) 
-        //     exit(0);
+        if(!is_cli()) 
+            exit(0);
     }
 
     //Delete S3 media of category and delete content after that
@@ -129,7 +129,7 @@ class Worker extends CI_Controller {
     {
         $this->load->library('queue');
         $this->queue->rebuild_random($user_id);
-        echo "User-$user_id queue reconstructed ";
+        echo "User-$user_id Random queue reconstructed ";
     }
 
     //child cron, publish single batch of around 50 posts

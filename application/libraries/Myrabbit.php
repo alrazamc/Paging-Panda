@@ -43,11 +43,13 @@ class Myrabbit
 	public function basic_consume($queue)
 	{
 		$this->channel->queue_declare($queue, false, false, false, false);
+		$final = [];
 		$callback = function ($message) {
-		  var_dump($message->body);
+			$final[] = $message->body;
+		  var_dump($final);
 		  	//$message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
 		    //cancel consumer
-		    $message->delivery_info['channel']->basic_cancel($message->delivery_info['consumer_tag']);
+		    //$message->delivery_info['channel']->basic_cancel($message->delivery_info['consumer_tag']);
 		  //$this->channel->basic_cancel($message->delivery_info['consumer_tag']);
 		};
 

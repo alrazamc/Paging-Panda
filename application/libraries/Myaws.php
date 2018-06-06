@@ -1,5 +1,4 @@
 <?php
-define('AWS_SSL_CERTIFICATE', APPPATH.'libraries'.DIRECTORY_SEPARATOR.'aws'.DIRECTORY_SEPARATOR.'cacert.pem');
 /**
 * My custom AWS library
 */
@@ -20,10 +19,7 @@ class Myaws
 			    'secret'  => getenv('AWS_SECRET'),
 			  ),
     		'region' => 'us-east-1',
-    		'version' => 'latest',
-    		'http'    => [
-		        'verify' => AWS_SSL_CERTIFICATE
-		    ]
+    		'version' => 'latest'
 		));
 
 		try {
@@ -71,10 +67,7 @@ class Myaws
 			    'secret'  => getenv('AWS_SECRET'),
 			  ),
     		'region' => 'us-east-1',
-    		'version' => 'latest',
-    		'http'    => [
-		        'verify' => AWS_SSL_CERTIFICATE
-		    ]
+    		'version' => 'latest'
 		]);
 	}
 

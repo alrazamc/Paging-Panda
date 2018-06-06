@@ -205,7 +205,7 @@ class Worker extends CI_Controller {
         $this->worker_model->log_cron(CRON_QUEUE_BATCH_PROCESSOR, $stats);
     }
 
-    //Cron Schedule queue Batches
+    //24/7 Clock to kick Facebook workers to publish batches
     public function watch_queues()
     {
         date_default_timezone_set('UTC');

@@ -283,7 +283,7 @@ class Worker extends CI_Controller {
         $queue = getenv('FACEBOOK_QUEUE');
         $this->myrabbit->channel->queue_declare($queue, false, false, false, false);
         $worker =& $this;
-        $callback = function ($message) {
+        $callback = function ($message) use($worker) {
             $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
             $msg_content = json_decode($message->body, true);
             if( is_array($msg_content) && isset($msg_content['start_user_id']) && isset($msg_content['end_user_id']) )

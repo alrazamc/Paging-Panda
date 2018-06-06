@@ -191,8 +191,7 @@ function start_background_process($arguments) {
     $index_path = getcwd().DIRECTORY_SEPARATOR."index.php";
     $command = "php \"$index_path\" $arguments"; 
     if (substr(php_uname(), 0, 7) == "Windows"){
-        $WshShell = new COM("WScript.Shell");
-        $oExec = $WshShell->Run($command, 0, false); 
+         pclose(popen("start /B ". $command, "r"));  
     } 
     else { 
         exec($command . " > /dev/null &");   

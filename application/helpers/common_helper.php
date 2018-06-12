@@ -37,13 +37,15 @@ function get_alert_html($message='', $type = ALERT_TYPE_INFO, $dismiss = true)
 */
 function session_check()
 {
-    $CI = get_instance();
-    $user_id = $CI->session->userdata('user_id');
-    if(empty($user_id)){
-        if($CI->input->is_ajax_request()){
-            $response =  array('type'=>AJAX_RESPONSE_TYPE_REDIRECT, 'message'=> site_url('users/login') );
-            echo json_encode($response);
-            exit();
+    $ci =& get_instance();
+    check_remember_me();
+    if(!$ci->session->userdata('user_id'))
+    {
+        if($ci->input->is_ajax_request())
+        {
+                $response =  array('type'=>AJAX_RESPONSE_TYPE_REDIRECT, 'message'=> site_url('users/login') );
+                echo json_encode($response);
+                exit();
         }
         redirect('users/login');
     }
@@ -114,9 +116,26 @@ function create_folder($directory_path = '')
 * create session if remember me set
 */
 function check_remember_me(){
-    include_once(APPPATH.'hooks/AppLoader.php');
-    $app_loader = new AppLoader();
-    $app_loader->remember_me();
+    $ci =& get_instance();
+    if(!$ci->session->userdata('user_id'))
+    {
+        $email = get_cookie('remme');
+        if($email)
+        {
+            $ci->load->library('encryption');
+            $email = $ci->encryption->decrypt($email);
+            if($email)
+            {
+                $ci->load->model('users_model');
+                $user = $ci->users_model->get_user($email);
+                if(isset($user->user_id))
+                {
+                    $ci->session->set_userdata('user_login', TRUE);
+                    $ci->session->set_userdata('user_id', $user->user_id);
+                }
+            }
+        }
+    }
 }
 
 function convert_to_utc($input_date_time)

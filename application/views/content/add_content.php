@@ -408,7 +408,7 @@
 							  	</div>
 							  </div>
 							</div>
-							<div class="text-green mt-2 text-center d-none" id="new-category-msg">New category added in list</div>
+							<div class="text-success mt-2 text-center d-none" id="new-category-msg">New category added in list</div>
 						</div>
 
 						<div class="col-12">

@@ -225,7 +225,7 @@
     $scope.show_video = function(record)
     {
     	var mp4_extensions = ['mp4', 'm4a', 'm4p', 'm4b', 'm4r', 'm4v'];
-        var ext = record.attachments[0].split('.').pop();
+        var ext = record.attachments[0].split('?')[0].split('.').pop();
         ext = ext.toLowerCase();
         if(mp4_extensions.indexOf(ext) !== -1)
     	{
@@ -481,7 +481,7 @@
     							<i class="ml-2 text-muted" ng-if="record.schedule_id == 0">Manually  Scheduled</i>
     						</div>
     						<div class="col-md-5 mb-sm-0 mb-2 text-md-right text-center">
-    							<a ng-if="tab==status_published" href="<?php echo site_url("posts/insights") ?>/{{ record.post_id }}" class="text-success font-weight-500 mr-4">Insights</a>
+    							<a ng-if="tab==status_published" href="<?php echo site_url("posts/history") ?>/{{ record.content_id }}/{{ record.post_fb_id }}" class="text-success font-weight-500 mr-4">Insights</a>
                                 <a ng-if="tab==status_pending && record.schedule_id == 0" href="<?php echo site_url("posts/delete") ?>/{{ record.post_id }}"  class="text-success font-weight-500 mr-4 delete-record"><i class="fas fa-times"></i> Remove</a>
     							<a ng-if="tab==status_pending && record.schedule_id != 0" href="" ng-click="skip_post(record)"  class="text-success font-weight-500 mr-4"> 
                                     <span ng-show="!record.skip_preloader">Skip <i class="fas fa-fast-forward"></i> </span>

@@ -254,7 +254,7 @@
     $scope.show_video = function(record)
     {
         var mp4_extensions = ['mp4', 'm4a', 'm4p', 'm4b', 'm4r', 'm4v'];
-        var ext = record.attachments[0].split('.').pop();
+        var ext = record.attachments[0].split('?')[0].split('.').pop();
         ext = ext.toLowerCase();
     	if(mp4_extensions.indexOf(ext) !== -1)
     	{
@@ -538,7 +538,7 @@
 							<span class="text-muted float-right" ng-if="record.expired == 1"><i>expired</i></span>
 						</div>
 						<div class="col-sm-8 mb-sm-0 mb-2 text-sm-right text-center">
-							<a ng-if="tab==status_approved" href="<?php echo site_url("content/history") ?>/{{ record.content_id }}" class="text-success font-weight-500 mr-4">History</a>
+							<a ng-if="tab==status_approved" href="<?php echo site_url("posts/history") ?>/{{ record.content_id }}" class="text-success font-weight-500 mr-4">History</a>
 							<a ng-if="tab==status_approved || tab==status_declined" href="<?php echo site_url("content/delete") ?>/{{ record.content_id }}"  class="text-success font-weight-500 mr-4 delete-record">Delete</a>
 							
                             <a ng-if="tab==status_pending || tab==status_declined" href="<?php echo site_url("content/approve") ?>/{{ record.content_id }}" class="text-success font-weight-500 mr-4"><i class="fas fa-check"></i> Approve</a>

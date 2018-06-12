@@ -129,9 +129,7 @@ body{
 .bg-green{
     background-color: #4CAF50;
 }
-.text-green{
-    color: #4CAF50;
-}
+
 .slim-progress{
     height: 5px;
 }
@@ -387,6 +385,12 @@ a.text-success:hover{
   pointer-events: none;
 }
 
+.fz-24{
+    font-size: 24px;
+}
+.fz-22{
+    font-size: 22px;
+}
 .fz-20{
     font-size: 20px;
 }
@@ -533,9 +537,20 @@ a.text-success:hover{
     margin-top: 22px;
 }
 
+.reaction img{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.reaction .count{
+    font-size: 18px;
+}
+
 @media (max-width: 575.98px){
     .am-chart{
         height: 300px;
+    }
+    .reaction .count{
+        font-size: 14px;
     } 
 }
 

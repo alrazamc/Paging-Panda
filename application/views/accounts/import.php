@@ -109,7 +109,7 @@
             <div class="form-group">
               <div class="input-group">
               	<div class="input-group-prepend">
-      	          <div class="input-group-text text-green"><i class="fas fa-search"></i></div>
+      	          <div class="input-group-text text-success"><i class="fas fa-search"></i></div>
       	        </div>
                 <input type="text" class="form-control" placeholder="search pages" ng-model="search_fb_pages">
               </div>      
@@ -126,7 +126,7 @@
 			</div>
 			<div class="row" ng-show="fb_pages_preloader">
 				<div class="col-sm-12 text-center">
-					<h3 class="text-green"><i class="fas fa-spin fa-circle-notch"></i></h3>
+					<h3 class="text-success"><i class="fas fa-spin fa-circle-notch"></i></h3>
 				</div>
 			</div>
 

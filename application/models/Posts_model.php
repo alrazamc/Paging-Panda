@@ -303,6 +303,16 @@ class Posts_model extends CI_Model{
         $this->db->where('user_id', $user_id);
         $this->db->update('users');
     }
+
+    public function get_content_history($content_id = 0, $post_fb_id = '')
+    {
+        $this->db->where('content_id', $content_id);
+        $this->db->where('status', POST_STATUS_PUBLISHED);
+        if(!empty($post_fb_id))
+            $this->db->where('post_fb_id', $post_fb_id);
+        $this->db->order_by('scheduled_time', 'DESC');
+        return $this->db->get('posts')->result();
+    }
 }
 
 /* End of file Posts_model.php */

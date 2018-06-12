@@ -661,7 +661,7 @@
 				</div>
 
 		        <div class="col-12 text-center" ng-show="page_preloader">
-		          <h3 class="text-green"><i class="fas fa-spin fa-circle-notch"></i></h3>
+		          <h3 class="text-success"><i class="fas fa-spin fa-circle-notch"></i></h3>
 		        </div>
 
 		        <div class="col-12 p-5" ng-show="!page_preloader && pages.length == 0"  ng-cloak>
@@ -742,7 +742,7 @@
 					        </div>
 				        </div>
 				        <div class="col-12 text-center" ng-show="favorite.graph_preloader" ng-cloak>
-				          <h3 class="text-green"><i class="fas fa-spin fa-circle-notch"></i></h3>
+				          <h3 class="text-success"><i class="fas fa-spin fa-circle-notch"></i></h3>
 				        </div>
 
 				        <div class="col-12 p-5" ng-show="!page_preloader && !favorite.graph_preloader && pages.length && metrics.length && favorite.graph_data.length == 0"  ng-cloak>

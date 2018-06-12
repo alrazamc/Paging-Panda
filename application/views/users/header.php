@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/favicon.png" />
   <link rel="stylesheet" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/css/fontawesome-all.min.css" />
   <link rel="stylesheet" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
   <link rel="stylesheet" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/css/login.css" />
   <script type="text/javascript" src="<?php echo getenv('ASSET_BASE_URL') ?>assets/js/jquery.min.js"></script>
 </head>

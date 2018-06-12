@@ -13,6 +13,7 @@ class Users extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        check_remember_me();
         $this->load->model('users_model');
     }
 
@@ -30,7 +31,7 @@ class Users extends CI_Controller {
     public function login()
     {
         if($this->session->userdata('user_login') === TRUE )
-            redirect('home/dashboard');
+            redirect('content');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('email', "Email", 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -48,7 +49,7 @@ class Users extends CI_Controller {
                 {
                    // die('sdfsd');
                     $this->load->library('encryption');
-                    set_cookie('rememberme', $this->encryption->encrypt($user->email), 10 * 365 * 24 * 60 * 60); // 10 years expiry time
+                    set_cookie('remme', $this->encryption->encrypt($user->email), 10 * 365 * 24 * 60 * 60); // 10 years expiry time
                 }
 
                 $this->session->set_userdata('user_login', TRUE);
@@ -58,7 +59,7 @@ class Users extends CI_Controller {
                 $this->session->set_userdata('time_zone', $user->time_zone);
                 $this->session->set_userdata('email', $user->email);
                 $this->users_model->last_login($user->user_id);
-                redirect('home/dashboard');
+                redirect('content');
             }else
             {
                 $this->session->set_flashdata('alert', get_alert_html('Invalid email or password', ALERT_TYPE_ERROR));
@@ -73,7 +74,7 @@ class Users extends CI_Controller {
     public function signup()
     {
         if($this->session->userdata('user_login') === TRUE )
-            redirect('home/dashboard');
+            redirect('content');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('first_name', "First name", 'trim|required|max_length[100]|alpha');
         $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|max_length[100]|alpha');
@@ -99,7 +100,7 @@ class Users extends CI_Controller {
             $data['name'] = $user->first_name;
             $message = $this->load->view('emails/welcome', $data, true);
             $this->myaws->send_email($user->email, 'Welcome to '.$this->config->item('site_name'), $message);
-            redirect('home/dashboard');
+            redirect('content');
         }
     }
 
@@ -109,7 +110,7 @@ class Users extends CI_Controller {
     public function logout()
     {
         $this->session->sess_destroy();
-        delete_cookie('rememberme');
+        delete_cookie('remme');
         redirect('users/login');
     }
 
@@ -119,7 +120,7 @@ class Users extends CI_Controller {
     public function forgot_password()
     {
         if($this->session->userdata('user_login') === TRUE )
-            redirect('home/dashboard');
+            redirect('content');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         if(!$this->form_validation->run())
@@ -155,7 +156,7 @@ class Users extends CI_Controller {
     public function reset_password($hash = '')
     {
         if($this->session->userdata('user_login') === TRUE )
-            redirect('home/dashboard');
+            redirect('content');
         if(empty($hash))
             redirect('users/login');
         $user = $this->users_model->validate_hash($hash);

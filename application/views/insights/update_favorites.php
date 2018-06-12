@@ -109,7 +109,7 @@
         </div>
 
         <div class="col-12 text-center" ng-show="page_preloader">
-          <h3 class="text-green"><i class="fas fa-spin fa-circle-notch"></i></h3>
+          <h3 class="text-success"><i class="fas fa-spin fa-circle-notch"></i></h3>
         </div>
 
         <div class="col-sm-6 mb-3" ng-show="metrics.length"  ng-cloak>

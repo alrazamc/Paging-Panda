@@ -585,7 +585,7 @@
 		        </div>
 
 		        <div class="col-12 text-center" ng-show="page_preloader">
-		          <h3 class="text-green"><i class="fas fa-spin fa-circle-notch"></i></h3>
+		          <h3 class="text-success"><i class="fas fa-spin fa-circle-notch"></i></h3>
 		        </div>
 		        <div class="col-12 p-5" ng-show="!page_preloader && pages.length == 0"  ng-cloak>
 		        	<p class="text-muted text-center font-italic">No Pages, Please add your Facebook pages</p>
@@ -671,7 +671,7 @@
 		        </div>
 
 		        <div class="col-12 text-center" ng-show="graph_preloader" ng-cloak>
-		          <h3 class="text-green"><i class="fas fa-spin fa-circle-notch"></i></h3>
+		          <h3 class="text-success"><i class="fas fa-spin fa-circle-notch"></i></h3>
 		        </div>
 
 		        <div class="col-12 p-5" ng-show="!page_preloader && !graph_preloader && pages.length && graph_data.length == 0"  ng-cloak>

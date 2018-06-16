@@ -70,10 +70,10 @@ function get_fb_request_error_string($error_response){
 * @return html table string
 */
 function get_fb_response_as_html_table($response){
-    $html = '<table>';
+    $html = '<table style="border: 1px solid black;">';
     foreach ($response as $key => $value) {
        $html .= '<tr>';
-       $html .= '<td>';
+       $html .= '<td style="border: 1px solid black;">';
        $html .= $key;
        $html .= '</td>';
        $html .= '<td>';
@@ -127,8 +127,8 @@ function check_remember_me(){
             if($email)
             {
                 $ci->load->model('users_model');
-                $user = $ci->users_model->get_user($email);
-                if(isset($user->user_id))
+                $user = $ci->users_model->get_user_by_email($email);
+                if(isset($user->user_id) && $user->status != USER_STATUS_SUBSCRIBED)
                 {
                     $ci->session->set_userdata('user_login', TRUE);
                     $ci->session->set_userdata('user_id', $user->user_id);

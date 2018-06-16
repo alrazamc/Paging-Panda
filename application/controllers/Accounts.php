@@ -35,6 +35,9 @@ class Accounts extends CI_Controller {
         $data['page_title'] = 'Pages';
         $data['view'] = 'accounts/accounts';
         $data['pages'] = $this->accounts_model->get_all($this->user_id);
+        $this->load->model('payments_model');
+        $plan = $this->payments_model->get_plan( $this->session->userdata('plan_id') );
+        $data['page_limit'] = $plan->page_limit;
         $expired_tokens = 0;
         foreach ($data['pages'] as $page){
             if($page->token_expired == YES)
@@ -133,6 +136,9 @@ class Accounts extends CI_Controller {
         $data['page_title'] = 'Import Pages';
         $data['view'] = 'accounts/import';
         $pages = $this->accounts_model->get_all($this->user_id);
+        $this->load->model('payments_model');
+        $plan = $this->payments_model->get_plan( $this->session->userdata('plan_id') );
+        $data['page_limit'] = $plan->page_limit;
         $ids = array();
         foreach($pages as $page)
             $ids[] = $page->account_fb_id;

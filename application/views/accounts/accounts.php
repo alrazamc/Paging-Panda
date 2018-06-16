@@ -9,9 +9,9 @@
 			<h4 class="page-title">Pages</h4>
 		</div>
 		<div class="col-sm-4">
-			<p class="mb-1">Page Limit <span class="float-right"> <?php echo count($pages) ?> of <?php echo $this->session->userdata('page_limit') ?></span></p>
+			<p class="mb-1">Page Limit <span class="float-right"> <?php echo count($pages) ?> of <?php echo $page_limit ?></span></p>
 			<div class="progress slim-progress">
-			  <div class="progress-bar bg-green"  style="width: <?php echo round( (count($pages) / $this->session->userdata('page_limit'))*100 ) ?>%;" ></div>
+			  <div class="progress-bar bg-green"  style="width: <?php echo round( (count($pages) / $page_limit)*100 ) ?>%;" ></div>
 			</div>
 		</div>
 	</div>

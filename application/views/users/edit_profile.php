@@ -67,10 +67,20 @@
 			          <div class="form-group">
 			            <label >Country</label>
 			            <select class="form-control" name="country">
-			            	<option value="">Select Country</option>
-			            	<?php foreach($countries as $country){ ?>
-			            	<option value="<?php echo $country->country_id ?>" <?php echo $country->country_id == $user->country ? 'selected' : '' ?>><?php echo $country->nicename ?></option>
-			            	<?php } ?>
+			            	<optgroup>
+			            		<option value="">Select Country</option>
+			            	</optgroup>
+			            	<optgroup>
+				            	<option value="226" <?php echo $user->country == 226 ? 'selected' : '' ?>>United States</option>
+				            	<option value="225" <?php echo $user->country == 225 ? 'selected' : '' ?>>United Kingdom</option>
+				            	<option value="38" <?php echo $user->country == 38 ? 'selected' : '' ?>>Canada</option>
+				            	<option value="13" <?php echo $user->country == 13 ? 'selected' : '' ?>>Australia</option>
+			            	</optgroup>
+			            	<optgroup>
+				            	<?php foreach($countries as $country){ ?>
+				            	<option value="<?php echo $country->country_id ?>" <?php echo $country->country_id == $user->country ? 'selected' : '' ?>><?php echo $country->nicename ?></option>
+				            	<?php } ?>
+			            	</optgroup>
 			            </select>
 			          </div>
 

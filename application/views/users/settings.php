@@ -1,18 +1,18 @@
 <div class="container my-5">
+	<?php echo $this->session->flashdata('alert'); ?>
 	<div class="card air-card">
 		<div class="card-body">
 			<div class="row">
-				<div class="col-6">
+				<div class="col-12">
 					<h4>Settings</h4>
 				</div>
-				<div class="col-6 text-right">
-					<a href="<?php echo site_url('users/profile') ?>" class="btn btn-green">Edit Profile</a>
-				</div>
 			</div>
-			<hr>
+			<hr class="mt-0">
 			<div class="row">
-				<div class="col-lg-6 offset-lg-3">
-					<?php echo $this->session->flashdata('alert'); ?>
+				<div class="col-lg-3 text-center text-lg-left">
+					<h6 class="text-muted mb-0">Profile</h6>
+				</div>
+				<div class="col-lg-6">
 					<ul class="list-group list-group-flush">
 					  	<li class="list-group-item">
 					  		<div class="row">
@@ -45,8 +45,56 @@
 					  		</div>
 						</li>
 					</ul>
+
+					<div class="text-center my-3">
+						<a href="<?php echo site_url('users/profile') ?>" class="btn btn-success btn-shadow">Edit Profile</a>
+					</div>
 				</div>
 			</div>
+
+
+			<hr class="mt-0">
+			<div class="row">
+				<div class="col-lg-3 text-center text-lg-left">
+					<h6 class="text-muted mb-0">Subscription</h6>
+				</div>
+				<div class="col-lg-6">
+					<ul class="list-group list-group-flush">
+					  	<li class="list-group-item">
+					  		<div class="row">
+					  			<div class="col-4"><strong>Plan</strong></div>
+					  			<div class="col-8">
+					  				<?php echo $plan->name ?>
+					  				<?php if($user->on_trial){ ?> 
+						  				<?php if(isset($expired)){ ?>
+						  				<span class="text-muted"> (Trial period expired on <?php echo $expiry_date ?> )<span>
+						  				<?php }else{ ?>
+					  					<span class="text-muted"> (On trial period, expiring on <?php echo $expiry_date ?>)<span>
+					  					<?php } ?>
+					  				<?php } ?>
+					  			</div>
+					  		</div>
+						</li>
+						<li class="list-group-item">
+					  		<div class="row">
+					  			<div class="col-4"><strong>Price</strong></div>
+					  			<div class="col-8">$<?php echo $plan->price ?> per month</div>
+					  		</div>
+						</li>
+					</ul>
+
+					<div class="text-center mt-3">
+						<a href="<?php echo site_url('payments/pay') ?>" class="btn btn-success btn-shadow">
+						<?php if($user->on_trial || $user->status == USER_STATUS_SUSPENDED || $user->status == USER_STATUS_CANCELLED){ ?>
+							Buy a plan
+						<?php }else{ ?>
+							Change Plan
+						<?php } ?>
+						</a>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>

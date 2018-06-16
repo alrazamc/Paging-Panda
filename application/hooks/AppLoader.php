@@ -5,11 +5,12 @@ class AppLoader
     function initialize()
     {
         $this->ci =& get_instance();
-        $this->check_user_status();
+        $this->update_session();
+        $this->check_account_status();
         $this->set_global_alerts();
     }
 
-    function check_user_status()
+    function update_session()
     {
         if($this->ci->session->userdata('user_id'))
         {
@@ -28,6 +29,7 @@ class AppLoader
             $this->ci->session->set_userdata('last_name', $user->last_name);
             $this->ci->session->set_userdata('time_zone', $user->time_zone ? $user->time_zone : 'UTC');
             $this->ci->session->set_userdata('email', $user->email);
+            $this->ci->session->set_userdata('user_status', $user->status);
 
             $this->ci->session->set_userdata('general_pointer', $user->general_pointer);
             $this->ci->session->set_userdata('use_once_pointer', $user->use_once_pointer);
@@ -35,12 +37,19 @@ class AppLoader
             $this->ci->session->set_userdata('queue_paused', $user->queue_paused);
             $this->ci->session->set_userdata('accounts_alert', $user->accounts_alert);
 
+            $this->ci->session->set_userdata('plan_id', $user->plan_id);
+        }
+    }
 
-            $this->ci->db->where('plan_id', $user->plan_id);
-            $plan = $this->ci->db->get('plans')->row();
-            $this->ci->session->set_userdata('plan_id', $plan->plan_id);
-            $this->ci->session->set_userdata('plan_name', $plan->name);
-            $this->ci->session->set_userdata('page_limit', $plan->page_limit);
+    function check_account_status()
+    {
+        if($this->ci->session->userdata('user_id'))
+        {
+            $status = $this->ci->session->userdata('user_status');
+            $rs_controllers = array('insights', 'categories', 'schedule', 'posts', 'content', 'import');//Restricted controllers
+            $controller = strtolower($this->ci->router->fetch_class());
+            if($status != USER_STATUS_ACTIVE && in_array($controller, $rs_controllers))
+                redirect('users/settings');
         }
     }
 

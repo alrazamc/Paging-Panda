@@ -21,9 +21,11 @@ class Users_model extends CI_Model{
     {
         $email = $this->input->post('email', TRUE);
         $password = $this->input->post('password', TRUE);
+        $password = $this->db->escape($password);
         $this->db->select('*')->from('users');
         $this->db->where("email", $email);
-        $this->db->where("password = MD5('$password')");
+        $this->db->where("password = MD5($password)");
+        $this->db->where("status !=", USER_STATUS_SUBSCRIBED);
         $result = $this->db->get();
         return $result->row();
     }
@@ -32,7 +34,7 @@ class Users_model extends CI_Model{
     * @param $email string, Email address of user
     * @return object
     */
-    public function get_user($email)
+    public function get_user_by_email($email)
     {
         $this->db->select('*')->from('users');
         $this->db->where('email', $email);
@@ -78,22 +80,6 @@ class Users_model extends CI_Model{
         $this->db->where('user_id', $user_id);
         $this->db->update('users');
     }
-    
-    /**
-    * delete a user and all is related data from database
-    * @param $user_id integer, The id of the user
-    * @return void
-    */
-    public function delete($user_id = 0)
-    {
-        // delete user
-        $this->db->where('user_id', $user_id);
-        $this->db->delete('users');
-        // delete user password resets request
-        $this->db->where('user_id', $user_id);
-        $this->db->delete('admin_reset_password_requests');
-    }
-
 
     /**
     * get a user from database
@@ -114,21 +100,41 @@ class Users_model extends CI_Model{
     */
     public function isemailexist($email, $user_id = 0)
     {
+        $this->db->where('email', $email);
         if($user_id)
-            return $this->db->get_where('users', array('email'=>$email, 'user_id !='=> $user_id))->num_rows();
-        return $this->db->get_where('users', array('email'=>$email))->num_rows();
+            $this->db->where("user_id !=", $user_id); //edit profile
+        else
+            $this->db->where('status !=', USER_STATUS_SUBSCRIBED);//signup
+        return $this->db->get('users')->num_rows();
     }
     /**
     * insert a new user
     * @return void
     */
-    public function insert()
+    public function signup($plan_id = 0)
     {
+        $user = $this->get_user_by_email( $this->input->post('email') );
+
         $this->db->set('first_name', $this->input->post('first_name'));
         $this->db->set('last_name', $this->input->post('last_name'));
         $this->db->set('email', $this->input->post('email'));
         $password = $this->db->escape($this->input->post('password'));
         $this->db->set('password',"MD5($password)", false);
+        $this->db->set('status', USER_STATUS_ACTIVE);
+        $this->db->set('plan_id', $plan_id);
+        $this->db->set('on_trial', YES);
+        $this->db->set('date_registered', date('Y-m-d H:i:s'));
+        $this->db->set('date_updated', date('Y-m-d H:i:s'));
+        $this->db->set('last_login', date('Y-m-d H:i:s'));
+        $this->db->set('date_cancelled', date('Y-m-d H:i:s'));
+
+        if(isset($user->user_id) && $user->status == USER_STATUS_SUBSCRIBED)
+        {
+            $this->db->where('user_id', $user->user_id);
+            $this->db->update('users');
+            return $this->get_record( $user->user_id );
+        }
+        
         $this->db->set('time_zone', '');
         $this->db->set('phone', '');
         $this->db->set('address', '');
@@ -136,8 +142,42 @@ class Users_model extends CI_Model{
         $this->db->set('state', '');
         $this->db->set('zip_code', '');
         $this->db->set('country', 0);
-        $this->db->set('status', USER_STATUS_ACTIVE);
+        $this->db->set('reset_hash', '');
+        $this->db->set('date_added', date('Y-m-d H:i:s'));
+        
+
+        $this->db->set('general_pointer', 0);
+        $this->db->set('use_once_pointer', 0);
+        $this->db->set('random_pointer', 0);
+        $this->db->set('queue_paused', YES);
+        $this->db->set('accounts_alert', NO);
+        
+        $this->db->insert('users');
+        $user_id = $this->db->insert_id();
+        return $this->get_record($user_id);
+    }
+
+
+    /**
+    * subscribe
+    * @return void
+    */
+    public function subscribe($email = '')
+    {
+        $this->db->set('first_name', '');
+        $this->db->set('last_name', '');
+        $this->db->set('email', $email);
+        $this->db->set('password',"MD5('82&@*!#^')", false);
+        $this->db->set('status', USER_STATUS_SUBSCRIBED);
         $this->db->set('plan_id', 0);
+
+        $this->db->set('time_zone', '');
+        $this->db->set('phone', '');
+        $this->db->set('address', '');
+        $this->db->set('city', '');
+        $this->db->set('state', '');
+        $this->db->set('zip_code', '');
+        $this->db->set('country', 0);
         $this->db->set('reset_hash', '');
         $this->db->set('date_added', date('Y-m-d H:i:s'));
         $this->db->set('date_registered', date('Y-m-d H:i:s'));
@@ -150,10 +190,12 @@ class Users_model extends CI_Model{
         $this->db->set('random_pointer', 0);
         $this->db->set('queue_paused', YES);
         $this->db->set('accounts_alert', NO);
-        
+
+        $this->db->set('on_trial', NO);
+
         $this->db->insert('users');
-        $user_id = $this->db->insert_id();
-        return $this->get_record($user_id);
+        return $this->db->insert_id();
+        //return $this->get_record($user_id);
     }
     /**
     * update a user record

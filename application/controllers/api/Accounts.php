@@ -70,7 +70,9 @@ class Accounts extends REST_Controller {
         $data = $this->post('data');
         $inserted = 0;    
         $pages = $this->accounts_model->get_all($this->user_id);
-        $remain_pages = $this->session->userdata('page_limit') - count($pages) ; 
+        $this->load->model('payments_model');
+        $plan = $this->payments_model->get_plan( $this->session->userdata('plan_id') );
+        $remain_pages = $plan->page_limit - count($pages) ; 
         $remain_pages = $remain_pages < 0 ? 0 : $remain_pages;
     
         foreach ($data as $node) {

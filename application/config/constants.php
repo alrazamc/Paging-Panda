@@ -92,7 +92,7 @@ define('ALERT_TYPE_INFO', 'info');
 define('ALERT_TYPE_WARNING', 'warning');
 define('ALERT_TYPE_ANNOUNCEMENT', 'info');
 
-define('USER_STATUS_ADDED', 1); //added
+define('USER_STATUS_SUBSCRIBED', 1); //added
 define('USER_STATUS_ACTIVE', 2); // active user
 define('USER_STATUS_SUSPENDED', 3);
 define('USER_STATUS_CANCELLED', 4);
@@ -155,3 +155,14 @@ define("REBUILD_RANDOM_NO", 0);
 define('CRON_QUEUE_PROCESSOR', 1);
 define('CRON_QUEUE_BATCH_PROCESSOR', 2);
 define('CRON_DAILY_UPDATE', 3);
+
+//Transaction Types
+define('PAYMENT_TYPE_NEW_SUBSCRIPTION', 1);
+define('PAYMENT_TYPE_CHANGE_OF_PLAN', 2);
+define('PAYMENT_TYPE_SUSPENDED_REACTIVATION', 3);
+define('PAYMENT_TYPE_CLOSED_REACTIVATION', 4);
+define('PAYMENT_TYPE_INSTALLMENT', 5);
+
+define('TRANS_TYPE_CREDIT', 1);
+define('TRANS_TYPE_PARTIAL_REFUND', 2);
+define('TRANS_TYPE_FULL_REFUND', 3);

@@ -545,6 +545,16 @@ a.text-success:hover{
     font-size: 18px;
 }
 
+.pay .plan{
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+.pay .plan.selected{
+    border: 2px solid #28a745;
+}
+
 @media (max-width: 575.98px){
     .am-chart{
         height: 300px;

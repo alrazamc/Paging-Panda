@@ -47,17 +47,12 @@ class Users extends CI_Controller {
             {
                 if(($this->input->post('remember', TRUE) == 1))
                 {
-                   // die('sdfsd');
                     $this->load->library('encryption');
                     set_cookie('remme', $this->encryption->encrypt($user->email), 10 * 365 * 24 * 60 * 60); // 10 years expiry time
                 }
 
                 $this->session->set_userdata('user_login', TRUE);
                 $this->session->set_userdata('user_id', $user->user_id);
-                $this->session->set_userdata('first_name', $user->first_name);
-                $this->session->set_userdata('last_name', $user->last_name);
-                $this->session->set_userdata('time_zone', $user->time_zone);
-                $this->session->set_userdata('email', $user->email);
                 $this->users_model->last_login($user->user_id);
                 redirect('content');
             }else
@@ -69,10 +64,22 @@ class Users extends CI_Controller {
     }
 
     /**
+    * Logout from application link
+    */
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        delete_cookie('remme');
+        redirect('users/login');
+    }
+
+    /**
     * Signup page for application
     */
-    public function signup()
+    public function signup($plan_id = 0)
     {
+        if(!is_numeric($plan_id))
+            show_404();
         if($this->session->userdata('user_login') === TRUE )
             redirect('content');
         $this->load->library('form_validation');
@@ -87,31 +94,43 @@ class Users extends CI_Controller {
             $this->load->view('users/layout', $data);
         }else
         {
-            $user = $this->users_model->insert();
+            $this->load->model('payments_model');
+            $plan = $this->payments_model->get_plan($plan_id);
+            if(!isset($plan->plan_id))
+                $plan = $this->payments_model->get_default_plan();
+            $user = $this->users_model->signup($plan->plan_id);
             $this->load->model('categories_model');
             $this->categories_model->create_default($user->user_id); //create default categories
             $this->session->set_userdata('user_login', TRUE);
             $this->session->set_userdata('user_id', $user->user_id);
-            $this->session->set_userdata('first_name', $user->first_name);
-            $this->session->set_userdata('last_name', $user->last_name);
-            $this->session->set_userdata('time_zone', $user->time_zone);
-            $this->session->set_userdata('email', $user->email);
             $this->load->library('myaws');
             $data['name'] = $user->first_name;
             $message = $this->load->view('emails/welcome', $data, true);
             $this->myaws->send_email($user->email, 'Welcome to '.$this->config->item('site_name'), $message);
-            redirect('content');
+            redirect('accounts');
         }
     }
 
     /**
-    * Logout from application link
+    * Subscribe
     */
-    public function logout()
+    public function subscribe()
     {
-        $this->session->sess_destroy();
-        delete_cookie('remme');
-        redirect('users/login');
+        if($this->session->userdata('user_login') === TRUE )
+            redirect('content');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        if(!$this->form_validation->run())
+        {
+            redirect( getenv('BASE_URL') );
+        }else
+        {
+            $email = $this->input->post('email');
+            $user = $this->users_model->get_user_by_email($email);
+            if(!isset($user->user_id))
+                $this->users_model->subscribe($email); //add user to db as subscribed user
+            redirect('demo');
+        }
     }
 
     /**
@@ -130,8 +149,8 @@ class Users extends CI_Controller {
             $this->load->view('users/layout', $data);
         }else
         {
-            $user = $this->users_model->get_user($this->input->post('email', TRUE));
-            if(!isset($user->user_id))
+            $user = $this->users_model->get_user_by_email($this->input->post('email', TRUE));
+            if(!isset($user->user_id) || $user->status == USER_STATUS_SUBSCRIBED)
             {
                 $this->session->set_flashdata('alert', get_alert_html('This email is not registered', ALERT_TYPE_ERROR));
                 redirect('users/forgot_password');
@@ -160,7 +179,7 @@ class Users extends CI_Controller {
         if(empty($hash))
             redirect('users/login');
         $user = $this->users_model->validate_hash($hash);
-        if(!isset($user->user_id))
+        if(!isset($user->user_id) || $user->status == USER_STATUS_SUBSCRIBED)
             redirect('users/login');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|callback_password_check');
@@ -254,7 +273,19 @@ class Users extends CI_Controller {
     {
         session_check();
         $user_id = $this->session->userdata('user_id');
-        $data['user'] = $this->users_model->get_record($user_id);
+        $user = $this->users_model->get_record($user_id);
+        $this->load->model('payments_model');
+        $plan = $this->payments_model->get_plan($user->plan_id);
+        if($user->on_trial)
+        {
+            $expiry_date = date('Y-m-d H:i:s', strtotime("$user->date_registered +$plan->trial_period days"));
+            if(strtotime($expiry_date) < time())
+                $data['expired'] = true;
+            $data['expiry_date'] = date('d F', convert_to_user_timezone($expiry_date));
+        }
+
+        $data['plan'] = $plan;
+        $data['user'] = $user;        
         $this->load->config('time_zones');
         $data['page_title'] = 'Settings';
         $data['view'] = 'users/settings';

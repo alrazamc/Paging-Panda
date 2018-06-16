@@ -120,7 +120,10 @@ class Payments extends CI_Controller {
                         try {
                             $result = Twocheckout_Sale::refund($args);
                             if(isset($result['response_code']) && $result['response_code'] == 'OK')
+                            {
                                 $refund_msg = '$'."$amount refunded from previous plan for $current_plan_days_remaining remaining days.";
+                                $this->payments_model->log_refund($user, $previous_plan, $last_invoice, $amount, PAYMENT_TYPE_CHANGE_OF_PLAN);
+                            }
                         } catch (Twocheckout_Error $e) {
                             $msg = $e->getMessage();
                         }

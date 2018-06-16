@@ -57,6 +57,42 @@ class Payments_model extends CI_Model{
         return $this->db->get('transactions')->row();
     }
 
+    public function get_invoice_by_id($order_number = 0, $invoice_id = 0)
+    {
+        $this->db->where('order_number', $order_number);
+        $this->db->where('invoice_id', $invoice_id);
+        $this->db->where('transaction_type', TRANS_TYPE_CREDIT);
+        $this->db->limit(1);
+        return $this->db->get('transactions')->row();
+    }
+
+    public function set_fraud_status($order_number, $invoice_id, $status)
+    {
+        $this->db->set('fraud_status', $status);
+        $this->db->where('order_number', $order_number);
+        $this->db->where('invoice_id', $invoice_id);
+        $this->db->update('transactions');
+    }
+
+    public function set_invoice_status($order_number, $invoice_id, $status)
+    {
+        $this->db->set('invoice_status', $status);
+        $this->db->where('order_number', $order_number);
+        $this->db->where('invoice_id', $invoice_id);
+        $this->db->update('transactions');
+    }
+
+    public function update_user_due_date($user_id, $date)
+    {
+        $record = array(
+            'status' => USER_STATUS_ACTIVE,
+            'next_due_date' => "$date 23:59:59",
+            'date_updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('user_id', $user_id);
+        $this->db->update('users');
+    }
+
     public function approve_payment($user, $plan, $trial_days_left = 0)
     {
         if($user->on_trial)
@@ -121,6 +157,76 @@ class Payments_model extends CI_Model{
 
         $this->db->where('user_id', $user->user_id);
         $this->db->update('users', $record);
+    }
+
+    public function log_installment()
+    {
+        $this->db->where('order_number', $this->input->post('sale_id'));
+        $this->db->limit(1);
+        $order = $this->db->get('transactions')->row();
+
+        $transaction = array(
+            'user_id' => $order->user_id,
+            'type' => PAYMENT_TYPE_INSTALLMENT,
+            'plan_id' => $order->plan_id,
+            'plan_name' => $order->name,
+            'plan_price' => $order->price,
+            'payment_interval' => 'Monthly',
+            'order_number' => $this->input->post('sale_id'),
+            'invoice_id' => $this->input->post('invoice_id'),
+            'currency_code' => $this->input->post('list_currency'),
+            'total' => $this->input->post('item_usd_amount_1'),
+            'discount' => 0.00,
+            'trial_days_left' => 0,
+            'cc_processed' => 'Y',
+            'pay_method' => $this->input->post('payment_type'),
+            'card_holder_name' => $this->input->post('customer_name'),
+            'email_address' => $this->input->post('customer_email'),
+            'address_1' => $this->input->post('bill_street_address'),
+            'address_2' => $this->input->post('bill_street_address2'),
+            'city' => $this->input->post('bill_city'),
+            'state' => $this->input->post('bill_state'),
+            'zip' => $this->input->post('bill_postal_code'),
+            'country' => $this->input->post('bill_country'),
+            'phone' => $this->input->post('customer_phone'),
+            'transaction_time' => date('Y-m-d H:i:s'),
+            'transaction_type' => TRANS_TYPE_CREDIT
+        );
+        $this->db->insert('transactions', $transaction);
+
+        $this->update_user_due_date($order->user_id, $this->input->post('item_rec_date_next_1'));
+    }
+
+    public function log_refund($user, $plan, $invoice, $amount, $type = PAYMENT_TYPE_CHANGE_OF_PLAN)
+    {
+        $transaction = array(
+            'user_id' => $user->user_id,
+            'type' => $type,
+            'plan_id' => $plan->plan_id,
+            'plan_name' => $plan->name,
+            'plan_price' => $plan->price,
+            'payment_interval' => 'Monthly',
+            'order_number' => $invoice->order_number,
+            'invoice_id' => $invoice->invoice_id,
+            'currency_code' => $invoice->currency_code,
+            'total' => "-$amount",
+            'discount' => 0.00,
+            'trial_days_left' => 0,
+            'cc_processed' => $invoice->cc_processed,
+            'pay_method' => $invoice->pay_method,
+            'card_holder_name' => $invoice->card_holder_name,
+            'email_address' => $invoice->email_address,
+            'address_1' => $invoice->address_1,
+            'address_2' => $invoice->address_2,
+            'city' => $invoice->city,
+            'state' => $invoice->state,
+            'zip' => $invoice->zip,
+            'country' => $invoice->country,
+            'phone' => $invoice->phone,
+            'transaction_time' => date('Y-m-d H:i:s'),
+            'transaction_type' => $amount == $invoice->total ? TRANS_TYPE_FULL_REFUND :  TRANS_TYPE_PARTIAL_REFUND
+        );
+        $this->db->insert('transactions', $transaction);
     }
       
 }

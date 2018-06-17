@@ -59,13 +59,13 @@ class AppLoader
         if($this->ci->input->is_ajax_request()) return;
         $data = array();
         $global_alerts = "";
-        if($this->ci->session->userdata('queue_paused'))
+        if($this->ci->session->userdata('queue_paused') && $this->ci->session->userdata('user_status') == USER_STATUS_ACTIVE )
         {
             $text = 'Queue is paused and no posts will be published until you unpause it in <a class="text-success font-weight-500" href="'.site_url('posts').'">Posts</a> section';
             $global_alerts .= get_alert_html($text, ALERT_TYPE_INFO, NO); //NO=>NO dissmiss option
         }
 
-        if($this->ci->session->userdata('accounts_alert'))
+        if($this->ci->session->userdata('accounts_alert') && $this->ci->session->userdata('user_status') == USER_STATUS_ACTIVE )
         {
             $text = 'Some of your pages might need reconnection with our app. Please head to the <a class="text-success font-weight-500" href="'.site_url('accounts').'">Pages</a> section for details';
             $global_alerts .= get_alert_html($text, ALERT_TYPE_INFO, NO); //NO=>NO dissmiss option

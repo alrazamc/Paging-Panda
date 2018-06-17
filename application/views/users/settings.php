@@ -46,19 +46,20 @@
 						</li>
 					</ul>
 
-					<div class="text-center my-3">
+					<div class="text-center mt-3">
 						<a href="<?php echo site_url('users/profile') ?>" class="btn btn-success btn-shadow">Edit Profile</a>
 					</div>
 				</div>
 			</div>
 
 
-			<hr class="mt-0">
+			<hr>
 			<div class="row">
 				<div class="col-lg-3 text-center text-lg-left">
 					<h6 class="text-muted mb-0">Subscription</h6>
 				</div>
 				<div class="col-lg-6">
+					<?php if($user->status == USER_STATUS_ACTIVE){ ?>
 					<ul class="list-group list-group-flush">
 					  	<li class="list-group-item">
 					  		<div class="row">
@@ -82,6 +83,7 @@
 					  		</div>
 						</li>
 					</ul>
+					<?php } ?>
 
 					<div class="text-center mt-3">
 						<a href="<?php echo site_url('payments/pay') ?>" class="btn btn-success btn-shadow">
@@ -94,6 +96,47 @@
 					</div>
 				</div>
 			</div>
+
+
+
+
+			<hr>
+			<div class="row">
+				<div class="col-lg-3 text-center text-lg-left">
+					<h6 class="text-muted mb-0">Next Due Date</h6>
+				</div>
+				<div class="col-lg-6">
+					<ul class="list-group list-group-flush">
+						<?php if($user->status == USER_STATUS_ACTIVE && $user->next_due_date){ ?>
+					  	<li class="list-group-item">
+					  		<div class="row">
+					  			<div class="col-12">
+					  				<strong>
+					  					<?php echo date('d M, Y', strtotime($user->next_due_date));?>
+					  				</strong>
+					  			</div>
+					  		</div>
+						</li>
+						<?php } ?>
+						<?php if($user->on_trial == NO){ ?>
+						<li class="list-group-item">
+					  		<div class="row">
+					  			<div class="col-6">
+					  				<a href="<?php echo site_url('payments/invoices') ?>" class="text-success">View Invoices</a>
+					  			</div>
+					  			<?php if($user->status != USER_STATUS_CANCELLED){ ?>
+					  			<div class="col-6 text-right">
+					  				<a href="<?php echo site_url('payments/close') ?>" class="text-success">Close Account</a>					  				
+					  			</div>
+					  			<?php } ?>
+					  		</div>
+						</li>
+						<?php } ?>
+					</ul>
+
+				</div>
+			</div>
+
 
 		</div>
 	</div>

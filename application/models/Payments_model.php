@@ -52,7 +52,7 @@ class Payments_model extends CI_Model{
     {
         $this->db->where('user_id', $user_id);
         $this->db->where('transaction_type', TRANS_TYPE_CREDIT);
-        $this->db->order_by('transaction_time', DESC);
+        $this->db->order_by('transaction_time', 'DESC');
         $this->db->limit(1);
         return $this->db->get('transactions')->row();
     }
@@ -244,14 +244,24 @@ class Payments_model extends CI_Model{
         $this->db->update('transactions');
     }
 
-    public function suspend_user($user_id = 0)
+    public function suspend_account($user_id = 0)
     {
         $record = array(
             'status' => USER_STATUS_SUSPENDED,
             'date_updated' => date('Y-m-d H:i:s')
         );
         $this->db->where('user_id', $user_id);
-        $this->db->update('users');
+        $this->db->update('users', $record);
+    }
+
+    public function close_account($user_id = 0)
+    {
+        $record = array(
+            'status' => USER_STATUS_CANCELLED,
+            'date_updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('user_id', $user_id);
+        $this->db->update('users', $record);
     }
       
 }

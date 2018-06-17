@@ -13,6 +13,7 @@
 
   	$scope.trial_days_remaining = <?php echo $trial_days_remaining ?>;
   	$scope.total_pages = <?php echo $total_pages ?>;
+  	$scope.due_date_valid = <?php echo $due_date_valid ? 'true' : 'false' ?>;
   	$scope.discount = 0.00;
   	$scope.total = 0.00;
   	$scope.inline_form = false;
@@ -79,7 +80,7 @@
 			</div>
 		</div>
 
-		<div class="col-12" ng-if="on_trial == 0 && user_status == active_status && user_plan_id == selected_plan.plan_id">
+		<div class="col-12" ng-if="on_trial == 0 && user_status == active_status && user_plan_id == selected_plan.plan_id && due_date_valid">
 			<div class="alert alert-info">
 				<i class="fas fa-info-circle"></i> You are already subscribed to this plan
 			</div>
@@ -91,7 +92,7 @@
 		
 	</div>
 
-	<div class="card air-card" ng-show="selected_plan.page_limit - total_pages >= 0 && (on_trial == 1 || user_status != active_status || user_plan_id != selected_plan.plan_id)">
+	<div class="card air-card" ng-show="selected_plan.page_limit - total_pages >= 0 && (on_trial == 1 || user_status != active_status || user_plan_id != selected_plan.plan_id || !due_date_valid )">
 		<div class="card-body">
 			<div class="row mb-2">
 				<div class="col-8 col-sm-9">

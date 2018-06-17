@@ -40,6 +40,7 @@ class Payments extends CI_Controller {
                 $trial_days_remaining = floor($days);
             }
         }
+        $data['due_date_valid'] = $user->next_due_date ? strtotime($user->next_due_date) > time() : true;
         $this->load->model('accounts_model');
         $pages = $this->accounts_model->get_all($this->user_id);
         $data['total_pages'] = count($pages);

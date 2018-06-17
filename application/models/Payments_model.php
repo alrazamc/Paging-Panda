@@ -91,7 +91,7 @@ class Payments_model extends CI_Model{
             'date_updated' => date('Y-m-d H:i:s')
         );
         $this->db->where('user_id', $user_id);
-        $this->db->update('users');
+        $this->db->update('users', $record);
     }
 
     public function approve_payment($user, $plan, $trial_days_left = 0)

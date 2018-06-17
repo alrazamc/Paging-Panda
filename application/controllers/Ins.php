@@ -32,6 +32,7 @@ class Ins extends CI_Controller {
 
     private function _order_created()
     {
+        $this->_notify_admin();
         $invoice = $this->payments_model->get_invoice_by_id( $this->input->post('sale_id'), $this->input->post('invoice_id') );
         //update due date, make user active(optional)
         $this->payments_model->update_user_due_date($invoice->user_id, $this->input->post('item_rec_date_next_1'));

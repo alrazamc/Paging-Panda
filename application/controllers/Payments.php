@@ -96,7 +96,9 @@ class Payments extends CI_Controller {
             $previous_plan = $this->payments_model->get_plan($user->plan_id);
             $last_invoice = $this->payments_model->get_user_last_invoice($user->user_id);
         }
+
         $this->payments_model->approve_payment($user, $plan, $trial_days_remaining);
+        
         if($user->on_trial == NO && $user->status == USER_STATUS_ACTIVE)
         {
             $refund_msg = $this->_refund($previous_plan, $last_invoice, $user, $plan); //refund remaining amount of last plan

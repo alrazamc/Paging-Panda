@@ -52,15 +52,27 @@ class Payments extends CI_Controller {
     }
 
     public function approve()
-    {   
+    {
+        $this->_verify_sale();
+        $data['page_title'] = 'Processing';
+        $data['view'] = 'payments/processing';
+        $this->load->view('template', $data);
+    }
+
+    private function _verify_sale()
+    {
         $secret = getenv('2CO_SECRET');
         $seller_id = getenv('2CO_SELLER_ID');
         $order = $this->input->get_post('order_number');
         $total = $this->input->get_post('total');
-
         $key = strtoupper(md5("$secret$seller_id$order$total"));
         if($key != $this->input->get_post('key'))
             show_404();
+    }
+
+    public function process()
+    {   
+        $this->_verify_sale();
 
         $user = $this->users_model->get_record($this->user_id);
         $plan = $this->payments_model->get_plan($this->input->get_post('plan_id'));
@@ -81,31 +93,26 @@ class Payments extends CI_Controller {
         }
         $this->load->model('accounts_model');
         $pages = $this->accounts_model->get_all($this->user_id);
-        $is_order_exist = $this->payments_model->is_order_exist( $order );
-        if( $total != ($plan->price - $discount) || 
+        $is_order_exist = $this->payments_model->is_order_exist( $this->input->get_post('order_number') );
+        if( $this->input->get_post('total') != ($plan->price - $discount) || 
             $this->input->get_post('li_0_price') != $plan->price || 
             $plan->page_limit - count($pages) < 0 || 
             $is_order_exist)
         {
             $this->session->set_flashdata('alert', get_alert_html('we are sorry to inform you that there was some malfunctioning with checkout process. Please contact our support. ', ALERT_TYPE_ERROR));
-            redirect('users/settings');
+            echo 'ok'; return;
         }
         $refund_msg = '';
         if($user->on_trial == NO && $user->status == USER_STATUS_ACTIVE)
         {
             $previous_plan = $this->payments_model->get_plan($user->plan_id);
             $last_invoice = $this->payments_model->get_user_last_invoice($user->user_id);
-        }
-
-        $this->payments_model->approve_payment($user, $plan, $trial_days_remaining);
-        
-        if($user->on_trial == NO && $user->status == USER_STATUS_ACTIVE)
-        {
             $refund_msg = $this->_refund($previous_plan, $last_invoice, $user, $plan); //refund remaining amount of last plan
             $this->_stop_recurring($last_invoice, RECUR_STOP_REASON_CHANGE_OF_PLAN); //stop last recurring plan
         }
+        $this->payments_model->approve_payment($user, $plan, $trial_days_remaining);
         $this->session->set_flashdata('alert', get_alert_html("$plan->name plan activated successfully. $refund_msg Thank you for choosing ".getenv("SITE_NAME"), ALERT_TYPE_SUCCESS));
-        redirect('users/settings');
+        echo 'ok'; return;
     }
 
     public function close()
@@ -136,7 +143,7 @@ class Payments extends CI_Controller {
     public function closed()
     {
         $user = $this->users_model->get_record($this->user_id);
-        //if($user->status != USER_STATUS_CANCELLED) show_404();
+        if($user->status != USER_STATUS_CANCELLED) show_404();
         $data['page_title'] = 'Account Closed';
         $data['view'] = 'payments/account_closed';
         $this->load->view('template', $data);

@@ -139,6 +139,8 @@
 				<input type='hidden' name='li_0_recurrence' value="1 Month" />
 				<input type='hidden' name='li_0_duration' value="Forever" />
 				<input type='hidden' name='li_0_startup_fee' value="-{{ discount }}" ng-if="discount > 0"/>
+				<input type='hidden' name='li_0_product_id' value="{{ selected_plan.plan_id }}" />
+
 				<input type='hidden' name='email' value="<?php echo $user->email ?>" />
 				<input type="hidden" name="plan_id" value="{{ selected_plan.plan_id }}" />
 				<div class="row">

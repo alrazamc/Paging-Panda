@@ -32,18 +32,18 @@ class Ins extends CI_Controller {
 
     private function _order_created()
     {
-        $this->_notify_admin();
-        $invoice = $this->payments_model->get_invoice_by_id( $this->input->post('sale_id'), $this->input->post('invoice_id') );
+
+        $user = $this->users_model->get_user_by_email( $this->input->post('customer_email') );
         //update due date, make user active(optional)
-        $this->payments_model->update_user_due_date($invoice->user_id, $this->input->post('item_rec_date_next_1'));
+        $this->payments_model->update_user_due_date($user->user_id, $this->input->post('item_rec_date_next_1'));
         //handled in payment/pay, transaction logged
         //send email to user
-        $user = $this->users_model->get_record($invoice->user_id);
+        $plan = $this->payments_model->get_plan( $this->input->post('item_id_1') );
         $this->load->library('myaws');
         $data['name'] = $user->first_name;
-        $data['invoice'] = $invoice;
+        $data['plan'] = $plan;
         $message = $this->load->view('emails/payments/new_order', $data, true);
-        $this->myaws->send_email($user->email, "$invoice->plan_name plan activated successfully", $message);
+        $this->myaws->send_email($user->email, "$plan->name plan activated successfully", $message);
         //create pdf invoice
     }
 

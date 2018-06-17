@@ -12,6 +12,7 @@ class AppLoader
 
     function update_session()
     {
+        
         if($this->ci->session->userdata('user_id'))
         {
             $this->ci->db->select('*')->from("users");
@@ -55,6 +56,7 @@ class AppLoader
 
     function set_global_alerts()
     {
+        if($this->ci->input->is_ajax_request()) return;
         $data = array();
         $global_alerts = "";
         if($this->ci->session->userdata('queue_paused'))

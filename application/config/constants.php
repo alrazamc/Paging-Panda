@@ -166,3 +166,8 @@ define('PAYMENT_TYPE_INSTALLMENT', 5);
 define('TRANS_TYPE_CREDIT', 1);
 define('TRANS_TYPE_PARTIAL_REFUND', 2);
 define('TRANS_TYPE_FULL_REFUND', 3);
+
+define("RECUR_STOP_REASON_CHANGE_OF_PLAN", 1);
+define("RECUR_STOP_REASON_ACCOUNT_CLOSED", 2);
+define("RECUR_STOP_REASON_BILLING_FAILED", 3);
+define("RECUR_STOP_REASON_EXTERNAL", 4); //stopped by event outside the system, buyer stopped 

@@ -60,7 +60,8 @@ class Payments_model extends CI_Model{
     public function get_invoice_by_id($order_number = 0, $invoice_id = 0)
     {
         $this->db->where('order_number', $order_number);
-        $this->db->where('invoice_id', $invoice_id);
+        if($invoice_id)
+            $this->db->where('invoice_id', $invoice_id);
         $this->db->where('transaction_type', TRANS_TYPE_CREDIT);
         $this->db->limit(1);
         return $this->db->get('transactions')->row();
@@ -129,7 +130,9 @@ class Payments_model extends CI_Model{
             'country' => $this->input->get_post('country'),
             'phone' => $this->input->get_post('phone'),
             'transaction_time' => date('Y-m-d H:i:s'),
-            'transaction_type' => TRANS_TYPE_CREDIT
+            'transaction_type' => TRANS_TYPE_CREDIT,
+            'is_stopped' => NO,
+            'stop_reason' => NO
         );
         $this->db->insert('transactions', $transaction);
         //update user
@@ -190,7 +193,9 @@ class Payments_model extends CI_Model{
             'country' => $this->input->post('bill_country'),
             'phone' => $this->input->post('customer_phone'),
             'transaction_time' => date('Y-m-d H:i:s'),
-            'transaction_type' => TRANS_TYPE_CREDIT
+            'transaction_type' => TRANS_TYPE_CREDIT,
+            'is_stopped' => NO,
+            'stop_reason' => NO
         );
         $this->db->insert('transactions', $transaction);
 
@@ -224,9 +229,29 @@ class Payments_model extends CI_Model{
             'country' => $invoice->country,
             'phone' => $invoice->phone,
             'transaction_time' => date('Y-m-d H:i:s'),
-            'transaction_type' => $amount == $invoice->total ? TRANS_TYPE_FULL_REFUND :  TRANS_TYPE_PARTIAL_REFUND
+            'transaction_type' => $amount == $invoice->total ? TRANS_TYPE_FULL_REFUND :  TRANS_TYPE_PARTIAL_REFUND,
+            'is_stopped' => NO,
+            'stop_reason' => NO
         );
         $this->db->insert('transactions', $transaction);
+    }
+
+    public function stop_recurring($order_number, $reaason = 0)
+    {
+        $this->db->set('is_stopped', YES);
+        $this->db->set('stop_reason', $reaason);
+        $this->db->where('order_number', $order_number);
+        $this->db->update('transactions');
+    }
+
+    public function suspend_user($user_id = 0)
+    {
+        $record = array(
+            'status' => USER_STATUS_SUSPENDED,
+            'date_updated' => date('Y-m-d H:i:s')
+        );
+        $this->db->where('user_id', $user_id);
+        $this->db->update('users');
     }
       
 }

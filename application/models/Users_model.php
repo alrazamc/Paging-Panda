@@ -134,8 +134,16 @@ class Users_model extends CI_Model{
             $this->db->update('users');
             return $this->get_record( $user->user_id );
         }
-        
-        $this->db->set('time_zone', '');
+
+        $time_zone = '';
+        if($this->input->post('tzone_offset'))
+        {
+            $timezone_name = timezone_name_from_abbr("", $this->input->post('tzone_offset')*60, false); //convert mins to secs
+            if($timezone_name !== FALSE)
+                $time_zone = $timezone_name;
+        }
+
+        $this->db->set('time_zone', $time_zone);
         $this->db->set('phone', '');
         $this->db->set('address', '');
         $this->db->set('city', '');

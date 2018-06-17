@@ -136,6 +136,10 @@ class Payments extends CI_Controller {
                 );
                 try {
                     $result = Twocheckout_Sale::stop($args);
+                    if(isset($result['response_code']) && $result['response_code'] == 'OK')
+                    {
+                        $this->payments_model->stop_recurring($last_invoice->order_number, RECUR_STOP_REASON_CHANGE_OF_PLAN);
+                    }
                 } catch (Twocheckout_Error $e) {
                     $e->getMessage();
                 }

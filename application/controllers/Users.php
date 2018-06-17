@@ -54,7 +54,15 @@ class Users extends CI_Controller {
                 $this->session->set_userdata('user_login', TRUE);
                 $this->session->set_userdata('user_id', $user->user_id);
                 $this->users_model->last_login($user->user_id);
-                redirect('content');
+                if($this->session->userdata('redirect_after_login'))
+                {
+                    $url = $this->session->userdata('redirect_after_login');
+                    $this->session->unset_userdata('redirect_after_login');
+                    redirect($url);
+                }else
+                {
+                    redirect('content');
+                }
             }else
             {
                 $this->session->set_flashdata('alert', get_alert_html('Invalid email or password', ALERT_TYPE_ERROR));

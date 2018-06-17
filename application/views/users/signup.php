@@ -7,6 +7,7 @@
         <?php echo $this->session->flashdata('alert'); ?>
         <?php  if(validation_errors())  echo get_alert_html(validation_errors(), ALERT_TYPE_ERROR); ?>
         <form method="post" class="my-4" id="form" action="<?php echo current_url() ?>">
+          <input type="hidden" name="tzone_offset" value="0">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -80,5 +81,9 @@ $(function(){
         }
       }
     });
+
+  var mins = new Date().getTimezoneOffset();
+  mins = mins == 0 ? 0 : -mins;
+  $('input[name="tzone_offset"]').val(mins);
 });
 </script>

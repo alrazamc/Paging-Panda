@@ -47,6 +47,10 @@ function session_check()
                 echo json_encode($response);
                 exit();
         }
+        $url = current_url();
+        if(!empty($_GET))
+            $url .= '?'.http_build_query($_GET);
+        $ci->session->set_userdata('redirect_after_login', $url);
         redirect('users/login');
     }
 }

@@ -27,6 +27,7 @@ class Ins extends CI_Controller {
             $this->{ "_$type" }();
         else
             $this->_notify_admin();
+        echo $this->input->post('message_type');
     }
 
     private function _order_created()
@@ -86,22 +87,30 @@ class Ins extends CI_Controller {
     private function _recurring_installment_failed()
     {
         //send email to user, suspend after 3 days via cron
-        $invoice = $this->payments_model->get_invoice_by_id( $this->input->post('sale_id'), $this->input->post('invoice_id') );
+        /*$invoice = $this->payments_model->get_invoice_by_id( $this->input->post('sale_id'), $this->input->post('invoice_id') );
         $user = $this->users_model->get_record($invoice->user_id);
         $this->load->library('myaws');
         $data['name'] = $user->first_name;
         $data['invoice'] = $invoice;
         $message = $this->load->view('emails/payments/installment_failed', $data, true);
-        $this->myaws->send_email($user->email, "Renewal Payment Failed", $message);
-        //notify admin
+        $this->myaws->send_email($user->email, "Renewal Payment Failed", $message);*/
+
+        //notify admin, manually notify user from 2checkout panel
         $this->_notify_admin();
     }
 
     private function _recurring_stopped()
     {
         //case 1: plan changed, previous plan stopped, Do Nothing
-        //case 2: user stopped manually, Suspend user account, send email to admin and user
-        //case 3: user closed account, Do nothing 
+        //case 2: user closed account, Do nothing 
+        //case 3: stopped by cron after 3 days of due date, failed billing, DO Nothing, user already suspended by cron
+        //case 4: user stopped manually, Suspend user account, send email to admin and user
+        $order = $this->payments_model->get_invoice_by_id( $this->input->post('sale_id') );
+        if($order->is_stopped == NO) //case 4
+        {
+            $this->payments_model->stop_recurring( $this->input->post('sale_id'), RECUR_STOP_REASON_EXTERNAL );
+            $this->_notify_admin();
+        }
     }
 
 

@@ -355,7 +355,6 @@ class Worker extends CI_Controller {
         }
     }
 
-
 }
 
 /* End of file Worker.php */

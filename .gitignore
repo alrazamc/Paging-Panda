@@ -1,7 +1,6 @@
 /vendor/
 assets/amcharts/
 assets/fonts/
-assets/images/
 assets/webfonts/
 .env
 \!RABBITMQ*/

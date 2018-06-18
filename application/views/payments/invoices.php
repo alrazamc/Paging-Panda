@@ -30,7 +30,7 @@
 										New subscribtion for <?php echo strtolower($invoice->plan_name) ?> plan 
 									<?php } ?>
 								<?php }else{ ?>
-									Refund from invoice#(<?php echo $invoice->invoice_id ?>)
+									Refund from <?php echo strtolower($invoice->plan_name) ?> plan, invoice#(<?php echo $invoice->invoice_id ?>)
 								<?php } ?>
 							</td>
 							<td>$<?php echo abs($invoice->total) ?></td>

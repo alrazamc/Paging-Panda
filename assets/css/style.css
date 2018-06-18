@@ -559,6 +559,10 @@ a.text-success:hover{
     border-top: none !important;
 }
 
+body .container:nth-child(2){
+    margin-top: 0px !important;
+}
+
 @media (max-width: 575.98px){
     .am-chart{
         height: 300px;

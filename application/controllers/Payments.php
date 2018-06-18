@@ -255,7 +255,7 @@ class Payments extends CI_Controller {
             $invoice->setType("Refund Invoice");    // Invoice Type
         $invoice->setReference($transaction->invoice_id);   // Reference
         $invoice->setDate(date('M d, Y', strtotime($transaction->transaction_time)));   //Billing Date
-        $invoice->setFrom(array(getenv('SITE_NAME'),"Pakki Shah Mardan","Mianwali, Punjab","Pakistan"));
+        $invoice->setFrom(array(getenv('SITE_NAME'),"Pakki Shah Mardan","Mianwali, Punjab","Pakistan", ""));
         $invoice->setTo(array("$user->first_name $user->last_name",$user->address,"$user->city, $user->state, $transaction->country","Email: $user->email", "Phone: $user->phone"));
 
         if($transaction->transaction_type == TRANS_TYPE_CREDIT){

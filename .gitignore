@@ -1,7 +1,6 @@
 /vendor/
 assets/amcharts/
 assets/fonts/
-assets/images/
 assets/webfonts/
 assets/images/
 !assets/images/logo.png

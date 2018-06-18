@@ -9,8 +9,8 @@ class Worker extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if(!is_cli()) 
-            exit(0);
+        // if(!is_cli()) 
+        //     exit(0);
     }
 
     //Delete S3 media of category and delete content after that
@@ -271,12 +271,7 @@ class Worker extends CI_Controller {
         $this->myrabbit->close();
     }
     
-    //run in browser for syntax errors
-    public function poke()
-    {
-        echo 'I am Ok';
-    }
-
+    //Amqp listener
     public function fb_worker()
     {
         $this->load->library('myrabbit');
@@ -294,6 +289,69 @@ class Worker extends CI_Controller {
         $this->myrabbit->channel->basic_consume($queue, '', false, false, false, false, $callback);
         while (count($this->myrabbit->channel->callbacks)) {
             $this->myrabbit->channel->wait();
+        }
+    }
+
+    //update user accounts states
+    public function users_inspector()
+    {
+        $now = time();
+        $this->load->model('worker_model');
+        $this->load->model('payments_model');
+        $this->load->library('myaws');
+
+        //One day before trial expire date
+        $users = $this->worker_model->get_users_one_day_before_trial_expire();
+        foreach ($users as $user)
+        {
+            $user_time = strtotime($user->date_registered .' +'.($user->trial_period-1) . ' days' );
+            $diff = $now - $user_time;
+            if($diff > 3600) continue; //differnece greater than one hour, Email already sent in last execution
+            $data['name'] = $user->first_name;
+            $data['user'] = $user;
+            $message = $this->load->view('emails/payments/trial_expiring', $data, true);
+            $this->myaws->send_email($user->email, "Trial period is about to end", $message);
+        }
+        
+        //after trial expired
+        $users = $this->worker_model->get_users_trial_expired();
+        foreach ($users as $user)
+        {
+            $data['name'] = $user->first_name;
+            $data['user'] = $user;
+            $message = $this->load->view('emails/payments/trial_expired', $data, true);
+            $this->myaws->send_email($user->email, "Trial period has expired", $message);
+            $this->payments_model->suspend_account($user->user_id);
+        }
+
+        Twocheckout::username(getenv('2CO_ADMIN_USER'));
+        Twocheckout::password(getenv('2CO_ADMIN_PASSWORD'));
+        if(getenv('2CO_MODE') == 'sandbox')
+            Twocheckout::sandbox(true);
+
+        // 3 days after due date
+        $users = $this->worker_model->get_users_due_date_expired();
+        foreach ($users as $user)
+        {
+            $last_invoice = $this->payments_model->get_user_last_invoice($user->user_id);
+            if(!empty($last_invoice) && $last_invoice->is_stopped == NO)
+            {
+                $args = array(
+                    'sale_id' => $last_invoice->order_number
+                );
+                try {
+                    $result = Twocheckout_Sale::stop($args);
+                    if(isset($result['response_code']) && $result['response_code'] == 'OK')
+                        $this->payments_model->stop_recurring($last_invoice->order_number, RECUR_STOP_REASON_BILLING_FAILED);
+                } catch (Twocheckout_Error $e) {
+                    $e->getMessage();
+                }
+            } 
+            $data['name'] = $user->first_name;
+            $data['user'] = $user;
+            $message = $this->load->view('emails/payments/due_date_expired', $data, true);
+            $this->myaws->send_email($user->email, "Monthly Billing Failed - Account suspended", $message);
+            $this->payments_model->suspend_account($user->user_id);
         }
     }
 

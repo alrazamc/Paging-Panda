@@ -170,6 +170,39 @@ class Worker_model extends CI_Model{
         );
         $this->db->insert('cron_logs', $record);
     }
+
+    public function get_users_one_day_before_trial_expire()
+    {
+        $now = date('Y-m-d H:i:s');
+        $this->db->select('*')->from('users');
+        $this->db->join('plans', 'plans.plan_id=users.plan_id', 'inner');
+        $this->db->where('users.status', USER_STATUS_ACTIVE);
+        $this->db->where('on_trial', YES);
+        $this->db->where("users.date_registered + ((plans.trial_period-1) * interval '1 day') <", $now);
+        return $this->db->get()->result();
+    }
+
+    public function get_users_trial_expired()
+    {
+        $now = date('Y-m-d H:i:s');
+        $this->db->select('*')->from('users');
+        $this->db->join('plans', 'plans.plan_id=users.plan_id', 'inner');
+        $this->db->where('users.status', USER_STATUS_ACTIVE);
+        $this->db->where('on_trial', YES);
+        $this->db->where("users.date_registered + (plans.trial_period * interval '1 day') <", $now);
+        return $this->db->get()->result();
+    }
+
+    public function get_users_due_date_expired()
+    {
+        $now = date('Y-m-d H:i:s');
+        $this->db->select('*')->from('users');
+        $this->db->join('plans', 'plans.plan_id=users.plan_id', 'inner');
+        $this->db->where('users.status', USER_STATUS_ACTIVE);
+        $this->db->where('on_trial', NO);
+        $this->db->where("users.next_due_date + (3 * interval '1 day') <", $now);
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file Worker_model.php */

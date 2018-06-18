@@ -51,14 +51,6 @@ class Payments extends CI_Controller {
         $this->load->view('template', $data);
     }
 
-    public function approve()
-    {
-        $this->_verify_sale();
-        $data['page_title'] = 'Processing';
-        $data['view'] = 'payments/processing';
-        $this->load->view('template', $data);
-    }
-
     private function _verify_sale()
     {
         $secret = getenv('2CO_SECRET');
@@ -68,6 +60,14 @@ class Payments extends CI_Controller {
         $key = strtoupper(md5("$secret$seller_id$order$total"));
         if($key != $this->input->get_post('key'))
             show_404();
+    }
+    
+    public function approve()
+    {
+        $this->_verify_sale();
+        $data['page_title'] = 'Processing';
+        $data['view'] = 'payments/processing';
+        $this->load->view('template', $data);
     }
 
     public function process()

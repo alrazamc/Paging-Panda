@@ -17,7 +17,8 @@
         "aws/aws-sdk-php": "^3.60",
         "php-amqplib/php-amqplib": "^2.7",
         "php-heroku-client/php-heroku-client": "^1.3",
-        "2checkout/2checkout-php": "^0.3.1"
+        "2checkout/2checkout-php": "^0.3.1",
+        "konekt/pdf-invoice": "^1.0"
     },
     "require-dev": {
         "vlucas/phpdotenv": "^2.4"

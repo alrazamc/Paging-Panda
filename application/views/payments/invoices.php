@@ -34,9 +34,9 @@
 								<?php } ?>
 							</td>
 							<td>$<?php echo abs($invoice->total) ?></td>
-							<?php if($invoice->pdf_invoice){ ?>
+							
 							<td><a class="text-success" target="_blank" title="Download PDF"  href="<?php echo site_url("payments/download_invoice/$invoice->transaction_id") ?>"> <i class="fas fa-download"></i> </a></td>
-							<?php } ?>
+							
 						</tr>
 						<?php } ?>
 					</table>

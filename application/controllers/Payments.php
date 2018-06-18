@@ -235,6 +235,47 @@ class Payments extends CI_Controller {
         $this->load->view('template', $data);
     }
 
+    //create PDF invoice
+    public function download_invoice($transaction_id = 0)
+    {
+        if(!$transaction_id || !is_numeric($transaction_id))
+            show_404();
+        $transaction = $this->payments_model->get_transaction($transaction_id);
+        if(!isset($transaction->transaction_id) || $transaction->user_id != $this->user_id)
+            show_404();
+        $user = $this->users_model->get_record($transaction->user_id);
+
+        $invoice = new Konekt\PdfInvoice\InvoicePrinter();
+        /* Header settings */
+        $invoice->setLogo("./assets/images/logo.png");   //logo image path
+        $invoice->setColor("#28a745");      // pdf color scheme
+        if($transaction->transaction_type == TRANS_TYPE_CREDIT)
+            $invoice->setType("Sale Invoice");    // Invoice Type
+        else if($transaction->transaction_type == TRANS_TYPE_FULL_REFUND || $transaction->transaction_type == TRANS_TYPE_PARTIAL_REFUND)
+            $invoice->setType("Refund Invoice");    // Invoice Type
+        $invoice->setReference($transaction->invoice_id);   // Reference
+        $invoice->setDate(date('M d, Y', strtotime($transaction->transaction_time)));   //Billing Date
+        $invoice->setFrom(array(getenv('SITE_NAME'),"Pakki Shah Mardan","Mianwali, Punjab","Pakistan"));
+        $invoice->setTo(array("$user->first_name $user->last_name",$user->address,"$user->city, $user->state, $transaction->country","Email: $user->email", "Phone: $user->phone"));
+
+        if($transaction->transaction_type == TRANS_TYPE_CREDIT){
+            if($transaction->type == PAYMENT_TYPE_INSTALLMENT)
+                $description = "Monthly installment for ".strtolower($transaction->plan_name)." plan";
+            else
+                $description = "New subscribtion for ".strtolower($transaction->plan_name)." plan";
+            $price = $transaction->plan_price;
+        }else
+        {
+            $description = "Refund from ".strtolower($transaction->plan_name)." plan";
+            $price = 0.00;
+        }
+        $invoice->addItem($description, "", false, 0, $price, abs($transaction->discount), abs($transaction->total));
+        $invoice->addTotal("Subtotal",abs($transaction->total));
+        $invoice->addTotal("Total",abs($transaction->total),true);        
+        $invoice->setFooternote(getenv('SITE_NAME'));
+        $invoice->render("$transaction->invoice_id.pdf",'I'); 
+    }
+
 }
 
 /* End of file Payments.php */

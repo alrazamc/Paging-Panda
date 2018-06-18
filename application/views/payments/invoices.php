@@ -27,7 +27,7 @@
 									<?php if($invoice->type == PAYMENT_TYPE_INSTALLMENT){ ?>
 										Monthly installment for <?php echo strtolower($invoice->plan_name) ?> plan 
 									<?php }else{ ?>
-										New subscribtion for <?php echo strtolower($invoice->plan_name) ?> plan 
+										New subscription for <?php echo strtolower($invoice->plan_name) ?> plan 
 									<?php } ?>
 								<?php }else{ ?>
 									Refund from <?php echo strtolower($invoice->plan_name) ?> plan, invoice#(<?php echo $invoice->invoice_id ?>)

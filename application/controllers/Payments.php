@@ -262,7 +262,7 @@ class Payments extends CI_Controller {
             if($transaction->type == PAYMENT_TYPE_INSTALLMENT)
                 $description = "Monthly installment for ".strtolower($transaction->plan_name)." plan";
             else
-                $description = "New subscribtion for ".strtolower($transaction->plan_name)." plan";
+                $description = "New subscription for ".strtolower($transaction->plan_name)." plan";
             $price = $transaction->plan_price;
         }else
         {

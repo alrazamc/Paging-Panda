@@ -111,9 +111,7 @@
 					  	<li class="list-group-item">
 					  		<div class="row">
 					  			<div class="col-12">
-					  				<strong>
-					  					<?php echo date('d M, Y', strtotime($user->next_due_date));?>
-					  				</strong>
+					  					<b>$<?php echo $plan->price ?></b> will be charged  on <b><?php echo date('d M, Y', strtotime($user->next_due_date));?></b>
 					  			</div>
 					  		</div>
 						</li>

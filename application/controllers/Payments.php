@@ -221,6 +221,20 @@ class Payments extends CI_Controller {
         $this->load->view('template', $data);
     }
 
+    public function invoice($transaction_id = 0)
+    {
+        if(!$transaction_id || !is_numeric($transaction_id))
+            show_404();
+        $transaction = $this->payments_model->get_transaction($transaction_id);
+        if(!isset($transaction->transaction_id) || $transaction->user_id != $this->user_id)
+            show_404();
+        $data['invoice'] = $transaction;
+        $data['user'] = $this->users_model->get_record($this->user_id);
+        $data['page_title'] = 'Invoice # '.$transaction->invoice_id;
+        $data['view'] = 'payments/invoice';
+        $this->load->view('template', $data);
+    }
+
 }
 
 /* End of file Payments.php */

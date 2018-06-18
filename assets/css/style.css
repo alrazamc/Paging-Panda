@@ -555,6 +555,10 @@ a.text-success:hover{
     border: 2px solid #28a745;
 }
 
+.invoices tbody tr:first-child td{
+    border-top: none !important;
+}
+
 @media (max-width: 575.98px){
     .am-chart{
         height: 300px;
@@ -586,4 +590,13 @@ a.text-success:hover{
     .am-chart{
         height: 500px;
     } 
+}
+
+@media print {
+     html, body {
+        border: 1px solid transparent;
+        height: 95%;
+        page-break-after: avoid;
+        page-break-before: avoid;
+     }
 }

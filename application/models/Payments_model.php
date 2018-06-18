@@ -23,6 +23,15 @@ class Payments_model extends CI_Model{
     }
 
     /**
+    * get all available insights metrics
+    * @return object
+    */
+    public function get_transaction($transaction_id = 0)
+    {
+        return $this->db->get_where('transactions', array('transaction_id' => $transaction_id))->row();
+    }
+
+    /**
     * get All plans
     */
     public function get_all_plans()
@@ -230,9 +239,11 @@ class Payments_model extends CI_Model{
             'country' => $invoice->country,
             'phone' => $invoice->phone,
             'transaction_time' => date('Y-m-d H:i:s'),
+            'invoice_status' => $invoice->invoice_status,
+            'fraud_status' => $invoice->fraud_status,
             'transaction_type' => $amount == $invoice->total ? TRANS_TYPE_FULL_REFUND :  TRANS_TYPE_PARTIAL_REFUND,
-            'is_stopped' => NO,
-            'stop_reason' => NO
+            'is_stopped' => $invoice->is_stopped,
+            'stop_reason' => $invoice->stop_reason
         );
         $this->db->insert('transactions', $transaction);
     }

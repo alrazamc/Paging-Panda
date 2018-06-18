@@ -17,7 +17,7 @@
 			</div>
 			<?php }else{ ?>
 				<div class="table-responsive">
-					<table class="table table-hover">
+					<table class="table table-hover invoices">
 						<?php foreach($invoices as $invoice){ ?>
 						<tr>
 							<td><?php echo date('d M, Y', strtotime($invoice->transaction_time)) ?></td>

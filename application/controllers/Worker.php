@@ -9,8 +9,8 @@ class Worker extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // if(!is_cli()) 
-        //     exit(0);
+        if(!is_cli()) 
+            exit(0);
     }
 
     //Delete S3 media of category and delete content after that

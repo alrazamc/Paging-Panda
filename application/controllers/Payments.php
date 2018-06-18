@@ -213,7 +213,13 @@ class Payments extends CI_Controller {
         }
     }
 
-
+    public function invoices()
+    {
+        $data['invoices'] = $this->payments_model->get_all_transactions($this->user_id);
+        $data['page_title'] = 'Invoices';
+        $data['view'] = 'payments/invoices';
+        $this->load->view('template', $data);
+    }
 
 }
 

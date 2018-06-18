@@ -264,6 +264,13 @@ class Payments_model extends CI_Model{
         $this->db->where('user_id', $user_id);
         $this->db->update('users', $record);
     }
+
+    public function get_all_transactions($user_id = 0)
+    {
+        $this->db->where('user_id', $user_id);
+        $this->db->order_by('transaction_time', 'DESC');
+        return $this->db->get('transactions')->result();
+    }
       
 }
 

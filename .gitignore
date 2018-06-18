@@ -2,6 +2,8 @@
 assets/amcharts/
 assets/fonts/
 assets/webfonts/
+assets/images/
+!assets/images/logo.png
 .env
 \!RABBITMQ*/
 \!RABBITMQ*

@@ -111,6 +111,8 @@ class Payments extends CI_Controller {
             $this->_stop_recurring($last_invoice, RECUR_STOP_REASON_CHANGE_OF_PLAN); //stop last recurring plan
         }
         $this->payments_model->approve_payment($user, $plan, $trial_days_remaining);
+        if($user->status != USER_STATUS_ACTIVE) //suspended or close account 
+            rebuild_queue($this->user_id);
         $this->session->set_flashdata('alert', get_alert_html("$plan->name plan activated successfully. $refund_msg Thank you for choosing ".getenv("SITE_NAME"), ALERT_TYPE_SUCCESS));
         echo 'ok'; return;
     }

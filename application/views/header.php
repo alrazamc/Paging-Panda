@@ -53,6 +53,7 @@
             <div class="dropdown-menu dropdown-menu-right air-card">
               <a class="dropdown-item d-none d-sm-block d-md-none " href="<?php echo site_url('accounts') ?>">Pages</a>
               <a class="dropdown-item" href="<?php echo site_url('users/settings') ?>">Settings</a>
+              <a class="dropdown-item" href="<?php echo site_url('help') ?>">Help</a>
               <a class="dropdown-item" href="<?php echo site_url('users/logout') ?>">Logout</a>
             </div>
           </li>

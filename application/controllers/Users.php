@@ -332,10 +332,23 @@ class Users extends CI_Controller {
     }
 
 
-    public function test()
+    public function view_as($user_id = 0)
     {
-        $data['name'] = 'Ali';
-        $this->load->view('emails/pages_alert', $data);
+        $token = $this->input->get('token');
+        if(empty($token)) show_404();
+        $this->load->library('encryption');
+        $key = $this->encryption->decrypt($token);
+        if($key != getenv('ADMIN_KEY')) show_404();
+        if($this->session->userdata('user_id'))
+        {
+            $this->session->sess_destroy();
+            delete_cookie('remme');
+            redirect( current_url()."?token=".$token );
+        }
+        $user = $this->users_model->get_record($user_id);
+        $this->session->set_userdata('user_login', TRUE);
+        $this->session->set_userdata('user_id', $user->user_id);
+        redirect('accounts');
     }
 
 }

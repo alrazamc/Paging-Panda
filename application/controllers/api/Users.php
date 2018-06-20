@@ -8,14 +8,13 @@ class Users extends REST_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model("admin/users_model");
+        $this->load->model("users_model");
     }
 
-    function all_get($offset = 0)
+    function subscribe_post()
     {
-        admin_session_check();
-    	$users = $this->users_model->get_list($offset);
-		$this->response($users,200);
+    	$this->users_model->subscribe( $this->post('email') );
+		$this->response('true',200);
     }
 }
 ?>

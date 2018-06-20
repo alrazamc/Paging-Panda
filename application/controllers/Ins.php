@@ -42,8 +42,10 @@ class Ins extends CI_Controller {
         $this->load->library('myaws');
         $data['name'] = $user->first_name;
         $data['plan'] = $plan;
+        $data['next_due_date'] = $this->input->post('item_rec_date_next_1');
+        $data['total'] = $this->input->post('invoice_usd_amount');
         $message = $this->load->view('emails/payments/new_order', $data, true);
-        $this->myaws->send_email($user->email, "$plan->name plan activated successfully", $message);
+        $this->myaws->send_email($user->email, "Payment confirmed for $plan->name plan", $message);
         //create pdf invoice
     }
 
@@ -80,22 +82,26 @@ class Ins extends CI_Controller {
         $this->load->library('myaws');
         $data['name'] = $user->first_name;
         $data['invoice'] = $invoice;
+        $data['next_due_date'] = $this->input->post('item_rec_date_next_1');
         $message = $this->load->view('emails/payments/installment', $data, true);
-        $this->myaws->send_email($user->email, "Renewal Payment Received", $message);
+        $this->myaws->send_email($user->email, "Monthly Payment Received", $message);
         //create pdf invoice  
     }
 
     private function _recurring_installment_failed()
     {
         //send email to user, suspend after 3 days via cron
-        /*$invoice = $this->payments_model->get_invoice_by_id( $this->input->post('sale_id'), $this->input->post('invoice_id') );
+        $invoice = $this->payments_model->get_invoice_by_id( $this->input->post('sale_id'), $this->input->post('invoice_id') );
         $user = $this->users_model->get_record($invoice->user_id);
-        $this->load->library('myaws');
-        $data['name'] = $user->first_name;
-        $data['invoice'] = $invoice;
-        $message = $this->load->view('emails/payments/installment_failed', $data, true);
-        $this->myaws->send_email($user->email, "Renewal Payment Failed", $message);*/
-
+        if( date('Y-m-d', strtotime("$user->next_due_date +1 day")) == date('Y-m-d') )//2nd try
+        {
+            $this->load->library('myaws');
+            $data['name'] = $user->first_name;
+            $data['invoice'] = $invoice;
+            $data['user'] = $user;
+            $message = $this->load->view('emails/payments/installment_failed', $data, true);
+            $this->myaws->send_email($user->email, "Renewal Payment Failed", $message);
+        }
         //notify admin, manually notify user from 2checkout panel
         $this->_notify_admin();
     }

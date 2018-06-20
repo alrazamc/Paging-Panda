@@ -82,6 +82,7 @@ class Worker_model extends CI_Model{
         $this->db->select('contents.category_id, contents.use_once, contents.is_published, contents.post_type, contents.post_order, contents.random_order');
         $this->db->select('contents.message, contents.link_url, array_to_json(contents.attachments) as attachments, array_to_json(published_on) as published_on');
         $this->db->select('accounts.account_fb_id, accounts.access_token');
+        $this->db->select('users.accounts_alert, users.first_name, users.email');
         $this->db->from('posts');
         $this->db->join('contents', 'contents.content_id=posts.content_id', 'inner');
         $this->db->join('accounts', 'accounts.account_id=posts.account_id', 'inner');

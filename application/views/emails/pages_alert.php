@@ -26,12 +26,10 @@
                                     <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                                       <h3><span style="font-size:14px">Hi <?php echo $name ?>,</span></h3>
                                       &nbsp;
-                                      <p>
-                                        We have successfully processed your monthly payment of $<?php echo $invoice->total ?> for <?php echo strtolower($invoice->plan_name) ?> plan. Thank you for using <?php echo getenv('SITE_NAME') ?>.
-                                      </p>
-                                      <p>Next due date is <b><?php echo date('d M, Y', strtotime($next_due_date)) ?></b></p>
-                                      <p>Please check your <a href="<?php echo site_url('payments/invoices') ?>">billing history</a> to print or download invoice</p>
-                                      <p>If you have any questions or feedback, <a href="<?php echo site_url('contact') ?>">Contact Us</a>, and we'll get right back to you</p>
+                                      <p>We had some trouble while publishing a post to your page.</p>
+                                      <p>One or more of your pages might need reconnection with our app. Please <a href="<?php echo site_url('accounts') ?>">Visit your account</a> for details</p>
+                                      
+                                    </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -46,7 +44,6 @@
                     </tr>
                   </tbody>
                 </table>
-                
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
                   <tbody class="mcnTextBlockOuter">
                     <tr>
@@ -62,6 +59,7 @@
                                 <tbody>
                                   <tr>
                                     <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                                      <p>If you have any questions or feedback, <a href="<?php echo site_url('contact') ?>">Contact Us</a>, and we'll get right back to you</p>
                                       <p>Regards,
                                         <br>
                                         Team <?php echo getenv('SITE_NAME') ?>

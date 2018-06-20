@@ -99,7 +99,7 @@
 
 
 
-
+			<?php if($user->on_trial == NO){ ?>
 			<hr>
 			<div class="row">
 				<div class="col-lg-3 text-center text-lg-left">
@@ -134,6 +134,7 @@
 
 				</div>
 			</div>
+			<?php } ?>
 
 
 		</div>

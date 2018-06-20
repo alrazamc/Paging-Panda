@@ -194,6 +194,17 @@ class Worker extends CI_Controller {
             $this->worker_model->update_account( $post ); //update page, token expired
             $this->posts_model->point_to_next_item($post, $post->is_random); //move queue pointers
         }
+        
+        $notified_users = array();
+        $this->load->library('myaws');
+        foreach ($final_batch as $post)
+        {
+            if(!isset($post->token_expired) || $post->token_expired == NO || in_array($post->user_id, $notified_users)) continue;
+            $data['name'] = $post->first_name;
+            $message = $this->load->view('emails/pages_alert', $data, true);
+            $this->myaws->send_email($post->email, "Alert - Reconnect your page(s)", $message);
+            $notified_users[] = $post->user_id;
+        }
 
         $stats = array(
             'start_user_id' => $start_user_id,
@@ -320,7 +331,7 @@ class Worker extends CI_Controller {
             $data['name'] = $user->first_name;
             $data['user'] = $user;
             $message = $this->load->view('emails/payments/trial_expired', $data, true);
-            $this->myaws->send_email($user->email, "Trial period has expired", $message);
+            $this->myaws->send_email($user->email, "Free trial has expired", $message);
             $this->payments_model->suspend_account($user->user_id);
         }
 
@@ -349,6 +360,7 @@ class Worker extends CI_Controller {
             } 
             $data['name'] = $user->first_name;
             $data['user'] = $user;
+            $data['invoice'] = $last_invoice;
             $message = $this->load->view('emails/payments/due_date_expired', $data, true);
             $this->myaws->send_email($user->email, "Monthly Billing Failed - Account suspended", $message);
             $this->payments_model->suspend_account($user->user_id);

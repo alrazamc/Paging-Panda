@@ -1,10 +1,90 @@
-Hi <?php echo $name ?>,
-<br>
-<br>
-Your account password is changed successfully. Please <a href="<?php echo site_url('users/login') ?>">Click here</a> to login with new password
-<br>
-If you didn't asked this request. Please contact our support team immediatly 
-<br>
-<br>
-Regards <br>
-Team <?php echo $this->config->item('site_name') ?>
+<?php $this->load->view('emails/header-min') ?>
+<tr>
+  <td align="center" valign="top" id="templateBody">
+    <!--[if (gte mso 9)|(IE)]>
+    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+      <tr>
+        <td align="center" valign="top" width="600" style="width:600px;">
+          <![endif]-->
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
+            <tr>
+              <td valign="top" class="bodyContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                  <tbody class="mcnTextBlockOuter">
+                    <tr>
+                      <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                        <!--[if mso]>
+                        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                          <tr>
+                            <![endif]-->
+                            <!--[if mso]>
+                            <td valign="top" width="600" style="width:600px;">
+                              <![endif]-->
+                              <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                <tbody>
+                                  <tr>
+                                    <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                                      <h3><span style="font-size:14px">Hi <?php echo $name ?>,</span></h3>
+                                      &nbsp;
+                                      <p>Your account password changed successfully.</p>
+                                      <p>If you didn't make this request, Please <a href="<?php echo site_url('contact') ?>">contact</a> our support</p>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <!--[if mso]>
+                            </td>
+                            <![endif]-->
+                            <!--[if mso]>
+                          </tr>
+                        </table>
+                        <![endif]-->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                  <tbody class="mcnTextBlockOuter">
+                    <tr>
+                      <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                        <!--[if mso]>
+                        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                          <tr>
+                            <![endif]-->
+                            <!--[if mso]>
+                            <td valign="top" width="600" style="width:600px;">
+                              <![endif]-->
+                              <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                <tbody>
+                                  <tr>
+                                    <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                                      <p>Regards,
+                                        <br>
+                                        Team <?php echo getenv('SITE_NAME') ?>
+                                      </p>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <!--[if mso]>
+                            </td>
+                            <![endif]-->
+                            <!--[if mso]>
+                          </tr>
+                        </table>
+                        <![endif]-->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <!--[if (gte mso 9)|(IE)]>
+        </td>
+      </tr>
+    </table>
+    <![endif]-->
+  </td>
+</tr>
+<?php $this->load->view('emails/footer-min') ?>

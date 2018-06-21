@@ -41,7 +41,7 @@
   	$scope.submit_form = function()
   	{
   		$scope.inline_form = true;
-  		jQuery('#pageController form').submit();
+  		//jQuery('#pageController form').submit();
   	}
   });
   var myCallback = function(data) {
@@ -129,7 +129,7 @@
 
 			</div>
 
-			<form action='https://<?php echo getenv('2CO_MODE') ?>.2checkout.com/checkout/purchase' method='post' ng-show="selected_plan.plan_id">
+			<form action='https://<?php echo getenv('2CO_MODE') ?>.2checkout.com/checkout/purchase' method='post' ng-show="selected_plan.plan_id" ng-submit="submit_form()">
 				<input type='hidden' name='sid' value="<?php echo getenv('2CO_SELLER_ID') ?>" />
 				<input type='hidden' name='mode' value='2CO' />
 				<input type='hidden' name='li_0_type' value='product' />
@@ -196,7 +196,7 @@
 							<input type="text" class="form-control" name="phone" value="<?php echo $user->phone ?>" placeholder="Phone number..." required>
 						</div>
 						<div class="form-group text-center">
-							<button type="button" class="btn btn-success btn-shadow" ng-click="submit_form()" ng-disabled="inline_form">Checkout <i class="fas fa-spin fa-circle-notch" ng-show="inline_form"></i></button>
+							<button type="submit" class="btn btn-success btn-shadow" ng-disabled="inline_form">Checkout <i class="fas fa-spin fa-circle-notch" ng-show="inline_form"></i></button>
 						</div>
 						<div class="text-center text-muted" ng-if="on_trial == 0 && user_status == active_status">
 							<i class="fas fa-info-circle"></i> Remaining amount(if any) from previous plan will be refunded upon checkout if you change plan

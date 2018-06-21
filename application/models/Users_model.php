@@ -127,14 +127,6 @@ class Users_model extends CI_Model{
         $this->db->set('date_updated', date('Y-m-d H:i:s'));
         $this->db->set('last_login', date('Y-m-d H:i:s'));
         $this->db->set('date_cancelled', date('Y-m-d H:i:s'));
-
-        if(isset($user->user_id) && $user->status == USER_STATUS_SUBSCRIBED)
-        {
-            $this->db->where('user_id', $user->user_id);
-            $this->db->update('users');
-            return $this->get_record( $user->user_id );
-        }
-
         $time_zone = '';
         if($this->input->post('tzone_offset'))
         {
@@ -144,6 +136,14 @@ class Users_model extends CI_Model{
         }
 
         $this->db->set('time_zone', $time_zone);
+
+        if(isset($user->user_id) && $user->status == USER_STATUS_SUBSCRIBED)
+        {
+            $this->db->where('user_id', $user->user_id);
+            $this->db->update('users');
+            return $this->get_record( $user->user_id );
+        }
+        
         $this->db->set('phone', '');
         $this->db->set('address', '');
         $this->db->set('city', '');
@@ -172,6 +172,8 @@ class Users_model extends CI_Model{
     */
     public function subscribe($email = '')
     {
+        $user = $this->get_user_by_email($email);
+        if($user) return false;
         $this->db->set('first_name', '');
         $this->db->set('last_name', '');
         $this->db->set('email', $email);
@@ -263,6 +265,11 @@ class Users_model extends CI_Model{
     public function get_countries()
     {
         return $this->db->get('countries')->result();
+    }
+
+    public function get_country($country_id)
+    {
+        return $this->db->get_where('countries', array('country_id' => $country_id))->row();
     }
 }
 

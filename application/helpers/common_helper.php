@@ -205,6 +205,11 @@ function read_rss_feed($feed_id)
     start_background_process("worker read_rss $feed_id");
 }
 
+function mailchimp($user_id)
+{
+    start_background_process("worker add_to_mailchimp $user_id");
+}
+
 function delete_s3_media($user_id, $category_id = 0)
 {
     start_background_process("worker delete_s3_media $user_id $category_id");

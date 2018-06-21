@@ -367,6 +367,39 @@ class Worker extends CI_Controller {
         }
     }
 
+
+    public function add_to_mailchimp($user_id = 0)
+    {
+        $this->load->model('users_model');
+        $user = $this->users_model->get_record($user_id);
+        if(!isset($user->user_id)) return;
+        $mailchimp = new Mailchimp\MailchimpLists(getenv('MC_API_KEY'));
+        $options = array('status' => $mailchimp::MEMBER_STATUS_SUBSCRIBED);
+        if(!empty($user->first_name))
+            $options['merge_fields']['FNAME'] = $user->first_name;
+        if(!empty($user->last_name))
+            $options['merge_fields']['LNAME'] = $user->last_name;
+        if($user->status == USER_STATUS_SUBSCRIBED)//put email to watch demo
+        {
+            $mailchimp->addMember(getenv('MC_LIST_SUBSCRIBERS'), $user->email, $options);
+        }else if($user->on_trial == YES) //signup for trial
+        {
+            $mailchimp->addMember(getenv('MC_LIST_ON_TRIAL'), $user->email, $options);
+            $remove_from = getenv('MC_LIST_SUBSCRIBERS');
+        }else //paid user
+        {
+            $mailchimp->addMember(getenv('MC_LIST_CUSTOMERS'), $user->email, $options);
+            $remove_from = getenv('MC_LIST_ON_TRIAL');
+        }
+
+        if(isset($remove_from))
+        {
+            $options = array('status' => $mailchimp::MEMBER_STATUS_UNSUBSCRIBED);
+            $res = $mailchimp->updateMember($remove_from, $user->email, $options);
+        }
+        echo "done";
+    }
+
 }
 
 /* End of file Worker.php */

@@ -115,6 +115,7 @@ class Users extends CI_Controller {
             $data['name'] = $user->first_name;
             $message = $this->load->view('emails/welcome', $data, true);
             $this->myaws->send_email($user->email, 'Welcome to '.$this->config->item('site_name'), $message);
+            mailchimp($user->user_id);
             redirect('accounts');
         }
     }

@@ -13,7 +13,9 @@ class Users extends REST_Controller {
 
     function subscribe_post()
     {
-    	$this->users_model->subscribe( $this->post('email') );
+    	$user_id = $this->users_model->subscribe( $this->post('email') );
+        if($user_id)
+            mailchimp($user_id);
 		$this->response('true',200);
     }
 }

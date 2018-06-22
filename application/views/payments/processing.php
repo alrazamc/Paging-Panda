@@ -5,7 +5,7 @@
   	$scope.params = <?php echo json_encode($_GET) ?>;
   	$scope.settings_url = "<?php echo site_url('users/settings') ?>";
   	$http.get('<?php echo site_url('payments/process') ?>?'+$.param($scope.params)).then(function(){
-  		window.location.href = $scope.settings_url;
+  		//window.location.href = $scope.settings_url;
   	}, function(){
   		$scope.processing = false;
   	});

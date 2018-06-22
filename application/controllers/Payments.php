@@ -107,14 +107,15 @@ class Payments extends CI_Controller {
         {
             $previous_plan = $this->payments_model->get_plan($user->plan_id);
             $last_invoice = $this->payments_model->get_user_last_invoice($user->user_id);
-            $refund_msg = $this->_refund($previous_plan, $last_invoice, $user, $plan); //refund remaining amount of last plan
-            $this->_stop_recurring($last_invoice, RECUR_STOP_REASON_CHANGE_OF_PLAN); //stop last recurring plan
+            //$refund_msg = $this->_refund($previous_plan, $last_invoice, $user, $plan); //refund remaining amount of last plan
+            //$this->_stop_recurring($last_invoice, RECUR_STOP_REASON_CHANGE_OF_PLAN); //stop last recurring plan
         }
-        $this->payments_model->approve_payment($user, $plan, $trial_days_remaining);
-        if($user->status != USER_STATUS_ACTIVE) //suspended or close account 
-            rebuild_queue($this->user_id);
-        if($user->on_trial == YES)
-            mailchimp($user->user_id);
+        var_dump($user);
+        //$this->payments_model->approve_payment($user, $plan, $trial_days_remaining);
+        // if($user->status != USER_STATUS_ACTIVE) //suspended or close account 
+        //     rebuild_queue($this->user_id);
+        // if($user->on_trial == YES)
+        //     mailchimp($user->user_id);
         $this->session->set_flashdata('alert', get_alert_html("$plan->name plan activated successfully. $refund_msg Thank you for choosing ".getenv("SITE_NAME"), ALERT_TYPE_SUCCESS));
         echo 'ok'; return;
     }

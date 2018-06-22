@@ -26,7 +26,7 @@
                                     <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                                       <h3><span style="font-size:14px">Hi <?php echo $name ?>,</span></h3>
                                       &nbsp;
-                                      <p>Thank you for selecting <?php echo getenv('SITE_NAME') ?> Monthly <?php echo $plan->name ?> plan($<?php echo round($plan->price) ?>/mon). 
+                                      <p>Thank you for selecting <?php echo getenv('SITE_NAME') ?> monthly <?php echo strtolower($plan->name) ?> plan($<?php echo round($plan->price) ?>/mon). 
                                         We have successfully processed your payment of $<?php echo $total ?>.
                                       </p>
                                       <p>Next due date is <b><?php echo date('d M, Y', strtotime($next_due_date)) ?></b></p>

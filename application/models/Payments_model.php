@@ -95,7 +95,6 @@ class Payments_model extends CI_Model{
     public function update_user_due_date($user_id, $date)
     {
         $record = array(
-            'status' => USER_STATUS_ACTIVE,
             'next_due_date' => "$date 23:59:59",
             'date_updated' => date('Y-m-d H:i:s')
         );

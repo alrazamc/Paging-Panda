@@ -457,7 +457,7 @@
 					</div>
 					<p class="text-muted text-center" ng-if="pages.length == 0">
 						Import your Facebook pages to start posting<br>
-						Let's go to <a href="<?php echo site_url('accounts') ?>">Pages Menu</a>
+						Let's go to <a href="<?php echo site_url('accounts') ?>" class="text-success">Pages Menu</a>
 					</p>
 
 				</div>

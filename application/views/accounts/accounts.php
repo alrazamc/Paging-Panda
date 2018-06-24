@@ -57,7 +57,7 @@
 		<?php }else{ ?>
 		<div class="col-md-12">
 			<p class="text-muted p-5 text-center">
-				Please click the button below to import your Facebook pages in <?php echo $this->config->item('site_name') ?>
+				Please click the button below to import your Facebook pages in <?php echo getenv('SITE_NAME') ?>
 				<br>
 				<br>
 				<a href="<?php echo $fb_login_url ?>" class="btn btn-success btn-shadow" >Import Pages</a>

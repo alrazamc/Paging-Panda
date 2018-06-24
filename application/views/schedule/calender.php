@@ -450,7 +450,7 @@
                     </div>
                     <p class="text-muted text-center p-5" ng-if="pages.length == 0">
                         No pages added<br>
-                        Let's go to <a href="<?php echo site_url('accounts') ?>">Pages menu</a> to import
+                        Let's go to <a href="<?php echo site_url('accounts') ?>" class="text-success">Pages menu</a> to import
                     </p>
                 </div>
                 <div class="col-md-6">

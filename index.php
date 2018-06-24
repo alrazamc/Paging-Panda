@@ -63,6 +63,7 @@
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
+
 switch (ENVIRONMENT)
 {
 	case 'development':
@@ -70,7 +71,7 @@ switch (ENVIRONMENT)
 		ini_set('display_errors', 1);
 		require_once('./vendor/autoload.php');
 		$dotenv = new Dotenv\Dotenv(__DIR__);
-		$dotenv->load();
+		$dotenv->overload();
 	break;
 
 	case 'testing':

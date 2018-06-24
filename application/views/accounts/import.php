@@ -101,7 +101,7 @@
 				<div class="col-md-12">
 					<p class="text-center">
 						<span ng-show="remaining_pages > 0" class="text-muted">Please select and save the pages, You can add <strong>{{ remaining_pages }}</strong> more new page(s)</span>
-						<span ng-show="remaining_pages == 0" class="text-danger">You have reached page limit, Please <a href="<?php echo site_url('payments/pay') ?>">upgrade your subscription plan</a> or remove some pages to add more</span>
+						<span ng-show="remaining_pages == 0" class="text-danger">You have reached page limit, Please <a class="text-success" href="<?php echo site_url('payments/pay') ?>">upgrade your subscription plan</a> or remove some pages to add more</span>
 					</p>
 				</div>
 				<div class="col-sm-6 mb-3">

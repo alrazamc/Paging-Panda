@@ -142,13 +142,14 @@ class Ins extends CI_Controller {
     //Facebook messenger hook
     public function messenger()
     {
-        $challenge = $_REQUEST['hub_challenge'];
-        $verify_token = $_REQUEST['hub_verify_token'];
-        // Set this Verify Token Value on your Facebook App 
-        if ($verify_token === getenv('FB_MSG_VERIFY_TOKEN')) {
-          echo $challenge;
-        }
-        $input = json_decode(file_get_contents('php://input'), true);
+        // $challenge = $_REQUEST['hub_challenge'];
+        // $verify_token = $_REQUEST['hub_verify_token'];
+        // // Set this Verify Token Value on your Facebook App 
+        // if ($verify_token === getenv('FB_MSG_VERIFY_TOKEN')) {
+        //   echo $challenge;
+        // }
+        $this->myaws->send_email(getenv('ADMIN_EMAIL'), 'Web hook test', get_fb_response_as_html_table($_REQUEST));
+        //$input = json_decode(file_get_contents('php://input'), true);
     }
 
 }

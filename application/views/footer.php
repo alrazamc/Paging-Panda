@@ -19,8 +19,7 @@
 	  logged_in_greeting="Hi <?php echo $this->session->userdata('first_name') ?>! How can we help you?"
 	  logged_out_greeting="Hi! How can we help you?"
 	  greeting_dialog_display="hide"
-	  ref="uid-<?php echo $this->session->userdata('user_id') ?>"
-	  >
+	  ref="uid-<?php echo $this->session->userdata('user_id') ?>">
 	</div>
 	<?php } ?>
 	<?php if(getenv('CI_ENV') != 'development'){ ?>

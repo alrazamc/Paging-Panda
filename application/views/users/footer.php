@@ -14,8 +14,8 @@
 	  attribution=setup_tool
 	  page_id="393892214457345"
 	  theme_color="#28a745"
-	  logged_in_greeting="Hi <?php echo $this->session->userdata('first_name') ?>! How can we help you?"
-	  logged_out_greeting="Hi! How can we help you?"
+	  logged_in_greeting="Hi there! How can we help you?"
+	  logged_out_greeting="Hi there! Please login to Facebook messenager to chat with us?"
 	  greeting_dialog_display="hide"
 	  ref="From-Login">
 	</div>

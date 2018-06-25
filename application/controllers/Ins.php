@@ -156,15 +156,19 @@ class Ins extends CI_Controller {
         if(isset($input['entry'][0]['messaging'][0]['postback']['referral']['ref']))
         {
             $label = $input['entry'][0]['messaging'][0]['postback']['referral']['ref'];
+            $uri = $input['entry'][0]['messaging'][0]['postback']['referral']['referer_uri'];
             $this->load->library('myfacebook');
             $this->myfacebook->set_token( getenv('FB_PAGE_TOKEN') );
-            $response = $this->myfacebook->post_request('/me/custom_labels', array('name' => $label));
-            if(isset($response['id']))
-            {
-                $label_id = $response['id'];
-                $user_psid = $input['entry'][0]['messaging'][0]['sender']['id']; //page scope user facebook ID
-                $this->myfacebook->post_request("/$label_id/label", array('user' => $user_psid));
-            }
+            $user_psid = $input['entry'][0]['messaging'][0]['sender']['id']; //page scope user facebook ID
+            $response = $this->myfacebook->post_request('/me/admin_notes', array('body' => "$label \n $uri", 'user_id' => $user_psid));
+            
+            // $response = $this->myfacebook->post_request('/me/custom_labels', array('name' => $label));
+            // if(isset($response['id']))
+            // {
+            //     $label_id = $response['id'];
+            //     $user_psid = $input['entry'][0]['messaging'][0]['sender']['id']; //page scope user facebook ID
+            //     $this->myfacebook->post_request("/$label_id/label", array('user' => $user_psid));
+            // }
         }
     }
 

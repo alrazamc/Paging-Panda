@@ -161,14 +161,6 @@ class Ins extends CI_Controller {
             $this->myfacebook->set_token( getenv('FB_PAGE_TOKEN') );
             $user_psid = $input['entry'][0]['messaging'][0]['sender']['id']; //page scope user facebook ID
             $response = $this->myfacebook->post_request('/me/admin_notes', array('body' => "$label \n $uri", 'user_id' => $user_psid));
-            
-            // $response = $this->myfacebook->post_request('/me/custom_labels', array('name' => $label));
-            // if(isset($response['id']))
-            // {
-            //     $label_id = $response['id'];
-            //     $user_psid = $input['entry'][0]['messaging'][0]['sender']['id']; //page scope user facebook ID
-            //     $this->myfacebook->post_request("/$label_id/label", array('user' => $user_psid));
-            // }
         }
     }
 

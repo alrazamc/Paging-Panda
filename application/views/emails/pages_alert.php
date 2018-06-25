@@ -59,7 +59,7 @@
                                 <tbody>
                                   <tr>
                                     <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                                      <p>If you have any questions or feedback, <a href="<?php echo site_url('contact') ?>">Contact Us</a>, and we'll get right back to you</p>
+                                      <p>If you have any questions or feedback, just reply to this email, and we'll get right back to you</p>
                                       <p>Regards,
                                         <br>
                                         Team <?php echo getenv('SITE_NAME') ?>

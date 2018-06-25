@@ -48,6 +48,11 @@ class Accounts extends CI_Controller {
         $data['expired_tokens'] = $expired_tokens;
         $this->load->library('myfacebook');
         $data['fb_login_url'] = $this->myfacebook->get_login_url( site_url('accounts/token') );
+        if($this->session->flashdata('signup'))
+        {
+            $this->load->model('help_model');
+            $data['quick_setup_video'] = $this->help_model->get_quick_setup()->youtube_id;
+        }
         $this->load->view('template', $data);
     }
 

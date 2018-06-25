@@ -349,7 +349,6 @@ class Content extends REST_Controller {
         else if(isset($items[0])) // content deleted from in single category
             rebuild_category_queue($this->user_id, $items[0]->use_once ? CATEGORY_USE_ONCE : $items[0]->category_id, REBUILD_RANDOM_YES);
 
-        rebuild_queue($this->user_id);
         $total = count($content_ids);
         $this->session->set_flashdata('alert', get_alert_html("$total items deleted successfully, Updating Queue...", ALERT_TYPE_SUCCESS));
         $response['url'] = site_url('content');

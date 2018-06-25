@@ -29,7 +29,7 @@
                                       <p>Thanks for signing up for <?php echo getenv('SITE_NAME') ?>. We hope you have been enjoying your free trial.</p>
                                       <p><b>Unfortunately, Your free trial is ending in 24 hours.</b> </p>
                                       <p>We'd love to keep you as a customer and there is still time to complete your subscription! Please <a href="<?php echo site_url('payments/pay') ?>">Choose a plan</a> to subscribe.</p>
-                                      <p>If you have any questions or feedback, <a href="<?php echo site_url('contact') ?>">Contact Us</a>, and we'll get right back to you</p>
+                                      <p>If you have any questions or feedback, just reply to this email, and we'll get right back to you</p>
                                     </td>
                                   </tr>
                                 </tbody>

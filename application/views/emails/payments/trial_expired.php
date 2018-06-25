@@ -30,7 +30,7 @@
                                       <p><b>Unfortunately, Your free trial has been expired.</b> </p>
                                       <p>Please <a href="<?php echo site_url('payments/pay') ?>">Subscribe</a> to continue using <?php echo getenv('SITE_NAME') ?>.</p>
 
-                                      <p>If you have any questions or feedback, <a href="<?php echo site_url('contact') ?>">Contact Us</a>, and we'll get right back to you</p>
+                                      <p>If you have any questions or feedback, just reply to this email, and we'll get right back to you</p>
                                   </tr>
                                 </tbody>
                               </table>

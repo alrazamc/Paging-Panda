@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-xl-4 mx-auto">
-    <div class="card">
+    <div class="card air-card">
       <div class="card-body">
         <h5>Register Account</h5>
-        <hr>
+        <hr class="mt-0">
         <?php echo $this->session->flashdata('alert'); ?>
         <?php  if(validation_errors())  echo get_alert_html(validation_errors(), ALERT_TYPE_ERROR); ?>
         <form method="post" class="my-4" id="form" action="<?php echo current_url() ?>">
@@ -36,7 +36,7 @@
           </div>
         </form>
         <p>
-          By clicking this button, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms &amp; Conditions</a>
+          By clicking this button, you agree to our <a href="<?php echo site_url('privacy') ?>" class="text-success">Privacy Policy</a> and <a href="<?php echo site_url('terms') ?>" class="text-success">Terms &amp; Conditions</a>
         </p>
       </div>
     </div>

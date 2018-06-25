@@ -31,7 +31,7 @@
                                       </p>
                                       <p>Next due date is <b><?php echo date('d M, Y', strtotime($next_due_date)) ?></b></p>
                                       <p>Please check your <a href="<?php echo site_url('payments/invoices') ?>">billing history</a> to print or download invoice</p>
-                                      <p>If you have any questions or feedback, <a href="<?php echo site_url('contact') ?>">Contact Us</a>, and we'll get right back to you</p>
+                                      <p>If you have any questions or feedback, just reply to this email, and we'll get right back to you</p>
                                   </tr>
                                 </tbody>
                               </table>

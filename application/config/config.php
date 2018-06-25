@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = getenv('BASE_URL');
-$config['site_name'] = getenv('SITE_NAME');
 
 /*
 |--------------------------------------------------------------------------

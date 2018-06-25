@@ -1,6 +1,7 @@
 /*primary color #4CAF50*/
 body{
-    background: linear-gradient(-90deg, #4CAF50, #388E3C);
+    /*background: linear-gradient(-90deg, #4CAF50, #388E3C);*/
+    background-color: #f2f2f2;
     font-family: Roboto;
 }
 .navbar{
@@ -40,4 +41,10 @@ body{
 .btn-green.focus, .btn-green:focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem #4caf5057;
+}
+
+.air-card{
+    -webkit-box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+    border: 0px;
 }

@@ -29,7 +29,7 @@
                                       <p>We weren't able to charge you $<?php echo $invoice->plan_price ?> for <?php echo getenv('SITE_NAME') ?> <?php echo strtolower($invoice->plan_name) ?> plan. Please check your credit card expiration date and billing address.</p>
                                       <p>You still have until <?php echo date('d M, Y', strtotime($user->next_due_date." +3 days")) ?> to <a href="<?php echo site_url('payments/pay') ?>">update your billing information</a>. However, after this period, your account will be suspended. If this happens, your library content will not be deleted but you won't be able to access the features of <?php echo getenv('SITE_NAME') ?> until you subscribe again</p>
 
-                                      <p>If you have any questions or feedback, <a href="<?php echo site_url('contact') ?>">Contact Us</a>, and we'll get right back to you</p>
+                                      <p>If you have any questions or feedback, just reply to this email, and we'll get right back to you</p>
                                   </tr>
                                 </tbody>
                               </table>

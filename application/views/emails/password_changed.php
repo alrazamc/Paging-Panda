@@ -27,7 +27,7 @@
                                       <h3><span style="font-size:14px">Hi <?php echo $name ?>,</span></h3>
                                       &nbsp;
                                       <p>Your account password changed successfully.</p>
-                                      <p>If you didn't make this request, Please <a href="<?php echo site_url('contact') ?>">contact</a> our support</p>
+                                      <p>If you didn't make this request, Please reply to this email to contact our support team</p>
                                     </td>
                                   </tr>
                                 </tbody>

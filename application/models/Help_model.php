@@ -17,11 +17,23 @@ class Help_model extends CI_Model{
     * get all videos
     * @return array
     */
-    public function get_all($user_id = 0)
+    public function get_all()
     {
         $this->db->select('*')->from('help_videos');
         $this->db->order_by('order', 'ASC');
         return $this->db->get()->result();
+    }
+
+    /**
+    * get all videos
+    * @return array
+    */
+    public function get_quick_setup()
+    {
+        $this->db->select('*')->from('help_videos');
+        $this->db->order_by('order', 'ASC');
+        $this->db->limit(1);
+        return $this->db->get()->row();
     }
     
 }

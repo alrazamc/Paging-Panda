@@ -68,7 +68,7 @@
 </div>
 
 
-<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,3 +94,36 @@
     </div>
   </div>
 </div>
+
+<?php if($this->session->flashdata('signup')){ ?>
+<div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<div class="row">
+      		<div class="col-12">
+      			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      		</div>
+      		<div class="col-12 text-center">
+      			<h5 class="modal-title d-block" >Welcome to <?php echo getenv('SITE_NAME') ?></h5>
+      			<span class="text-muted">Let's get it started, Watch a quick setup guide</span>
+      		</div>
+      		<div class="col-12 mt-2 mt-2">
+				<div class="embed-responsive embed-responsive-16by9 border">
+	              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $quick_setup_video ?>?showinfo=0" frameborder="0"  allowfullscreen></iframe>
+	            </div>
+			</div>
+      		<div class="col-12 text-center font-weight-500 mt-4">
+      			<a href="" class="text-success font-weight-500" data-dismiss="modal">Close</a>
+      		</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$("#welcome-modal").modal('show');
+	});
+</script>
+<?php } ?>

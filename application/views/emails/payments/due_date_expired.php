@@ -28,7 +28,7 @@
                                       &nbsp;
                                       <p>We are sorry to inform you that your account has been suspended because we weren't able to charge you $<?php echo $invoice->plan_price ?> for <?php echo getenv('SITE_NAME') ?> <?php echo strtolower($invoice->plan_name) ?> plan on due date <b><?php echo date('d M, Y', strtotime($user->next_due_date)) ?></b> due to some issue with your payment method. </p>
                                       <p>You won't be billed again. Please <a href="<?php echo site_url('payments/pay') ?>">subscribe</a> again to reactivate your account</p>
-                                      <p>If you have any questions or feedback, <a href="<?php echo site_url('contact') ?>">Contact Us</a>, and we'll get right back to you</p>
+                                      <p>If you have any questions or feedback, just reply to this email, and we'll get right back to you</p>
                                   </tr>
                                 </tbody>
                               </table>

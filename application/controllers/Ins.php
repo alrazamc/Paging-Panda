@@ -153,8 +153,13 @@ class Ins extends CI_Controller {
         }
         
         $input = json_decode(file_get_contents('php://input'), true);
-        $this->load->library('myaws');
-        $this->myaws->send_email(getenv('ADMIN_EMAIL'), 'Web hook test', print_r($input, true));
+        if(isset($input['entry'][0]['messaging'][0]['postback']['referral']['ref']))
+        {
+            $label = $input['entry'][0]['messaging'][0]['postback']['referral']['ref'];
+            $this->load->library('myaws');
+            $this->myaws->send_email(getenv('ADMIN_EMAIL'), 'Web hook test', $label);
+        }
+        
         
     }
 

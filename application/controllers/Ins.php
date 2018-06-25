@@ -13,7 +13,6 @@ class Ins extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->user_id = $this->session->userdata('user_id');
         $this->load->model('payments_model');
         $this->load->model('users_model');
     }
@@ -142,15 +141,20 @@ class Ins extends CI_Controller {
     //Facebook messenger hook
     public function messenger()
     {
-        $challenge = $_REQUEST['hub_challenge'];
-        $verify_token = $_REQUEST['hub_verify_token'];
-        // Set this Verify Token Value on your Facebook App 
-        if ($verify_token === getenv('FB_MSG_VERIFY_TOKEN')) {
-          echo $challenge;
+        $access_token = getenv('FB_PAGE_TOKEN');
+         $verify_token = getenv('FB_MSG_VERIFY_TOKEN');
+        $hub_verify_token = null;
+        if( $this->input->get_post('hub_challenge')) {
+         $challenge = $this->input->get_post('hub_challenge');
+         $hub_verify_token = $this->input->get_post('hub_verify_token');
         }
+        if ($hub_verify_token === $verify_token) {
+         echo $challenge;
+        }
+        
         $input = json_decode(file_get_contents('php://input'), true);
         $this->load->library('myaws');
-        $this->myaws->send_email(getenv('ADMIN_EMAIL'), 'Web hook test', get_fb_response_as_html_table($_REQUEST));
+        $this->myaws->send_email(getenv('ADMIN_EMAIL'), 'Web hook test', get_fb_response_as_html_table($input));
         
     }
 

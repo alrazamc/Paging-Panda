@@ -144,7 +144,7 @@
 			<h4 class="page-title">Add RSS Feed</h4>
 		</div>
 		<div class="col-sm-4 mb-3 text-center text-sm-right">
-			<a href="<?php echo site_url('import/feeds') ?>" class="btn btn-green btn-shadow" ><i class="fas fa-arrow-left"></i> Go Back</a>
+			<a href="<?php echo site_url('import/feeds') ?>" class="btn btn-green btn-shadow" ><i class="fas fa-arrow-left"></i> RSS Feeds</a>
 		</div>
 		<div class="col-md-12">
 			<?php echo $this->session->flashdata('alert') ?>

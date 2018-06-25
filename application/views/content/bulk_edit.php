@@ -466,7 +466,7 @@
 					<span class="text-muted" ng-show="!content_preloader"><span class="fz-20">{{ total_items }}</span> items</span>
 				</div>
                 <div class="col-sm-6 mb-3 text-sm-right text-center">
-                    <a href="<?php echo site_url('content') ?>" class="btn btn-green btn-shadow" ><i class="fas fa-arrow-left"></i> Go Back</a>
+                    <a href="<?php echo site_url('content') ?>" class="btn btn-green btn-shadow" ><i class="fas fa-arrow-left"></i> Library</a>
                 </div>
 			</div>
             <div class="alert alert-warning" ng-if="!is_filtered_view() && !content_preloader && content.length">

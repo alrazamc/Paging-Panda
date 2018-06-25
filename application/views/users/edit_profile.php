@@ -6,7 +6,7 @@
 					<h4>Edit Profile</h4>
 				</div>
 				<div class="col-6 text-right">
-					<a href="<?php echo site_url('users/settings') ?>" class="btn btn-green">Go Back</a>
+					<a href="<?php echo site_url('users/settings') ?>" class="btn btn-green"><i class="fas fa-arrow-left"></i> Settings </a>
 				</div>
 			</div>
 			<hr>

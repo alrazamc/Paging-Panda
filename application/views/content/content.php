@@ -468,8 +468,8 @@
 					<span class="text-muted" ng-show="!content_preloader"><span class="fz-20">{{ total_items | number }}</span> items</span>
 				</div>
 				<div class="col-sm-9 mb-3 text-sm-right text-center">
-                    <a href="<?php echo site_url('content/bulk_edit') ?>" ng-if="tab==status_approved" class="btn btn-success btn-shadow">Bulk Edit</a>
-					<a href="<?php echo site_url('import/feeds') ?>" ng-if="tab==status_approved" class="btn btn-success btn-shadow">Import Content</a>
+                    <a href="<?php echo site_url('content/bulk_edit') ?>" ng-if="tab==status_approved" class="btn btn-success btn-shadow"><i class="fas fa-edit"></i> Bulk Edit</a>
+					<a href="<?php echo site_url('import/feeds') ?>" ng-if="tab==status_approved" class="btn btn-success btn-shadow"><i class="fas fa-file-import"></i> Import Content</a>
 					<i class="fas fa-circle-notch fa-spin text-success" ng-show="bulk_preloader"></i>
 					<button ng-if="tab==status_pending && content.length" ng-disabled="bulk_preloader" ng-click="approve_all()" class="btn btn-success btn-shadow"><i class="fas fa-check"></i> Approve All</button>
 					<button ng-if="tab==status_pending && content.length" ng-disabled="bulk_preloader" ng-click="decline_all()" class="btn btn-danger btn-shadow"><i class="fas fa-times"></i> Decline All</button>

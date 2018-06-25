@@ -523,8 +523,8 @@ a.text-success:hover{
     position:fixed;
     width:60px;
     height:60px;
-    bottom:40px;
-    right:30px;
+    bottom:100px;
+    right:18pt;
     background-color:#28a745;
     color:#FFF;
     border-radius:50px;

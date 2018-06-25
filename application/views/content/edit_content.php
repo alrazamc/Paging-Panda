@@ -423,7 +423,7 @@
 			<h4 class="page-title">Edit Content</h4>
 		</div>
 		<div class="col-sm-4 text-center text-sm-right">
-			<a href="<?php echo site_url('content') ?>" class="btn btn-green btn-shadow" ><i class="fas fa-arrow-left"></i> Go Back</a>
+			<a href="<?php echo site_url('content') ?>" class="btn btn-green btn-shadow" ><i class="fas fa-arrow-left"></i> Library</a>
 		</div>
 		<div class="col-md-12">
 			<?php echo $this->session->flashdata('alert') ?>

@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-12 mb-5 text-muted text-center fz-20">
 			<div class="p-5">
-				Couldn't find what you are looking for? Contact our support team	
+				Couldn't find what you are looking for?
 			</div>
 		</div>
 	</div>

@@ -17,7 +17,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12 mb-3 text-sm-right text-center">
-                    <a href="<?php echo site_url('import/add') ?>" class="btn btn-success btn-shadow"><i class="fas fa-plust"></i> Add RSS Feed</a>
+                    <a href="<?php echo site_url('import/add') ?>" class="btn btn-success btn-shadow"><i class="fas fa-plus"></i> Add RSS Feed</a>
 				</div>
 			</div>
 			<?php if(empty($feeds)){ ?>

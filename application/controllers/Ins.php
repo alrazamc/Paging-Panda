@@ -141,8 +141,7 @@ class Ins extends CI_Controller {
     //Facebook messenger hook
     public function messenger()
     {
-        $access_token = getenv('FB_PAGE_TOKEN');
-         $verify_token = getenv('FB_MSG_VERIFY_TOKEN');
+        $verify_token = getenv('FB_MSG_VERIFY_TOKEN');
         $hub_verify_token = null;
         if( $this->input->get_post('hub_challenge')) {
          $challenge = $this->input->get_post('hub_challenge');
@@ -153,14 +152,20 @@ class Ins extends CI_Controller {
         }
         
         $input = json_decode(file_get_contents('php://input'), true);
+        //Label facebook converstion with user ID
         if(isset($input['entry'][0]['messaging'][0]['postback']['referral']['ref']))
         {
             $label = $input['entry'][0]['messaging'][0]['postback']['referral']['ref'];
-            $this->load->library('myaws');
-            $this->myaws->send_email(getenv('ADMIN_EMAIL'), 'Web hook test', $label);
+            $this->load->library('myfacebook');
+            $this->myfacebook->set_token( getenv('FB_PAGE_TOKEN') );
+            $response = $this->myfacebook->post_request('/me/custom_labels', array('name' => $label));
+            if(isset($response['id']))
+            {
+                $label_id = $response['id'];
+                $user_psid = $input['entry'][0]['messaging'][0]['sender']['id']; //page scope user facebook ID
+                $this->myfacebook->post_request("/$label_id/label", array('user' => $user_psid));
+            }
         }
-        
-        
     }
 
 }

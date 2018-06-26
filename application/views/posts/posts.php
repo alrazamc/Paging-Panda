@@ -162,6 +162,17 @@
     	return filters;
     }
 
+    $scope.is_filtered_view = function()
+    {
+        if($scope.selected_category.category_id !== false || $scope.selected_page.account_id !== false || $scope.selected_rss_feed.rss_feed_id !== false)
+            return true;
+        if($scope.post_type != 'Choose Type')
+            return true;
+        if($scope.start_date != '' || $scope.end_date != '' || $scope.query != '')
+            return true;
+        return false;
+    }
+
     $scope.load_posts = function()
     {
     	$scope.posts_preloader = true;
@@ -418,6 +429,14 @@
 			</div>
 			<div class="p-5 text-center text-muted" ng-if="!posts_preloader && posts.length == 0">
 				<h3>No posts found</h3>
+                <div ng-if="!is_filtered_view() && tab == status_pending">
+                    <p class="mb-1">Using your content in the library and time slots in the schedule, <?php echo getenv('SITE_NAME') ?> will fill the post queue</p>
+                    <p class="mb-1">You can also schedule posts for specific date/time while adding/editing content</p>
+                </div>
+                <div ng-if="!is_filtered_view() && tab == status_published">
+                    <p>Posts published successfully on your pages, will be displayed here</p>
+                </div>
+                <a href="" class="text-success fz-18" ng-click="reset_filters()" ng-if="is_filtered_view()">Reset Filters</a>
 			</div>
 
             <div ng-repeat="record in posts">

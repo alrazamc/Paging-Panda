@@ -23,6 +23,7 @@
 			<?php if(empty($feeds)){ ?>
 			<div class="p-5 text-center text-muted" >
 				<h3>No RSS feeds found</h3>
+        <p>Add RSS feeds of your websites/blogs and every 24 hours, <?php echo getenv('SITE_NAME') ?> will add new content from your feeds to your library </p>
 			</div>
             <?php }else{ ?>
                 <div class="table-responsive-lg bg-white" >

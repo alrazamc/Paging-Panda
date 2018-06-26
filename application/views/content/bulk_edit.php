@@ -480,6 +480,13 @@
 			</div>
 			<div class="p-5 text-center text-muted" ng-if="!content_preloader && content.length == 0">
 				<h3>No content found</h3>
+                <div ng-if="!is_filtered_view()">
+                    <p>Below are some methods to add content in library</p>
+                    <a href="<?php echo site_url('content/add') ?>" class="text-success fz-18" >Add Content</a> <br>
+                    <a href="<?php echo site_url('import/add') ?>" class="text-success fz-18" >Add RSS Feed</a> <br>
+                    <a href="<?php echo site_url('import/csv') ?>" class="text-success fz-18" >Add Content from CSV File</a> <br>
+                </div>
+                <a href="" class="text-success fz-18" ng-click="reset_filters()" ng-if="is_filtered_view()">Reset Filters</a>
 			</div>
 
             <div class="table-responsive-md bg-white" ng-show="content.length">

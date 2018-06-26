@@ -588,7 +588,7 @@
 		          <h3 class="text-success"><i class="fas fa-spin fa-circle-notch"></i></h3>
 		        </div>
 		        <div class="col-12 p-5" ng-show="!page_preloader && pages.length == 0"  ng-cloak>
-		        	<p class="text-muted text-center font-italic">No Pages, Please add your Facebook pages</p>
+		        	<p class="text-muted text-center font-italic">No Pages, Please add your <a href="<?php echo site_url('accounts') ?>" class="text-success">Facebook pages</a> first</p>
 		        </div>
 		        <div class="col-12" ng-show="!page_preloader && pages.length" ng-cloak>
 			        <div class="row">

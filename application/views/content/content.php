@@ -179,6 +179,17 @@
     	return filters;
     }
 
+    $scope.is_filtered_view = function()
+    {
+        if($scope.selected_category.category_id !== false || $scope.selected_page.account_id !== false || $scope.selected_rss_feed.rss_feed_id !== false)
+            return true;
+        if($scope.post_type != 'Choose Type' || $scope.is_published != 'Choose Status' || $scope.is_expired != 'Choose Status')
+            return true;
+        if($scope.start_date != '' || $scope.end_date != '' || $scope.query != '')
+            return true;
+        return false;
+    }
+
     $scope.load_content = function()
     {
     	$scope.content_preloader = true;
@@ -483,6 +494,21 @@
 			</div>
 			<div class="p-5 text-center text-muted" ng-if="!content_preloader && content.length == 0">
 				<h3>No content found</h3>
+                <div ng-if="!is_filtered_view() && tab == status_approved">
+                    <p>Below are some methods to add content in library</p>
+                    <a href="<?php echo site_url('content/add') ?>" class="text-success fz-18" >Add Content</a> <br>
+                    <a href="<?php echo site_url('import/add') ?>" class="text-success fz-18" >Add RSS Feed</a> <br>
+                    <a href="<?php echo site_url('import/csv') ?>" class="text-success fz-18" >Add Content from CSV File</a> <br>
+                </div>
+                <div ng-if="!is_filtered_view() && tab == status_pending">
+                    <p>Content imported from your RSS feeds will be displayed here so you can approve or decline before publishing that content</p>
+                    <a href="<?php echo site_url('import/add') ?>" class="text-success fz-18" >Add RSS Feed</a>
+                </div>
+                <div ng-if="!is_filtered_view() && tab == status_declined">
+                    <p>RSS feed's content declined from pending tab will be displayed here so you can approve it or delete permanently</p>
+                    <a href="<?php echo site_url('import/add') ?>" class="text-success fz-18" >Add RSS Feed</a>
+                </div>
+                <a href="" class="text-success fz-18" ng-click="reset_filters()" ng-if="is_filtered_view()">Reset Filters</a>
 			</div>
 
 			<div class="card air-card mb-3 position-relative" ng-repeat="record in content">

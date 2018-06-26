@@ -418,6 +418,17 @@
         </table>
     </div>
 
+    <div class="row mt-3" ng-if="pages.length && schedules.length == 0">
+        <div class="col-12 text-muted text-center">
+           <h4>Add some time slots to fill posts queue </h4>
+        </div>
+    </div>
+
+    <div class="row mt-3" ng-if="pages.length == 0">
+        <div class="col-12 text-muted text-center">
+           <h4>No Pages, Please add your <a href="<?php echo site_url('accounts') ?>" class="text-success">Facebook pages</a> first</h4>
+        </div>
+    </div>
 
 	<div class="modal fade" id="slot-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">

@@ -528,7 +528,6 @@ $config['proxy_ips'] = '';
 */
 $config['scope']['facebook'] = array(
 	'manage_pages',
-	'pages_show_list',
 	'publish_pages',
 	'read_insights'
 );

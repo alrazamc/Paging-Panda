@@ -1,3 +1,36 @@
+ <!-- Header -->
+<header id="home" class="header" style="background-image: linear-gradient(150deg, #fdfbfb 0%, #eee 100%);">
+   <div class="container">
+      <div class="row align-items-center h-100">
+         <div class="col-lg-5">
+            <h1 class="">Manage your Facebook pages with <?php echo getenv('SITE_NAME') ?></h1>
+            <p class="lead mt-5">Posting to multiple pages made easy. Add content to your library, create weekly schedule and <?php echo getenv("SITE_NAME") ?> will do the rest. Deep insights to better understand your audience</p>
+            <hr class="w-10 ml-0 my-5">
+            <p class="gap-xy">
+               <a class="btn btn-lg btn-round btn-success mw-200" href="#pricing">Get Started</a>
+               <a class="btn btn-lg btn-round btn-outline-success mw-200" href="#features">Features</a>
+            </p>
+         </div>
+         <div class="col-lg-6 ml-auto">
+            <div class="p-5 text-center border border-success rounded">
+               <h4>Save time with content re-sharing feature</h4>
+               <form id="subscribe-form">
+                  <div class="form-group">
+                     <input type="email" class="form-control form-control-lg" name="" placeholder="Enter your email address..." required>
+                  </div>
+                  <div class="form-group">
+                     <button type="submit" class="btn btn-success btn-block btn-xl">Watch Demo Video</button>
+                  </div>
+               </form>
+            </div>
+            <div class="video-wrapper ratio-16x9 rounded shadow-6 mt-8 mt-lg-0 d-none">
+               <iframe width="560" height="315" src="https://www.youtube.com/embed/M5S_JBRjd1s?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+            </div>
+         </div>
+      </div>
+   </div>
+</header>
+<!-- /.header -->
 <!-- Main Content -->
 <main class="main-content">
    <!--
@@ -8,15 +41,15 @@
    <section id="features" class="section">
       <div class="container">
          <header class="section-header">
-            <small>Feature</small>
-            <h2>Team communication for the 21st century.</h2>
+            <small>Features</small>
+            <h2>A smart way to manage your pages</h2>
             <hr>
          </header>
          <div class="row gap-y align-items-center">
             <div class="col-md-6 ml-auto">
-               <h4>Drag, drop, and share your files.</h4>
-               <p>Not just your messages, but all your files, images, PDFs, documents, and spreadsheets can be dropped right into Slack and shared with anyone you want. Add comments, star for later reference, and it’s all completely searchable.</p>
-               <p>If you use any services like Google Drive, Dropbox, or Box, just paste the link and that document is immediately in sync and searchable too.</p>
+               <h4>Library</h4>
+               <p>Organize your content (text, links, photos, videos) in categories. Reuse the content or select "use once" category to publish only once. Post the same content to multiple pages. Set an expiry date for seasonal content. </p>
+               <p>Add content in bulk from CSV file or auto-import content from the RSS feed of your website/blog. Advanced filters and many more features...</p>
             </div>
             <div class="col-md-5 order-md-first">
                <img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/img/vector/10.png" alt="...">
@@ -25,8 +58,9 @@
          <hr class="my-8">
          <div class="row gap-y align-items-center">
             <div class="col-md-6 mr-auto">
-               <h4>Works everywhere you go</h4>
-               <p>Everything in Slack—messages, notifications, files, and all—is automatically indexed and archived so that you can have it at your fingertips whenever you want. Slack also indexes the content of every file so you can search within PDFs, Word documents, Google docs, and more. With one search box and a set of powerful search operators, you can slice and dice your way to that one message in your communication haystack.</p>
+               <h4>Weekly Schedule</h4>
+               <p>Create, 24/7 posting schedule based on your categories. Using your content and schedule, <?php echo getenv('SITE_NAME') ?> will auto-fill posts queue for next two weeks. You can also manually schedule certain content for specific date/time. Review the post queue to check what's going to be published on which page and when.</p>
+               <p><?php echo getenv('SITE_NAME') ?> will cycle through your content in an orderly fashion and will re-publish the content when all items in a category are published so you will never run out of content for your pages</p>
             </div>
             <div class="col-md-5">
                <img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/img/vector/11.png" alt="...">
@@ -35,9 +69,9 @@
          <hr class="my-8">
          <div class="row gap-y align-items-center">
             <div class="col-md-6 ml-auto">
-               <h4>All your tools in one place.</h4>
-               <p>Connect all the tools you use to Slack and avoid all that constant switching between apps. Set up your integration so that you get all your notifications directly within Slack—from support requests, code check-ins, and error logs to sales leads—all of them searchable in one central archive.</p>
-               <p>If you use any services like Google Drive, Dropbox, or Box, just paste the link and that document is immediately in sync and searchable too.</p>
+               <h4>Page Insights</h4>
+               <p>Analyze 130+ insights metrics in graphical charts to know your audience. Metrics include, but not limited to, impressions, engagements, consumptions, check-ins, positive/negative feedback, fans, post reactions, video views and many more.</p>
+               <p>Export charts to images, PDF, CSV or XLSX files </p>
             </div>
             <div class="col-md-5 order-md-first">
                <img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/img/vector/12.png" alt="...">
@@ -55,46 +89,24 @@
          <div class="row gap-y">
             <div class="col-lg-4">
                <div class="card card-body border text-center">
-                  <p class="my-5"><i class="icon-layers lead-8 text-lighter"></i></p>
-                  <h5>Channels</h5>
-                  <p>Organize your team conversations in open channels. Make a channel for a project, a team, or everyone has a transparent view.</p>
-                  <p><a class="small-3 fw-600" href="#">Read more <i class="fa fa-angle-right small-5 pl-1"></i></a></p>
+                  <p class="my-5"><i class="icon-presentation lead-8 text-lighter"></i></p>
+                  <h5>Content Insights</h5>
+                  <p>Get reactions, comments, shares, reach, engaged users, link clicks, video views, negative feedback for each content item</p>
                </div>
             </div>
             <div class="col-lg-4">
                <div class="card card-body border text-center">
-                  <p class="my-5"><i class="icon-chat lead-8 text-lighter"></i></p>
-                  <h5>Direct Messages</h5>
-                  <p>Send messages directly to another and any person or to a small group of people for more focused conversations.</p>
-                  <p><a class="small-3 fw-600" href="#">Read more <i class="fa fa-angle-right small-5 pl-1"></i></a></p>
+                  <p class="my-5"><i class="icon-rss lead-8 text-lighter"></i></p>
+                  <h5>Content Moderation</h5>
+                  <p>Approve or decline content from RSS feeds before publishing. Only approved content is published</p>
                </div>
             </div>
             <div class="col-lg-4">
                <div class="card card-body border text-center">
-                  <p class="my-5"><i class="icon-mic lead-8 text-lighter"></i></p>
-                  <h5>Calls</h5>
-                  <p>Take a conversation from typing to face-to-face by starting a Slack voice or video call in any Channel or Direct Message.</p>
-                  <p><a class="small-3 fw-600" href="#">Read more <i class="fa fa-angle-right small-5 pl-1"></i></a></p>
+                  <p class="my-5"><i class="icon-calendar lead-8 text-lighter"></i></p>
+                  <h5>Random Slot</h5>
+                  <p>Add a random time slot to your schedule to publish any random content item from your library</p>
                </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!--
-      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
-      | CTA
-      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
-      !-->
-   <section class="section text-center">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-6 mx-auto">
-               <p><img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/img/vector/13.png" alt="..."></p>
-               <br>
-               <h3 class="mb-6"><strong>Reclaim your workday</strong></h3>
-               <p class="lead text-muted">Less email. More productive. Our customers see an average 48.6% reduction in internal email, helping them enjoy a simpler, more pleasant, and more productive work life.</p>
-               <br>
-               <a class="btn btn-lg btn-round btn-success px-7" href="#">Start now</a>
             </div>
          </div>
       </div>
@@ -104,7 +116,7 @@
       | Pricing
       |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
       !-->
-   <section id="pricing" class="section bg-gray">
+   <section id="pricing" class="section">
       <div class="container">
          <header class="section-header">
             <h2>Flexible Pricing</h2>
@@ -171,64 +183,38 @@
       | FAQ
       |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
       !-->
-   <section id="faq" class="section">
+   <section id="faq" class="section bg-gray">
       <div class="container">
          <header class="section-header">
             <small>FAQ</small>
             <h2>Frequently Asked Questions</h2>
             <hr>
-            <p>Got a question? We've got answers. If you have some other questions, contact us using email.</p>
+            <p>Got a question? We've got answers. If you have some other questions, Click the messenger button at bottom right or mail us at <a target="_blank" class="text-success" href="mailto:support@pagingpanda.com">support@pagingpanda.com</a></p>
          </header>
          <div class="row gap-y">
             <div class="col-md-6 col-xl-4">
-               <h5>Is this a secure site for purchases?</h5>
-               <p>Absolutely! We work with top payment companies which guarantees your safety and security. All billing information is stored on our payment processing partner which has the most stringent level of certification available in the payments industry.</p>
+               <h5>Can it post to other social networks?</h5>
+               <p>Sorry, it can't. This tool is built only for Facebook pages</p>
             </div>
             <div class="col-md-6 col-xl-4">
-               <h5>Can I cancel my subscription?</h5>
-               <p>You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month. You will continue to have access to your account until your current subscription expires.</p>
+               <h5>Can I post to pages I don't own?</h5>
+               <p>In order to post on a page, You must be admin or editor of that page</p>
             </div>
             <div class="col-md-6 col-xl-4">
-               <h5>How long are your contracts?</h5>
-               <p>Currently, we only offer monthly subscription. You can upgrade or cancel your monthly account at any time with no further obligation.</p>
+               <h5>is it easy to use?</h5>
+               <p><?php echo getenv('SITE_NAME') ?> is super easy to use. It has mobile friendly interface. You can setup your new account in minutes</p>
             </div>
             <div class="col-md-6 col-xl-4">
-               <h5>Can I update my card details?</h5>
-               <p>Yes. Go to the billing section of your dashboard and update your payment information.</p>
+               <h5>How much content I can add?</h5>
+               <p>There is no limit, you can add as much as you wish</p>
             </div>
             <div class="col-md-6 col-xl-4">
-               <h5>Can I request refund?</h5>
-               <p>Unfortunately, not. We do not issue full or partial refunds for any reason.</p>
+               <h5>Can I change my subscription plan?</h5>
+               <p>Yes. You can change your plan at any time with no further obligation</p>
             </div>
             <div class="col-md-6 col-xl-4">
                <h5>Can I try your service for free?</h5>
-               <p>Of course! We’re happy to offer a free plan to anyone who wants to try our service.</p>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!--
-      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
-      | Subscribe
-      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
-      !-->
-   <section id="contact" class="section py-10" style="background-image: url(<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/img/bg/4.jpg)">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-8 col-xl-6 mx-auto">
-               <div class="section-dialog bg-success text-white shadow-6">
-                  <h4>Latest news direct to your inbox</h4>
-                  <br><br>
-                  <p class="text-right small pr-5">Subscribe Now</p>
-                  <form class="input-glass input-round" action="" method="post" target="_blank">
-                     <div class="input-group">
-                        <input type="text" name="EMAIL" class="form-control" placeholder="Enter Email Address">
-                        <span class="input-group-append">
-                        <button class="btn btn-glass btn-light" type="button">Sign up <i class="ti-arrow-right fs-9 ml-2"></i></button>
-                        </span>
-                     </div>
-                  </form>
-               </div>
+               <p>Of course! We’re happy to offer 7 days free trial for each subscription plan with no credit card required</p>
             </div>
          </div>
       </div>

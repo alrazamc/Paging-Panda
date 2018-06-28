@@ -3,7 +3,7 @@
    <section class="section bg-gray">
       <div class="container">
          <header class="section-header">
-            <h3>Privacy Policy</h3>
+            <h3>Contact Us</h3>
          </header>
          <div class="row">
             <div class="col-12">

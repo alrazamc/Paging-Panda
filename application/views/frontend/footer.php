@@ -31,6 +31,23 @@
 <!-- Scripts -->
 <script src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/js/page.min.js"></script>
 <script src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/js/script.js"></script>
+<script type="text/javascript">
+  jQuery(function($){
+    $('#subscribe-form').on('submit', function(){
+      var email = $('#subscribe-form input').val();
+      if(email == '') return;
+      $(this).parent('div').addClass('d-none');
+      $(this).parent('div').siblings('.video-wrapper').removeClass('d-none');
+      $.ajax({
+        url: '<?php echo site_url('api/users/subscribe') ?>',
+        method: 'post',
+        data : { email: email },
+        success: function(){}
+      });
+      return false;
+    });
+  })
+</script>
 <?php if(getenv('CI_ENV') != 'development'){ ?>
    <div id="fb-root"></div>
    <script>(function(d, s, id) {

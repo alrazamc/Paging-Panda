@@ -53,4 +53,6 @@ $route['default_controller'] = 'Frontend';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['contact'] = "frontend/contact";
 $route['privacy'] = "frontend/privacy";
+$route['terms'] = "frontend/terms";

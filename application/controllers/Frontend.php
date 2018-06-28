@@ -21,10 +21,16 @@ class Frontend extends CI_Controller {
     {
         if($this->session->userdata('user_login') === TRUE )
             redirect('content');
-        $data['page_title'] = getenv("SITE_NAME");
         $this->load->model('payments_model');
         $data['view'] = "home";
         $data['plans'] = $this->payments_model->get_all_plans();
+        $this->load->view('frontend/front_template', $data);
+    }
+
+    //privacy policy
+    public function privacy()
+    {
+        $data['view'] = "privacy";
         $this->load->view('frontend/front_template', $data);
     }
 

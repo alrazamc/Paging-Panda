@@ -18,7 +18,7 @@
       <div class="row">
         <div class="content-wrapper full-page-wrapper d-flex align-items-center text-center error-page">
           <div class="col-lg-6 mx-auto">
-            <img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/logo.png" >
+            <img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/logo.png" width="200">
             <h1 class="display-1 mb-0 text-success">404</h1>
             <h2 class="mb-4 text-success">Page Not Found!</h2>
             <a  class="btn btn-outline-success mt-5" href="<?php echo getenv('BASE_URL') ?>">Back to Application</a>

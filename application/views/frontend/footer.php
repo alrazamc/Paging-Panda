@@ -61,9 +61,10 @@
      attribution=setup_tool
      page_id="393892214457345"
      theme_color="#28a745"
-     logged_in_greeting="Hi <?php echo $this->session->userdata('first_name') ?>! How can we help you?"
-     logged_out_greeting="Hi <?php echo $this->session->userdata('first_name') ?>! How can we help you?"
+     logged_in_greeting="Hi there! How can we help you?"
+     logged_out_greeting="Hi there! How can we help you?"
      greeting_dialog_display="hide"
+     greeting_dialog_delay="60"
      ref="uid-<?php echo $this->session->userdata('user_id') ?>">
    </div>
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-55986435-3"></script>

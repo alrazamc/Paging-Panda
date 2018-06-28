@@ -23,11 +23,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="<?php echo site_url() ?>">Home</a>
+          </li>
+          <li class="nav-item mx-2">
             <a class="nav-link" href="<?php echo site_url('users/login') ?>">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('users/signup') ?>">Register</a>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="<?php echo site_url('#pricing') ?>">Register</a>
           </li>
         </ul>
       </div>

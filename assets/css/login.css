@@ -8,6 +8,9 @@ body{
     -webkit-box-shadow: 0 1px 6px rgba(57,73,76,0.35);
     box-shadow: 0 1px 6px rgba(57,73,76,0.35);
 }
+.navbar-brand img{
+    width: 140px;
+}
 .navbar .nav-link{
     font-weight: 500;
 }

@@ -90,6 +90,8 @@ class Users extends CI_Controller {
             show_404();
         if($this->session->userdata('user_login') === TRUE )
             redirect('content');
+        if($plan_id == 0)
+            redirect( site_url('#pricing') );
         $this->load->library('form_validation');
         $this->form_validation->set_rules('first_name', "First name", 'trim|required|max_length[100]|alpha');
         $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|max_length[100]|alpha');

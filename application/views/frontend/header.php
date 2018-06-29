@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <title><?php echo $page_title  ?></title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
       <meta name="description" content="Scheduling and Analytics Tool for Facebook Pages">
       <meta name="keywords" content="Facebook,pages,manage,posts,schedule,insights,posts,analytics">
-      <title><?php echo $page_title  ?></title>
+
+      <meta property="og:title" content="<?php echo getenv('SITE_NAME') ?>" />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/og.png" />
+      <meta property="og:url" content="<?php echo current_url() ?>" />
+      <meta property="og:description" content="Scheduling and analytics tool for Facebook pages" />
+
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="<?php echo getenv('SITE_NAME') ?>" />
+      <meta name="twitter:description" content="Scheduling and analytics tool for Facebook pages" />
+      <meta name="twitter:image" content="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/og.png" />
       <!-- Styles -->
       <link href="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/css/page.min.css" rel="stylesheet">
       <link href="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/css/style.min.css" rel="stylesheet">

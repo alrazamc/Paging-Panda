@@ -61,8 +61,8 @@
      attribution=setup_tool
      page_id="393892214457345"
      theme_color="#28a745"
-     logged_in_greeting="Hi there! How can we help you?"
-     logged_out_greeting="Hi there! How can we help you?"
+     logged_in_greeting="Hi there! Need Help? Drop your query here"
+     logged_out_greeting="Hi there! Need Help? Drop your query here"
      greeting_dialog_display="fade"
      greeting_dialog_delay="60"
      ref="Home">

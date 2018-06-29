@@ -47,12 +47,17 @@
          </header>
          <div class="row gap-y align-items-center">
             <div class="col-md-6 ml-auto">
-               <h4>Library</h4>
+               <h4>Content Library</h4>
                <p>Organize your content (text, links, photos, videos) in categories. Reuse the content or select "use once" category to publish only once. Post the same content to multiple pages. Set an expiry date for seasonal content. </p>
                <p>Add content in bulk from CSV file or auto-import content from the RSS feed of your website/blog. Advanced filters and many more features...</p>
             </div>
             <div class="col-md-5 order-md-first">
-               <img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/img/vector/10.png" alt="...">
+               <div class="row">
+                  <div class="col-6 text-right mb-3"><i class="icon-pictures lead-8 text-success"></i></div>
+                  <div class="col-6 mb-3"><i class="icon-video lead-8 text-success"></i></div>
+                  <div class="col-6 text-right"><i class="icon-attachment  lead-8 text-success"></i></div>
+                  <div class="col-6"><i class="icon-rss lead-8 text-success"></i></div>
+               </div>
             </div>
          </div>
          <hr class="my-8">
@@ -63,7 +68,13 @@
                <p><?php echo getenv('SITE_NAME') ?> will cycle through your content in an orderly fashion and will re-publish the content when all items in a category are published so you will never run out of content for your pages</p>
             </div>
             <div class="col-md-5">
-               <img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/img/vector/11.png" alt="...">
+               <div class="row">
+                  <div class="col-6 text-right mb-3 pr-5"><i class="icon-clock lead-8 text-success"></i></div>
+                  <div class="col-6 mb-3"><i class="icon-calendar lead-8 text-success"></i></div>
+                  <div class="col-6 text-right"><i class="icon-browser lead-8 text-success"></i></div>
+                  <div class="col-6"><i class="icon-refresh lead-8 text-success"></i></div>
+               </div>
+               
             </div>
          </div>
          <hr class="my-8">
@@ -74,7 +85,12 @@
                <p>Export charts to images, PDF, CSV or XLSX files </p>
             </div>
             <div class="col-md-5 order-md-first">
-               <img src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/img/vector/12.png" alt="...">
+               <div class="row">
+                  <div class="col-6 text-right mb-3"><i class="icon-linegraph lead-8 text-success"></i></div>
+                  <div class="col-6 mb-3"><i class="icon-piechart lead-8 text-success"></i></div>
+                  <div class="col-6 text-right"><i class="icon-bargraph  lead-8 text-success"></i></div>
+                  <div class="col-6"><i class="icon-download lead-8 text-success"></i></div>
+               </div>
             </div>
          </div>
       </div>

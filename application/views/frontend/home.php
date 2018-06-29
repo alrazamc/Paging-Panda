@@ -6,12 +6,16 @@
             <h1 class="">Manage your Facebook pages with <?php echo getenv('SITE_NAME') ?></h1>
             <p class="lead mt-5">Posting to multiple pages made easy. Add content to your library, create weekly schedule and <?php echo getenv("SITE_NAME") ?> will do the rest. Deep insights to better understand your audience</p>
             <hr class="w-10 ml-0 my-5">
-            <p class="gap-xy">
-               <a class="btn btn-lg btn-round btn-success mw-200" href="#pricing">Get Started</a>
-               <a class="btn btn-lg btn-round btn-outline-success mw-200" href="#features">Features</a>
-            </p>
+            <div class="row">
+               <div class="col-6">
+                  <a class="btn btn-lg btn-round btn-success btn-block" href="#pricing">Get Started</a>
+               </div>
+               <div class="col-6">
+                  <a class="btn btn-lg btn-round btn-outline-success btn-block" href="#features">Features</a>
+               </div>
+            </div>
          </div>
-         <div class="col-lg-6 ml-auto">
+         <div class="col-lg-6 ml-auto mt-6">
             <div class="p-5 text-center border border-success rounded">
                <h4>Save time with content re-sharing feature</h4>
                <form id="subscribe-form">

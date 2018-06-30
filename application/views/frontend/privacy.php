@@ -87,6 +87,7 @@
               <p>We use Zoho for email customer support (see <a href="https://www.zoho.com/privacy.html" class="text-success" target="_blank">https://www.zoho.com/privacy.html</a>)</p>
               <p>We use Facebook customer chat for support through live chat (see <a href="https://web.facebook.com/full_data_use_policy?_rdc=1&_rdr" class="text-success" target="_blank">https://web.facebook.com/full_data_use_policy</a>)</p>
               <p>We use Heroku as our Hosting service provider (see <a href="https://www.heroku.com/policy/privacy" class="text-success" target="_blank">https://www.heroku.com/policy/privacy</a>)</p>
+              <p>We use Let's Encrypt SSL certificate to encrypt communications between your browser and our servers (see <a href="https://letsencrypt.org/privacy/" class="text-success" target="_blank">https://letsencrypt.org/privacy/</a>)</p>
               <h3>Links to Other Sites</h3>
               <p>Our Service may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.</p>
               <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>

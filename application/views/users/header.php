@@ -5,7 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0, shrink-to-fit=no">
   <title><?php echo $page_title .' | '.getenv('SITE_NAME') ?></title>
-  <link rel="shortcut icon" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/favicon.png">
+  <link rel="icon" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/favicon.png">
+  
   <link rel="stylesheet" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/css/fontawesome-all.min.css" />
   <link rel="stylesheet" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">

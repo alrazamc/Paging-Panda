@@ -36,7 +36,7 @@
           </div>
         </form>
         <p>
-          By clicking this button, you agree to our <a href="<?php echo site_url('privacy') ?>" class="text-success">Privacy Policy</a> and <a href="<?php echo site_url('terms') ?>" class="text-success">Terms &amp; Conditions</a>
+          By clicking this button, you agree to our <a target="_blank" href="<?php echo site_url('privacy') ?>" class="text-success">Privacy Policy</a> and <a target="_blank" href="<?php echo site_url('terms') ?>" class="text-success">Terms &amp; Conditions</a>
         </p>
       </div>
     </div>

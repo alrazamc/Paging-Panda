@@ -18,7 +18,7 @@
 	<div class="row">
 		<?php if(count($pages)){ ?>
 		<div class="col-sm-12 text-center text-sm-right my-3">
-			<a href="<?php echo $fb_login_url ?>" class="btn btn-facebook btn-shadow" ><i class="fab fa-facebook-f"></i> Import New Pages</a>
+			<a href="<?php echo $fb_login_url ?>" class="btn btn-facebook btn-shadow" ><i class="fab fa-facebook"></i> Import New Pages</a>
 		</div>
 		<?php } ?>
 		<?php if($expired_tokens){ ?>
@@ -60,7 +60,7 @@
 				Please click the button below to import your Facebook pages in <?php echo getenv('SITE_NAME') ?>
 				<br>
 				<br>
-				<a href="<?php echo $fb_login_url ?>" class="btn btn-facebook btn-shadow" ><i class="fab fa-facebook-f"></i> Import Facebook Pages</a>
+				<a href="<?php echo $fb_login_url ?>" class="btn btn-facebook btn-shadow" ><i class="fab fa-facebook"></i> Import Facebook Pages</a>
 			</p>
 		</div>
 		<?php } ?>

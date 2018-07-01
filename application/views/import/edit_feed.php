@@ -44,7 +44,7 @@
     {
         $scope.categories.unshift({
             category_id : -1,
-            category_name : 'Use Once',
+            category_name : 'Publish Once',
             category_color : '#28a745'
         });
         $scope.categories.unshift({

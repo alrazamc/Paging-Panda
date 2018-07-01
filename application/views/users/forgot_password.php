@@ -14,7 +14,7 @@
           </div>
           
           <div class="text-center">
-            <button type="submit" class="btn btn-green btn-block enter-btn">Forgot Password</button>
+            <button type="submit" class="btn btn-green btn-block enter-btn">Reset Password</button>
           </div>
         </form>
       </div>

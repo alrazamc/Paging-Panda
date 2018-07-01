@@ -59,7 +59,7 @@
     {
     	$scope.categories.unshift({
 	    	category_id : -1,
-	    	category_name : 'Use Once',
+	    	category_name : 'Publish Once',
 	    	category_color : '#28a745'
 	    });
 	    $scope.categories.unshift({
@@ -564,8 +564,8 @@
 								<div class="mb-2 text-info post-time-desc">
 									<i class="fas fa-info-circle"></i> All times are in <?php echo $this->config->item($this->session->userdata('time_zone'), 'tzones'); ?>
 								</div>
-								<i-check ng-model="post.is_scheduled">Publish at a specific date and time</i-check>
-								<p class="text-muted post-time-desc mb-1">This content will be published on your specified date/time. If you have not selected "Use Once" category, content will be added back to library for future use</p>
+								<i-check ng-model="post.is_scheduled">Schedule</i-check>
+								<p class="text-muted post-time-desc mb-1">This content will be published on selected date/time and will be re-used after that if "Publish Once" category is not selected</p>
 								<div class="row">
 									<div class="col-lg-6 mb-3">
 										<div class="post-time-desc">
@@ -577,8 +577,8 @@
 									</div>
 								</div>
 
-								<i-check ng-model="post.should_expire">Expire content at a specific date and time</i-check>
-								<p class="text-muted post-time-desc mb-1">This content will not be published after your specified date/time. It will remain in library though if you decide to reuse or edit it in the future</p>
+								<i-check ng-model="post.should_expire">Set Expiry Date</i-check>
+								<p class="text-muted post-time-desc mb-1">This content will not be published after selected date/time, but will not be deleted from the library and you can change this setting later</p>
 								<div class="row">
 									<div class="col-lg-6 mb-3">
 										<div class="post-time-desc">

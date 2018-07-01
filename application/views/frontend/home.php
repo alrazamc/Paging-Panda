@@ -52,7 +52,7 @@
          <div class="row gap-y align-items-center">
             <div class="col-md-6 ml-auto">
                <h4>Content Library</h4>
-               <p>Organize your content (text, links, photos, videos) in categories. Reuse the content or select "use once" category to publish only once. Post the same content to multiple pages. Set an expiry date for seasonal content. </p>
+               <p>Organize your content (text, links, photos, videos) in categories. Reuse the content or select "publish once" category to publish only once. Post the same content to multiple pages. Set an expiry date for seasonal content. </p>
                <p>Add content in bulk from CSV file or auto-import content from the RSS feed of your website/blog. Advanced filters and many more features...</p>
             </div>
             <div class="col-md-5 order-md-first">

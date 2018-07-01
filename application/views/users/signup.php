@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-xl-4 mx-auto">
     <div class="card air-card">
       <div class="card-body">
-        <h5>Register Account</h5>
+        <h5>Register New Account</h5>
         <hr class="mt-0">
         <?php echo $this->session->flashdata('alert'); ?>
         <?php  if(validation_errors())  echo get_alert_html(validation_errors(), ALERT_TYPE_ERROR); ?>

@@ -190,7 +190,7 @@ class Worker extends CI_Controller {
         foreach ($final_batch as $post)
         {
             $this->worker_model->update_post( $post ); //status, error, Post ID
-            $this->worker_model->update_content( $post ); //is_published, use once tracking
+            $this->worker_model->update_content( $post ); //is_published, publish once tracking
             $this->worker_model->update_account( $post ); //update page, token expired
             $this->posts_model->point_to_next_item($post, $post->is_random); //move queue pointers
         }

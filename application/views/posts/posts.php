@@ -53,7 +53,7 @@
 
     $scope.categories.unshift({
     	category_id : -1,
-    	category_name : 'Use Once',
+    	category_name : 'Publish Once',
     	category_color : '#28a745'
     });
     $scope.categories.unshift({
@@ -73,7 +73,7 @@
     });
     $scope.rss_feeds.unshift({
     	rss_feed_id : false,
-    	rss_feed_name : 'Choose RSS Source'
+    	rss_feed_name : 'Choose RSS Feed'
     });
     $scope.selected_category = $scope.categories[0];
     $scope.selected_page = $scope.pages[0];
@@ -351,7 +351,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="text-muted">RSS Source</label>
+				<label class="text-muted">RSS Feed</label>
 				<div class="dropdown border dropdown-green">
 				  <a class="btn btn-default btn-block bg-white text-left text-dark dropdown-green text-truncate dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    {{ selected_rss_feed.rss_feed_name }}

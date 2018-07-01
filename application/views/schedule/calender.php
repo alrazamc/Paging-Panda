@@ -37,7 +37,7 @@
 
     $scope.categories.unshift({
     	category_id : '-1',
-    	category_name : 'Use Once',
+    	category_name : 'Publish Once',
     	category_color : '#28a745'
     });
     $scope.categories.unshift({
@@ -329,7 +329,7 @@
 	<div class="row mb-0 mt-4" id="calender-nav">
 		<div class="col-lg-5 text-center text-lg-left col-12 mb-2">
 			<h4 class="page-title d-sm-inline-block d-block">
-                Recurring Schedule
+                Weekly Schedule
             </h4>
             <span class="text-muted"><?php echo $this->config->item($this->session->userdata('time_zone'), 'tzones') ?></span>
 		</div>

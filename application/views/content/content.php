@@ -48,7 +48,7 @@
 
     $scope.categories.unshift({
     	category_id : -1,
-    	category_name : 'Use Once',
+    	category_name : 'Publish Once',
     	category_color : '#28a745'
     });
     $scope.categories.unshift({
@@ -68,7 +68,7 @@
     });
     $scope.rss_feeds.unshift({
     	rss_feed_id : false,
-    	rss_feed_name : 'Choose RSS Source'
+    	rss_feed_name : 'Choose RSS Feed'
     });
     $scope.selected_category = $scope.categories[0];
     $scope.selected_page = $scope.pages[0];
@@ -309,7 +309,7 @@
 	</div>
 	<div class="row mb-md-3 mb-0">
 		<div class="col-md-3 col-6 mb-2">
-			<h4 class="page-title">Library</h4>
+			<h4 class="page-title">Content Library</h4>
 		</div>
 		<div class="col-md-7 order-3 order-md-2 mb-2">
 			<div class="input-group">
@@ -367,7 +367,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="text-muted">RSS Source</label>
+				<label class="text-muted">RSS Feed</label>
 				<div class="dropdown border dropdown-green">
 				  <a class="btn btn-default btn-block bg-white text-left text-dark dropdown-green text-truncate dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    {{ selected_rss_feed.rss_feed_name }}
@@ -413,7 +413,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="text-muted">Previously Published</label>
+				<label class="text-muted">Published</label>
 				<div class="dropdown border dropdown-green">
 				  <a class="btn btn-default btn-block bg-white text-left text-dark dropdown-green text-truncate dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    {{ is_published }}

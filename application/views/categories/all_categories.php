@@ -5,7 +5,7 @@
   	$scope.categories = <?php echo json_encode($categories) ?>;
     $scope.categories.unshift({
     	category_id : -1,
-    	category_name : 'Use Once',
+    	category_name : 'Publish Once',
     	category_color : '#28a745',
     	include_in_random: 0,
     	content_count : <?php echo $use_once_count ?>
@@ -61,7 +61,7 @@
 						 in "Random" scheduled timeslots
 					</p>
 					<p class="text-muted mb-0">
-						<span class="badge badge-secondary font-weight-500">{{ record.content_count | number }}</span> updates in library
+						<span class="badge badge-secondary font-weight-500">{{ record.content_count | number }}</span> items in content library
 					</p>
 				</div>
 			</div>

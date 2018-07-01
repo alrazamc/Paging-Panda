@@ -31,7 +31,7 @@
                   <thead>
                     <tr>
                       <th class="font-weight-500">Feed</th>
-                      <th class="font-weight-500">Accounts</th>
+                      <th class="font-weight-500">Pages</th>
                       <th class="font-weight-500">Category</th>
                       <th class="font-weight-500">Import To</th>
                       <th class="font-weight-500">Action</th>
@@ -50,7 +50,7 @@
                       <td>
                             <?php if($feed->use_once){ ?>
                                 <div class="category-color-round mr-1" style="background-color: #28a745">&nbsp;</div>
-                                Use Once
+                                Publish Once
                             <?php }else if($feed->category_id == 0){ ?>
                                 <div class="category-color-round mr-1" style="background-color: #007bff">&nbsp;</div>
                                 General

@@ -43,7 +43,7 @@
     if($scope.content.category_id == -1)
         $scope.content.category = {
         	category_id : -1,
-        	category_name : 'Use Once',
+        	category_name : 'Publish Once',
         	category_color : '#28a745'
         };
     else if($scope.content.category_id == 0)

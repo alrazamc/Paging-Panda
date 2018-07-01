@@ -16,7 +16,7 @@
             <input type="password" class="form-control" name="confirm_password" required>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-green btn-block enter-btn">Reset Password</button>
+            <button type="submit" class="btn btn-green btn-block enter-btn">Change Password</button>
           </div>
         </form>
         

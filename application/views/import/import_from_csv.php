@@ -50,7 +50,7 @@
 
         $scope.categories.unshift({
         	category_id : "-1",
-        	category_name : 'Use Once',
+        	category_name : 'Publish Once',
         	category_color : '#28a745'
         });
         $scope.categories.unshift({
@@ -94,7 +94,7 @@
         {
             if(typeof post[1] === 'undefined' || post[1] == '')
                 return "0";
-            if(post[1].toLowerCase() == 'use once')
+            if(post[1].toLowerCase() == 'publish once')
                 return "-1";
             for(var i=0; i<$scope.categories.length; i++)
                 if($scope.categories[i].category_name.toLowerCase() == post[1].toLowerCase() )

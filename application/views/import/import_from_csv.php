@@ -255,7 +255,7 @@
                       <th class="font-weight-500">Save?</th>
                       <th class="font-weight-500">Category</th>
                       <th class="font-weight-500">Content</th>
-                      <th class="font-weight-500">Accounts</th>
+                      <th class="font-weight-500">Pages</th>
                     </tr>
                   </thead>
                   <tbody>

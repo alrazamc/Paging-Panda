@@ -1,7 +1,10 @@
 <div class="container my-5">
     <div class="row">
-        <div class="col-12 mb-3 text-right">
+        <div class="col-6 mb-3">
             <button class="btn btn-outline-secondary btn-flat" id="print"><i class="fas fa-print"></i> Print</button>
+        </div>
+        <div class="col-6 mb-3 text-right">
+            <a href="<?php echo site_url('payments/invoices') ?>" class="btn btn-green"><i class="fas fa-arrow-left"></i> Invoices </a>
         </div>
     </div>
     <script type="text/javascript">

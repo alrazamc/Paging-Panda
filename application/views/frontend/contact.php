@@ -42,7 +42,7 @@
 
             <div class="col-md-3 text-center text-lg-left py-8 pt-11">
               <hr class="d-lg-none">
-              <p>Post office, pakki shah mardan<br>Mianwali, Punjab, Pakistan</p>
+              <p>Post office, Pakki Shah Mardan<br>Mianwali, Punjab, Pakistan</p>
               <p><a href="mailto:support@pagingpanda.com" target="_blank" class="text-success">support@pagingpanda.com</a></p>
               <div class="fw-400">Follow Us</div>
               <div class="social social-sm social-inline">

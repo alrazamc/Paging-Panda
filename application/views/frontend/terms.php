@@ -20,8 +20,8 @@
                         <li>transfer the materials to another person or "mirror" the materials on any other server.</li>
                       </ol>
                     </li>
-                    <li>Paging Panda isn't responsible for any content you post on your page. Your content must follow Facebook's terms and privacy and usage policy.</li>
-                    <li>Your account will be suspended if monthly payment isn't received within 3 days of due date</li>
+                    <li>Paging Panda isn't responsible for any content you post on your page. Your content must follow Facebook's terms and the privacy and usage policy.</li>
+                    <li>Your account will be suspended if a monthly payment isn't received within 3 days of due date</li>
                     <li>This license shall automatically terminate if you violate any of these restrictions and may be terminated by Paging Panda at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</li>
                   </ol>
                   <h3>2. Disclaimer</h3>
@@ -36,7 +36,7 @@
                   <h3>5. Links</h3>
                   <p>Paging Panda has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Paging Panda of the site. Use of any such linked website is at the user's own risk.</p>
                   <h3>6. Refund Policy</h3>
-                  <p>Paging Panda offers monthly subscription plans with 7 days free trial. If you change your subscription plan or cancel your account, a partial amount is refunded based on plan's monthly price and number of days remaining in next due date. Like if plan price is $30/month and 15 full days remaining till next due date, $15 will be refunded from last payment if you change plan or cancel your account. </p>
+                  <p>Paging Panda offers monthly subscription plans with 7 days free trial. If you change your subscription plan or cancel your account, a partial amount is refunded based on plan's monthly price and number of days remaining in next due date. Like if plan price is $30/month and 15 full days remaining till next due date, $15 will be refunded from last payment if you change subscription plan or cancel your account. </p>
                   <p>We do not offer any refund except for the conditions above</p>
                   <h3>7. Modifications</h3>
                   <p>Paging Panda may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>

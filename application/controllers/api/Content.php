@@ -350,7 +350,7 @@ class Content extends REST_Controller {
             rebuild_category_queue($this->user_id, $items[0]->use_once ? CATEGORY_USE_ONCE : $items[0]->category_id, REBUILD_RANDOM_YES);
 
         $total = count($content_ids);
-        $this->session->set_flashdata('alert', get_alert_html("$total items deleted successfully, Updating Queue...", ALERT_TYPE_SUCCESS));
+        $this->session->set_flashdata('alert', get_alert_html("$total items deleted successfully, Updating queue...", ALERT_TYPE_SUCCESS));
         $response['url'] = site_url('content');
         $this->response($response);
     }

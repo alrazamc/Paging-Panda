@@ -376,7 +376,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
-                    <button class="btn btn-success btn-block btn-shadow" ng-click="new_slot(false, false)"><i class="fas fa-plus"></i> Add Timeslot</button>
+                    <button class="btn btn-success btn-block btn-shadow" ng-click="new_slot(false, false)"><i class="fas fa-plus"></i> Add Time Slot</button>
                 </div>
             </div>
             
@@ -420,13 +420,13 @@
 
     <div class="row mt-3" ng-if="pages.length && schedules.length == 0">
         <div class="col-12 text-muted text-center">
-           <h4>Add some time slots to fill posts queue </h4>
+           <h4>Add some time slots to fill the post queue </h4>
         </div>
     </div>
 
     <div class="row mt-3" ng-if="pages.length == 0">
         <div class="col-12 text-muted text-center">
-           <h4>No Pages, Please add your <a href="<?php echo site_url('accounts') ?>" class="text-success">Facebook pages</a> first</h4>
+           <h4>No pages, please add your <a href="<?php echo site_url('accounts') ?>" class="text-success">Facebook pages</a> first</h4>
         </div>
     </div>
 
@@ -465,9 +465,6 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <p class="text-muted">
-                        Select pages and day, time and category and leave the rest to us
-                    </p>
                     <div class="row">
                         <div class="col-6">
                             <label class="font-weight-500">Publish at</label>

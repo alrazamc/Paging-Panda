@@ -240,7 +240,7 @@
                             <button class="btn btn-success btn-shadow" ng-disabled="send_preloader" ng-click="send_feed()">Update Feed <i class="fas fa-spin fa-circle-notch" ng-show="send_preloader"></i></button>
                         </div>
                         <div class="col-12 mt-3">
-                            <p class="mb-0 text-muted "><i class="fas fa-info-circle"></i> Content already imported through this feed will not be affected by this change</p>
+                            <p class="mb-0 text-muted "><i class="fas fa-info-circle"></i> Content already imported through this RSS feed will not be affected by this change</p>
                         </div>
                     </div>
                 </div>
@@ -267,11 +267,11 @@
                     <div class="form-group">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="include" name="include" ng-model="new_category_include" value="1" ng-true-value="1" ng-false-value="0">
-                            <label class="form-check-label" for="include">Include content of this category in random post selection </label>
+                            <label class="form-check-label" for="include">Include the content of this category in the random post selection</label>
                         </div>
                     </div>
                     <button type="button" class="btn btn-success btn-shadow" ng-click="add_new_category()" ng-disabled="!new_category_name || new_category_preloader">Add Category <i class="fas fa-spin fa-circle-notch" ng-show="new_category_preloader"></i></button>
-                    <button type="button" class="btn btn-green" data-dismiss="modal">Cancel</button>
+                    <a href="" class="text-success font-weight-500"  data-dismiss="modal">Cancel</a>
                 </div>
             </div>
           </div>

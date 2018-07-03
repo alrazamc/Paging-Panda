@@ -81,11 +81,11 @@
       	<div class="mb-2 text-center text-danger fz-20 ">
       		<i class="fas fa-exclamation-triangle"></i> Warning
       	</div>
-        <p>All content, Schedule and RSS feeds associations of this page will be deleted and if you are intended to use this page in future, you will need to re-link this page with content, schedule and RSS feeds. 
+        <p>All content, Schedule and RSS feeds associations of this page will be deleted and if you are intending to use this page in future, you will need to re-link this page with content, schedule and RSS feeds. 
         <br>
         If you do not want to publish on this page, Just remove it from schedule slots
         <br>
-        Are you sure you want to delete this page from application?</p>
+        Are you sure you want to delete this page from the application?</p>
       </div>
       <div class="modal-footer">
         <a href=""  class="text-success font-weight-500" data-dismiss="modal">Cancel</a>

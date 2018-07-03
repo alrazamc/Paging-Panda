@@ -665,11 +665,11 @@
 		        </div>
 
 		        <div class="col-12 p-5" ng-show="!page_preloader && pages.length == 0"  ng-cloak>
-		        	<p class="text-muted text-center font-italic">No Pages, Please add your <a href="<?php echo site_url('accounts') ?>" class="text-success">Facebook pages</a> first</p>
+		        	<p class="text-muted text-center font-italic">No pages, please add your <a href="<?php echo site_url('accounts') ?>" class="text-success">Facebook pages</a> first</p>
 		        </div>
 
 		        <div class="col-12 p-5" ng-show="!page_preloader && pages.length &&  metrics.length == 0"  ng-cloak>
-		        	<p class="text-muted text-center font-italic">No metrics, Please <a class="text-success" href="<?php echo site_url('insights/update_favorites') ?>">update favorite</a> metrics to see some graphs here</p>
+		        	<p class="text-muted text-center font-italic">No metrics, please <a class="text-success" href="<?php echo site_url('insights/update_favorites') ?>">update favorite</a> metrics to see some graphs here</p>
 		        </div>
 
 		        <div class="col-12" ng-show="!page_preloader && pages.length && metrics.length" ng-cloak>

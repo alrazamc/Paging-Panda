@@ -29,7 +29,7 @@ class Import extends REST_Controller {
         $data = $this->rssparser->getChannelData();
         if($data === FALSE)
         {
-            $response['message'] = get_alert_html("Couldn't find the RSS info on this URL. Please make sure its RSS feed url", ALERT_TYPE_ERROR);
+            $response['message'] = get_alert_html("Couldn't find the RSS info at this URL. Please make sure its RSS feed URL", ALERT_TYPE_ERROR);
             $response['error'] = true;
             $this->response($response);
         }

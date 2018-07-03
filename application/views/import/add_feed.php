@@ -156,8 +156,8 @@
         <div class="col-12">
             <div class="card air-card">
                 <div class="card-body">
-                    <p class="text-muted mb-1">Add RSS feed of your favorite website and blog and we will automatically add new content published on that site to your library here.</p>
-                    <p class="text-muted"><i class="fas fa-info-circle"></i> We will check every 24 hours for new content</p>
+                    <p class="text-muted mb-1">Add an RSS feed of your website/blog and <?php echo getenv('SITE_NAME') ?> will automatically add new content published on that site to your library here.</p>
+                    <p class="text-muted"><i class="fas fa-info-circle"></i> <?php echo getenv('SITE_NAME') ?> will check every 24 hours for new content</p>
                     <div class="row">
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="" ng-model="feed_url" placeholder="Put RSS feed url here...">
@@ -278,11 +278,11 @@
 					<div class="form-group">
 						<div class="form-check">
 							<input type="checkbox" class="form-check-input" id="include" name="include" ng-model="new_category_include" value="1" ng-true-value="1" ng-false-value="0">
-							<label class="form-check-label" for="include">Include content of this category in random post selection </label>
+							<label class="form-check-label" for="include">Include the content of this category in the random post selection</label>
 						</div>
 					</div>
 					<button type="button" class="btn btn-success btn-shadow" ng-click="add_new_category()" ng-disabled="!new_category_name || new_category_preloader">Add Category <i class="fas fa-spin fa-circle-notch" ng-show="new_category_preloader"></i></button>
-        			<button type="button" class="btn btn-green" data-dismiss="modal">Cancel</button>
+        			<a href="" class="text-success font-weight-500"  data-dismiss="modal">Cancel</a>
 	        	</div>
 	        </div>
 	      </div>

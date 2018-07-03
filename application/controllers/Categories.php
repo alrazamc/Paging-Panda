@@ -119,7 +119,7 @@ class Categories extends CI_Controller {
         }
         $this->categories_model->shuffle($category_id, $this->user_id);
         rebuild_category_queue($this->user_id, $category_id);
-        $this->session->set_flashdata('alert', get_alert_html('Content shuffled successfully, Updating Queue...', ALERT_TYPE_SUCCESS));
+        $this->session->set_flashdata('alert', get_alert_html('Content shuffled successfully, Updating queue...', ALERT_TYPE_SUCCESS));
         redirect('categories');
     }
 
@@ -138,7 +138,7 @@ class Categories extends CI_Controller {
         }
         $this->categories_model->reset($category_id, $this->user_id);
         rebuild_category_queue($this->user_id, $category_id);
-        $this->session->set_flashdata('alert', get_alert_html('Content order reset successfully. Content recently added will appear first in the queue. Updating Queue...', ALERT_TYPE_SUCCESS));
+        $this->session->set_flashdata('alert', get_alert_html('Content order reset successfully. Content recently added will appear first in the queue. Updating queue...', ALERT_TYPE_SUCCESS));
         redirect('categories');
     }
 

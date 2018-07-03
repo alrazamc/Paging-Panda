@@ -4,7 +4,7 @@
 		<div class="card-body">
 			<div class="row">
 				<div class="col-sm-12">
-					<h4 class="page-title">Account closed</h4>
+					<h4 class="page-title">Account Closed</h4>
 				</div>
 			</div>
 			<hr class="mt-0">

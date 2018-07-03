@@ -199,7 +199,7 @@
 							<button type="submit" class="btn btn-success btn-shadow" ng-disabled="inline_form">Checkout <i class="fas fa-spin fa-circle-notch" ng-show="inline_form"></i></button>
 						</div>
 						<div class="text-center text-muted" ng-if="on_trial == 0 && user_status == active_status">
-							<i class="fas fa-info-circle"></i> Remaining amount(if any) from previous plan will be refunded upon checkout if you change plan
+							<i class="fas fa-info-circle"></i> The remaining amount (if any) from previous plan will be refunded upon checkout if you change plan
 						</div>
 					</div>
 				</div>

@@ -125,7 +125,7 @@ class Content extends CI_Controller {
         $is_scheduled = $this->posts_model->create_manual_posts($content);
         if(!$is_scheduled)
             rebuild_category_queue($this->user_id, $content->use_once ? CATEGORY_USE_ONCE : $content->category_id, REBUILD_RANDOM_YES);
-        $this->session->set_flashdata('alert', get_alert_html("Content approved successfully, Updating Queue...", ALERT_TYPE_SUCCESS));
+        $this->session->set_flashdata('alert', get_alert_html("Content approved successfully, Updating queue...", ALERT_TYPE_SUCCESS));
         redirect("content");
     }
 

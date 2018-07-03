@@ -222,7 +222,7 @@
             </div>
             <div class="col-md-6 col-xl-4">
                <h5>is it easy to use?</h5>
-               <p><?php echo getenv('SITE_NAME') ?> is super easy to use. It has mobile friendly interface. You can setup your new account in minutes</p>
+               <p><?php echo getenv('SITE_NAME') ?> is super easy to use. It has a mobile friendly interface. You can setup your new account in minutes</p>
             </div>
             <div class="col-md-6 col-xl-4">
                <h5>How much content I can add?</h5>

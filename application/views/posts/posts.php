@@ -533,7 +533,7 @@
 	      	</div>
 	      	<div class="p-5 border" ng-show="!show_video_player">
 				<h4 class="text-muted text-center">Video preview not available</h4>
-				<p class="text-muted text-center">.mov videos are not supported by browser. Once your video is uploaded to Facebook, it will be converted to mp4 video</p>
+				<p class="text-muted text-center">.mov videos are not supported by the browser. Once your video is uploaded to Facebook, it will be converted to mp4 video</p>
 			</div>
 	        <div class="text-center mt-3">
 	      		<button type="button" class="btn btn-green" data-dismiss="modal">Close</button>

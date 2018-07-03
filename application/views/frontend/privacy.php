@@ -26,11 +26,11 @@
               <p>
                When you manage your Facebook pages with our service, we store the page name, page Facebook ID and page access token. We store your library content, RSS feeds, categories, schedule settings, pending posts and published posts records.
                <br>
-               We store your choices for favorite metrics but we do not store, share or use your page and content's insights in any way
+               We store your choices for favorite metrics, but we do not store, share or use your page and content's insights in any way
               </p>
 
               <h5>Transaction Data</h5>
-              <p>When you subscribe a plan or a recurring transaction happen, we store billing information (name, email, phone, address, city, state, zip, country) along with transaction data i.e. invoice id, date/time etc. We DO NOT store your credit card information, instead it is saved by our payment service provider(2checkout) mentioned below </p>
+              <p>When you subscribe a plan or a recurring transaction happens, we store billing information (name, email, phone, address, city, state, zip, country) along with transaction data, i.e. invoice id, date/time, etc. We DO NOT store your credit card information, instead it is saved by our payment service provider (2checkout) mentioned below</p>
               
               <h5>Usage Data</h5>
               <p>We may also collect information how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>

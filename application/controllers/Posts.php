@@ -62,7 +62,7 @@ class Posts extends CI_Controller {
             show_404();
         $this->posts_model->skip_post($content, $is_random);
         rebuild_queue($this->user_id);
-        $this->session->set_flashdata('alert', get_alert_html('Post skipped successfully, Updating Queue... check in a second', ALERT_TYPE_SUCCESS));
+        $this->session->set_flashdata('alert', get_alert_html('Post skipped successfully, Updating queue... check in a second', ALERT_TYPE_SUCCESS));
         redirect('posts');
     }
 
@@ -77,7 +77,7 @@ class Posts extends CI_Controller {
     {
         $this->posts_model->change_queue_status($this->user_id, NO); //Queue Paused => NO
         rebuild_queue($this->user_id);
-        $this->session->set_flashdata('alert', get_alert_html('Queue unpaused successfully. Updating queue... Refresh in a minute. Next Post will be published on scheduled time', ALERT_TYPE_SUCCESS));
+        $this->session->set_flashdata('alert', get_alert_html('Queue un-paused successfully. Updating queue... Refresh in a minute. Next Post will be published on scheduled time', ALERT_TYPE_SUCCESS));
         redirect('posts');
     }
 

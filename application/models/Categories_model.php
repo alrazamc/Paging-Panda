@@ -43,7 +43,7 @@ class Categories_model extends CI_Model{
     */
     public function create_default($user_id = 0)
     {
-        $default = ['Inspirational', 'Funny', 'My Blog Posts', 'Promotional', 'Questions', 'Tips'];
+        $default = ['Quotes', 'Funny', 'Blog Posts', 'News'];
         $batch = [];
         foreach ($default as $key => $name)
         {
@@ -155,6 +155,7 @@ class Categories_model extends CI_Model{
         }
         $this->db->order_by('post_order ASC');
         $contents = $this->db->get()->result();
+        if(empty($contents)) return;
         $orders = array();
         foreach($contents as $item)
             $orders[$item->post_order] = $item->content_id;
@@ -184,6 +185,7 @@ class Categories_model extends CI_Model{
         }
         $this->db->order_by('time_created DESC, content_id ASC');
         $contents = $this->db->get()->result();
+        if(empty($contents)) return;
         $total = count($contents);
         $orders = array();
         for($i=0; $i<$total; $i++)

@@ -24,7 +24,7 @@
 						<div class="form-group">
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input" id="include" name="include" value="1" <?php if($category->include_in_random) echo 'checked' ?>>
-								<label class="form-check-label" for="include">Include content of this category in random post selection </label>
+								<label class="form-check-label" for="include">Include the content of this category in the random post selection</label>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-success btn-shadow">Update Category</button>

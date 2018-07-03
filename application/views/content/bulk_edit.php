@@ -470,10 +470,10 @@
                 </div>
 			</div>
             <div class="alert alert-warning" ng-if="!is_filtered_view() && !content_preloader && content.length">
-                <i class="fas fa-exclamation-triangle"></i> Warning! This is your entire library. You can use the filters on left to limit the results 
+                <i class="fas fa-exclamation-triangle"></i> Warning! This is your entire library. You can use the filters on the left to limit the results 
             </div>
             <div class="alert alert-info" ng-if="is_filtered_view() && !content_preloader && content.length">
-                <i class="fas fa-info-circle"></i> This is filtered view of your library. <a href="" class="text-success"  ng-click="reset_filters()">Click here to remove filter</a> 
+                <i class="fas fa-info-circle"></i> This is a filtered view of your library. <a href="" class="text-success"  ng-click="reset_filters()">Click here to remove filters</a> 
             </div>
 			<div class="p-5 text-center text-success" ng-if="content_preloader">
 				<h1><i class="fas fa-spin fa-circle-notch"></i></h1>
@@ -481,7 +481,7 @@
 			<div class="p-5 text-center text-muted" ng-if="!content_preloader && content.length == 0">
 				<h3>No content found</h3>
                 <div ng-if="!is_filtered_view()">
-                    <p>Below are some methods to add content in library</p>
+                    <p>Below are some methods to add content in the library</p>
                     <a href="<?php echo site_url('content/add') ?>" class="text-success fz-18" >Add Content</a> <br>
                     <a href="<?php echo site_url('import/add') ?>" class="text-success fz-18" >Add RSS Feed</a> <br>
                     <a href="<?php echo site_url('import/csv') ?>" class="text-success fz-18" >Add Content from CSV File</a> <br>
@@ -496,7 +496,7 @@
                       <th class="font-weight-500">Update?</th>
                       <th class="font-weight-500">Category</th>
                       <th class="font-weight-500">Content</th>
-                      <th class="font-weight-500">Accounts</th>
+                      <th class="font-weight-500">Pages</th>
                     </tr>
                   </thead>
                   <tbody>

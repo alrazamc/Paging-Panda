@@ -58,7 +58,7 @@
 					<p class="text-muted category-include mb-0">
 						<span ng-if="record.include_in_random == 1">Included</span>
 						<span ng-if="record.include_in_random == 0"><span class="font-weight-500">Not</span> included</span>
-						 in "Random" scheduled timeslots
+						 in "Random" scheduled time slots
 					</p>
 					<p class="text-muted mb-0">
 						<span class="badge badge-secondary font-weight-500">{{ record.content_count | number }}</span> items in content library
@@ -83,7 +83,7 @@
       	<div class="mb-2 text-center text-danger fz-20 ">
       		<i class="fas fa-exclamation-triangle"></i> Warning
       	</div>
-        <p>Content, RSS feeds, posts and scheduled timeslots associated with this category will also be deleted. Are you sure, you want to delete this category?</p>
+        <p>Content, RSS feeds, posts and scheduled time slots associated with this category will also be deleted. Are you sure, you want to delete this category?</p>
       </div>
       <div class="modal-footer">
         <a href="" class="text-success font-weight-500 mr-3" data-dismiss="modal">Cancel</a>

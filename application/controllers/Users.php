@@ -210,7 +210,7 @@ class Users extends CI_Controller {
             $this->load->library('myaws');
             $message = $this->load->view('emails/password_changed', $data, true);
             $sent = $this->myaws->send_email($user->email, 'Password changed Successfully', $message);
-            $this->session->set_flashdata('alert', get_alert_html('Password changed successfully, Please login with new password', ALERT_TYPE_SUCCESS));
+            $this->session->set_flashdata('alert', get_alert_html('Password changed successfully, Please login with the new password', ALERT_TYPE_SUCCESS));
             redirect('users/login');
          }
     }
@@ -330,7 +330,7 @@ class Users extends CI_Controller {
         }else
         {
             $user = $this->users_model->update($user_id);
-            $this->session->set_flashdata('alert', get_alert_html('Profile udpated successully', ALERT_TYPE_SUCCESS));
+            $this->session->set_flashdata('alert', get_alert_html('Profile updated successfully', ALERT_TYPE_SUCCESS));
             redirect('users/settings');
         }
     }

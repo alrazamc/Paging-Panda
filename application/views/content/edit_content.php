@@ -457,7 +457,7 @@
 					</div>
 					<p class="text-muted text-center" ng-if="pages.length == 0">
 						Import your Facebook pages to start posting<br>
-						Let's go to <a href="<?php echo site_url('accounts') ?>" class="text-success">Pages Menu</a>
+						Let's go to <a href="<?php echo site_url('accounts') ?>" class="text-success">Pages</a> menu
 					</p>
 
 				</div>
@@ -494,7 +494,7 @@
 							  	</div>
 							  </div>
 							</div>
-							<div class="text-success mt-2 text-center d-none" id="new-category-msg">New category added in list</div>
+							<div class="text-success mt-2 text-center d-none" id="new-category-msg">New category added in the list</div>
 						</div>
 
                         <div class="col-12" ng-if="post.rss_id != 0 && post.link_url == post.message">
@@ -583,7 +583,7 @@
 							<div class="py-2 px-2">
 								<p class="text-muted d-flex">
 									 <span><i class="fas fa-info-circle mr-1"></i> </span>
-									 <span>This preview is an estimation of how your post should appear. Updates or tests made by Facebook may change the result.</span>
+									 <span>This is an estimated preview of your post. Original may be different.</span>
 								</p>
 								<div class="row">
 									<div class="col-12">
@@ -630,7 +630,7 @@
 										    			</video>
 										    			<div class="p-5 border" ng-if="post.videos[0].type == 'video/quicktime'">
 										    				<h4 class="text-muted text-center">Video preview not available</h4>
-										    				<p class="text-muted text-center">.mov videos are not supported by browser. Once your video is uploaded to Facebook, it will be converted to mp4 video</p>
+										    				<p class="text-muted text-center">.mov videos are not supported by the browser. Once your video is uploaded to Facebook, it will be converted to mp4 video</p>
 										    			</div>
 										    		</div>
 										    		<div class="border" ng-if="post.videos[0].size > video_size_limit">
@@ -658,13 +658,13 @@
 								<div class="alert alert-{{ pages.length ? 'danger' : 'info' }}" ng-if="selected_page_count == 0">
 								  <i class="fas fa-info-circle"></i> 
 								  <span ng-if="pages.length">Please select at least one page in order to schedule your content</span>
-								  <span ng-if="pages.length == 0">Import pages to publish post at a specific date and time </span>
+								  <span ng-if="pages.length == 0">Import pages to publish a post at a specific date and time </span>
 								</div>
                                 <div class="alert alert-danger" ng-if="is_used_once()">
                                     <i class="fas fa-exclamation-triangle"></i> Selected category is "Publish Once" and content is already published on selected page(s), Please choose different category or select more pages to schedule content for publishing
                                 </div>
                                 <div class="alert alert-danger" ng-if="is_used_once_on_some()">
-                                    <i class="fas fa-exclamation-triangle"></i> This "Publish Once" content is already published on some selected pages and will be scheduled to only those pages where its not published yet, Please choose different category to schedule on all selected pages
+                                    <i class="fas fa-exclamation-triangle"></i> This "Publish Once" content is already published on some selected pages and will be scheduled to only those pages where it is not published yet, Please choose a different category to schedule on all selected pages
                                 </div>
 
 								<div class="mb-2 text-info post-time-desc">
@@ -732,11 +732,11 @@
 					<div class="form-group">
 						<div class="form-check">
 							<input type="checkbox" class="form-check-input" id="include" name="include" ng-model="new_category_include" value="1" ng-true-value="1" ng-false-value="0">
-							<label class="form-check-label" for="include">Include content of this category in random post selection </label>
+							<label class="form-check-label" for="include">Include the content of this category in the random post selection</label>
 						</div>
 					</div>
 					<button type="button" class="btn btn-success btn-shadow" ng-click="add_new_category()" ng-disabled="!new_category_name || new_category_preloader">Add Category <i class="fas fa-spin fa-circle-notch" ng-show="new_category_preloader"></i></button>
-        			<button type="button" class="btn btn-green" data-dismiss="modal">Cancel</button>
+                    <a href="" class="text-success font-weight-500"  data-dismiss="modal">Cancel</a>
 	        	</div>
 	        </div>
 	      </div>
@@ -769,7 +769,7 @@
 				<b>Video Post</b>
 			</div>	
 			<div class="py-3 text-left pl-1 pr-1">
-				Post can't have both video and images, Please remove video to upload photos
+				Post can't have both video and images, Please remove the video to upload photos
 			</div>
 		</div>
 
@@ -789,7 +789,7 @@
 				<b>Limit Reached</b>
 			</div>	
 			<div class="py-3 text-left pl-1 pr-1">
-				Post can have one video
+				Post can have only one video
 			</div>
 		</div>
 		<div id="video-tooltip-images">

@@ -168,7 +168,7 @@
           </div>
 
           <div class="p-5 text-muted" ng-if="fav_metrics.length == 0">
-            No favorite metrics yet, Please select your favorite metrics from left sidebar using little arrows then click "Save Favorites" button
+            No favorite metrics yet, Please select your favorite metrics from left sidebar using the little arrows, then click "Save Favorites" button
           </div>
 
         </div>

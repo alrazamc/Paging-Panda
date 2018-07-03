@@ -199,7 +199,7 @@
 	</div>
 	<div class="row mb-md-3 mb-0">
 		<div class="col-sm-8 mb-3">
-            <h4 class="page-title">Import content from csv file</h4>
+            <h4 class="page-title">Import content from CSV file</h4>
         </div>
         <div class="col-sm-4 mb-3 text-center text-sm-right">
             <a href="<?php echo site_url('import/feeds') ?>" class="btn btn-green btn-shadow" ><i class="fas fa-arrow-left"></i> RSS Feeds</a>
@@ -218,8 +218,8 @@
                     <ul class="text-muted">
                         <li>Do not include a header row</li>
                         <li>First column should contain content text</li>
-                        <li>Second column may have category name(optional)</li>
-                        <li>File must be in UTF-8 format</li>
+                        <li>Second column may have a category name(optional)</li>
+                        <li>File must be in UTF-8 format</li> 
                     </ul>
                     <div class="row">
                         <div class="col-sm-6">

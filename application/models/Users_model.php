@@ -19,7 +19,7 @@ class Users_model extends CI_Model{
     */
     public function validate_user()
     {
-        $email = $this->input->post('email', TRUE);
+        $email = strtolower($this->input->post('email', TRUE));
         $password = $this->input->post('password', TRUE);
         $password = $this->db->escape($password);
         $this->db->select('*')->from('users');
@@ -37,7 +37,7 @@ class Users_model extends CI_Model{
     public function get_user_by_email($email)
     {
         $this->db->select('*')->from('users');
-        $this->db->where('email', $email);
+        $this->db->where('email', strtolower($email));
         $result = $this->db->get();
         return $result->row();
     }
@@ -100,7 +100,7 @@ class Users_model extends CI_Model{
     */
     public function isemailexist($email, $user_id = 0)
     {
-        $this->db->where('email', $email);
+        $this->db->where('email', strtolower($email));
         if($user_id)
             $this->db->where("user_id !=", $user_id); //edit profile
         else
@@ -117,7 +117,7 @@ class Users_model extends CI_Model{
 
         $this->db->set('first_name', $this->input->post('first_name'));
         $this->db->set('last_name', $this->input->post('last_name'));
-        $this->db->set('email', $this->input->post('email'));
+        $this->db->set('email', strtolower( $this->input->post('email') ) );
         $password = $this->db->escape($this->input->post('password'));
         $this->db->set('password',"MD5($password)", false);
         $this->db->set('status', USER_STATUS_ACTIVE);
@@ -176,7 +176,7 @@ class Users_model extends CI_Model{
         if($user) return false;
         $this->db->set('first_name', '');
         $this->db->set('last_name', '');
-        $this->db->set('email', $email);
+        $this->db->set('email', strtolower($email));
         $this->db->set('password',"MD5('82&@*!#^')", false);
         $this->db->set('status', USER_STATUS_SUBSCRIBED);
         $this->db->set('plan_id', 0);
@@ -216,7 +216,7 @@ class Users_model extends CI_Model{
     {
         $this->db->set('first_name', $this->input->post('first_name'));
         $this->db->set('last_name', $this->input->post('last_name'));
-        $this->db->set('email', $this->input->post('email'));
+        $this->db->set('email', strtolower($this->input->post('email')));
         if($this->input->post('password'))
         {
             $password = $this->db->escape($this->input->post('password'));

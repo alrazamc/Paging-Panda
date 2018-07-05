@@ -148,7 +148,7 @@ class Payments_model extends CI_Model{
             'status' => USER_STATUS_ACTIVE,
             'on_trial' => NO,
             'plan_id' => $plan->plan_id,
-            'next_due_date' => date('Y-m-d H:i:s', strtotime('+30 days')),
+            'next_due_date' => date('Y-m-d 23:59:59', strtotime('+1 month')),
             'date_updated' => date('Y-m-d H:i:s')
         );
         if(empty($user->address))

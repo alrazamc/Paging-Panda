@@ -20,7 +20,7 @@
                         <li>transfer the materials to another person or "mirror" the materials on any other server.</li>
                       </ol>
                     </li>
-                    <li>Paging Panda isn't responsible for any content you post on your page. Your content must follow Facebook's terms and the privacy and usage policy.</li>
+                    <li>The content you are posting, must follow all <a href="https://facebook.com/terms.php" class="text-success" target="_blank">Facebook's terms and policies</a> and meet <a href="https://facebook.com/communitystandards/" class="text-success" target="_blank">Facebook community standards</a> otherwise <?php echo getenv('SITE_NAME') ?> reserve the right to cancel your account.</li>
                     <li>Your account will be suspended if a monthly payment isn't received within 3 days of due date</li>
                     <li>This license shall automatically terminate if you violate any of these restrictions and may be terminated by Paging Panda at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</li>
                   </ol>

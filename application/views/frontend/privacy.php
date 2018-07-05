@@ -57,7 +57,8 @@
                 <li>To detect, prevent and address technical issues</li>
               </ul>
               <h3>Sharing of Data with Third Parties</h3>
-              <p>We may share your personal and other information with third parties who are helping us to provide and improve this service.</p>
+              <p>We do not share your uploaded content and Facebook data with any third party.</p>
+              <p>We may share your personal information with third parties who are helping us to provide and improve this service.</p>
 
 
               <h3>Transfer of Data</h3>

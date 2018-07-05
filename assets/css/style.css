@@ -633,8 +633,9 @@ a.text-success:hover{
   text-align: center;
 }
 .btn-facebook, .btn-facebook:hover{
-    background-color: #3b5998;
+    background-color: #4267B2;
     color: white;
+    font-size: 18px;
 }
 
 @media (max-width: 575.98px){

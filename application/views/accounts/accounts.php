@@ -18,7 +18,7 @@
 	<div class="row">
 		<?php if(count($pages)){ ?>
 		<div class="col-sm-12 text-center text-sm-right my-3">
-			<a href="<?php echo $fb_login_url ?>" class="btn btn-facebook btn-shadow" ><i class="fab fa-facebook"></i> Import Facebook Pages</a>
+			<a href="<?php echo $fb_login_url ?>" class="btn btn-facebook" ><img width="30" class="mr-2" src="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/fblogo.png" alt="FB"> Import Facebook Pages</a>
 		</div>
 		<?php } ?>
 		<?php if($expired_tokens){ ?>
@@ -56,11 +56,11 @@
 		<?php } ?>
 		<?php }else{ ?>
 		<div class="col-md-12">
-			<p class="text-muted p-5 text-center">
-				Please click the button below to import your Facebook pages in <?php echo getenv('SITE_NAME') ?>
+			<p class="text-muted p-0 p-sm-5 mt-3 text-center">
+				Manage your Facebook pages with <?php echo getenv('SITE_NAME') ?>
 				<br>
 				<br>
-				<a href="<?php echo $fb_login_url ?>" class="btn btn-facebook btn-shadow" ><i class="fab fa-facebook"></i> Import Facebook Pages</a>
+				<a href="<?php echo $fb_login_url ?>" class="btn btn-facebook" ><img width="30" class="mr-2" src="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/fblogo.png" alt="FB"> Import Facebook Pages</a>
 			</p>
 		</div>
 		<?php } ?>

@@ -30,7 +30,7 @@
               </p>
 
               <h5>Transaction Data</h5>
-              <p>When you subscribe a plan or a recurring transaction happens, we store billing information (name, email, phone, address, city, state, zip, country) along with transaction data, i.e. invoice id, date/time, etc. We DO NOT store your credit card information, instead it is saved by our payment service provider (2checkout) mentioned below</p>
+              <p>When you subscribe a plan or a recurring transaction happens, we store billing information (name, email, phone, address, city, state, zip, country) along with transaction data, i.e. invoice id, date/time, etc. We DO NOT store your credit card information, instead it is saved by our payment service provider.</p>
               
               <h5>Usage Data</h5>
               <p>We may also collect information how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
@@ -82,7 +82,7 @@
               <p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
               <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
               <p>We use Amazon S3 service for file storage and Amazon SES for email notifications. (see <a href="https://aws.amazon.com/privacy/" class="text-success" target="_blank">https://aws.amazon.com/privacy/</a>  <a href="https://aws.amazon.com/compliance/data-privacy-faq/" class="text-success" target="_blank">https://aws.amazon.com/compliance/data-privacy-faq/</a>) </p>
-              <p>We use 2checkout as payment service provider which stores your credit card/payment method and other billing info. (see <a href="https://www.2checkout.com/policies/privacy-policy" class="text-success" target="_blank">https://www.2checkout.com/policies/privacy-policy</a>) </p>
+              <!-- <p>We use 2checkout as payment service provider which stores your credit card/payment method and other billing info. (see <a href="https://www.2checkout.com/policies/privacy-policy" class="text-success" target="_blank">https://www.2checkout.com/policies/privacy-policy</a>) </p> -->
               <p>We use Mailchimp for our email marketing (see <a href="https://mailchimp.com/legal/privacy/" class="text-success" target="_blank">https://mailchimp.com/legal/privacy/</a>)</p>
               <p>We use Google Analytics to track visitor and monitor site traffic (see <a href="https://policies.google.com/privacy" class="text-success" target="_blank">https://policies.google.com/privacy</a>)</p>
               <p>We use Zoho for email customer support (see <a href="https://www.zoho.com/privacy.html" class="text-success" target="_blank">https://www.zoho.com/privacy.html</a>)</p>

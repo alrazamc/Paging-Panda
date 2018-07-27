@@ -347,7 +347,7 @@ class Users extends CI_Controller {
         {
             $this->session->sess_destroy();
             delete_cookie('remme');
-            redirect( current_url()."?token=".$token );
+            redirect( current_url()."?token=".urlencode($token) );
         }
         $user = $this->users_model->get_record($user_id);
         $this->session->set_userdata('user_login', TRUE);

@@ -146,6 +146,8 @@
 				<div class="row">
 					<div class="col-lg-3">
 						<span class="fz-18 text-muted">Billing Info</span>
+						<br>
+						<span class="text-muted">(all fields are required)</span>
 					</div>
 					<div class="col-12 col-lg-6">
 						<div class="form-group">
@@ -155,7 +157,7 @@
 							<input type="text" class="form-control" name="street_address" value="<?php echo $user->address ?>" placeholder="Street address..." required>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="street_address2" placeholder="Street address 2...">
+							<input type="text" class="form-control" name="street_address2" placeholder="Street address 2... (optional)">
 						</div>
 						<div class="row">
 							<div class="col-4">

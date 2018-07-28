@@ -134,7 +134,7 @@
         </div>
 
         <div class="col-sm-6 mb-3" ng-show="metrics.length"  ng-cloak>
-          <h5 class="text-muted text-center">favorites metrics <span class="badge badge-secondary">{{ fav_metrics.length }}</span></h5>
+          <h5 class="text-muted text-center">favorite metrics <span class="badge badge-secondary">{{ fav_metrics.length }}</span></h5>
           <div class="row">
             <div class="col-lg-8">
               <form>

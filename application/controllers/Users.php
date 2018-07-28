@@ -220,8 +220,7 @@ class Users extends CI_Controller {
     * @param $email string, email address of the user
     */
     public function email_check($email){
-        $user_id = $this->uri->segment(3);
-        $user_id = empty($user_id) ? $this->session->userdata('user_id') : $user_id;
+        $user_id = $this->session->userdata('user_id');
         if($this->users_model->isemailexist($email, $user_id)){
             $this->form_validation->set_message('email_check', 'This email is already registered');
             return FALSE;

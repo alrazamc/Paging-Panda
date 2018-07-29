@@ -93,8 +93,8 @@ class Users extends CI_Controller {
         if($plan_id == 0)
             redirect( site_url('#pricing') );
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('first_name', "First name", 'trim|required|max_length[100]|alpha');
-        $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|max_length[100]|alpha');
+        $this->form_validation->set_rules('first_name', "First name", 'trim|required|max_length[100]');
+        $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|max_length[100]');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_email_check');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
         if(!$this->form_validation->run())

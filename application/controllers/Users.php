@@ -311,8 +311,8 @@ class Users extends CI_Controller {
         session_check();
         $user_id = $this->session->userdata('user_id');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('first_name', "First name", 'trim|required|max_length[100]|alpha');
-        $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|max_length[100]|alpha');
+        $this->form_validation->set_rules('first_name', "First name", 'trim|required|max_length[100]');
+        $this->form_validation->set_rules('last_name', 'Last name', 'trim|required|max_length[100]');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_email_check');
         $this->form_validation->set_rules('time_zone', 'Time Zone', 'trim|required');
         $this->form_validation->set_rules('password', 'New password', 'min_length[6]');

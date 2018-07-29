@@ -106,7 +106,7 @@
       		</div>
       		<div class="col-12 text-center">
       			<h5 class="modal-title d-block" >Welcome to <?php echo getenv('SITE_NAME') ?></h5>
-      			<span class="text-muted">Let's get it started, Watch a quick setup guide</span>
+      			<span class="text-muted">Let's get it started, watch a quick demo video to have an idea of features.</span>
       		</div>
       		<div class="col-12 mt-2 mt-2">
 				<div class="embed-responsive embed-responsive-16by9 border">

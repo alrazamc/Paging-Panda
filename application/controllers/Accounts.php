@@ -26,6 +26,12 @@ class Accounts extends CI_Controller {
         $this->all();
     }
 
+    /** After signup */
+    public function welcome()
+    {
+        $this->all();
+    }
+
 
     /**
     * Show pages list

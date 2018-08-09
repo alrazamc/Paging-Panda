@@ -119,7 +119,7 @@ class Users extends CI_Controller {
             $this->myaws->send_email($user->email, 'Welcome to '.getenv('SITE_NAME'), $message);
             mailchimp($user->user_id);
             $this->session->set_flashdata('signup', true);
-            redirect('accounts');
+            redirect('accounts/welcome');
         }
     }
 

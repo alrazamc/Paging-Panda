@@ -17,8 +17,8 @@
 
       <div class="col-md-3 text-center text-md-right">
         <div class="social social-sm social-hover-bg-brand">
-          <a class="social-facebook" href="<?php echo getenv('FB_PAGE') ?>" target="_blank"><i class="fa fa-facebook"></i></a>
-          <a class="social-twitter" href="<?php echo getenv('TWITTER_HANDLE') ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+          <a class="text-success" href="<?php echo getenv('FB_PAGE') ?>" target="_blank"><i class="icon-facebook lead-4"></i></a>
+          <a class="text-success" href="<?php echo getenv('TWITTER_HANDLE') ?>" target="_blank"><i class="icon-twitter lead-4"></i></a>
         </div>
       </div>
 
@@ -27,7 +27,7 @@
 </footer>
 <!-- /.footer -->
 <!-- Scroll top -->
-<button class="btn btn-circle btn-success scroll-top"><i class="fa fa-angle-up"></i></button>
+<button class="btn btn-circle btn-success scroll-top"><i class="scroll-up-icon"></i></button>
 <!-- Scripts -->
 <script src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/js/page.min.js"></script>
 <script src="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/js/script.js"></script>
@@ -37,6 +37,7 @@
       var email = $('#subscribe-form input').val();
       if(email == '') return;
       $(this).parent('div').addClass('d-none');
+      $(this).parent('div').siblings('.video-wrapper').html($('#yt-demo').html());
       $(this).parent('div').siblings('.video-wrapper').removeClass('d-none');
       $.ajax({
         url: '<?php echo site_url('api/users/subscribe') ?>',
@@ -46,6 +47,15 @@
       });
       return false;
     });
+
+    var iframe = $('<iframe></iframe>');
+    iframe.attr('width', '560');
+    iframe.attr('height', '315');
+    iframe.attr('frameborder', '0');
+    iframe.attr('allow', 'autoplay; encrypted-media');
+    iframe.attr('allowfullscreen', '');
+    iframe.attr('src', "https://www.youtube.com/embed/hCF1IT38IH0?rel=0&amp;showinfo=0");
+    $('#yt-demo').html(iframe);
   })
 </script>
 <?php if(getenv('CI_ENV') != 'development'){ ?>
@@ -74,6 +84,10 @@
         gtag('js', new Date());
         gtag('config', 'UA-55986435-3');
       </script>
+   <?php } ?>
+   <?php if(empty($this->uri->segment(1))){ ?>
+    <div class="d-none" id="yt-demo">
+    </div>
    <?php } ?>
 </body>
 </html>

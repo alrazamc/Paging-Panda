@@ -46,8 +46,8 @@
               <p><a href="mailto:support@pagingpanda.com" target="_blank" class="text-success">support@pagingpanda.com</a></p>
               <div class="fw-400">Follow Us</div>
               <div class="social social-sm social-inline">
-                  <a class="social-facebook" href="<?php echo getenv('FB_PAGE') ?>" target="_blank"><i class="fa fa-facebook"></i></a>
-                  <a class="social-twitter" href="<?php echo getenv('TWITTER_HANDLE') ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+                  <a class="text-success" href="<?php echo getenv('FB_PAGE') ?>" target="_blank"><i class="icon-facebook lead-5"></i></a>
+                  <a class="text-success" href="<?php echo getenv('TWITTER_HANDLE') ?>" target="_blank"><i class="icon-twitter lead-5"></i></a>
               </div>
             </div>
            </div>

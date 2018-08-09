@@ -19,7 +19,6 @@
       <meta name="twitter:image" content="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/og.png" />
       <!-- Styles -->
       <link href="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/css/page.min.css" rel="stylesheet">
-      <link href="<?php echo getenv('ASSET_BASE_URL') ?>assets/frontend/css/style.min.css" rel="stylesheet">
       <!-- Favicons -->
       <link rel="apple-touch-icon" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/favicon.png">
       <link rel="icon" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/favicon.png">

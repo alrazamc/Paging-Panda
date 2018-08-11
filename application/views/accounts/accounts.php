@@ -110,7 +110,7 @@
       		</div>
       		<div class="col-12 mt-2 mt-2">
 				<div class="embed-responsive embed-responsive-16by9 border">
-	              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $quick_setup_video ?>?showinfo=0" frameborder="0"  allowfullscreen></iframe>
+	              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $quick_setup_video ?>?start=47&showinfo=0" frameborder="0"  allowfullscreen></iframe>
 	            </div>
 			</div>
       		<div class="col-12 text-center font-weight-500 mt-4">

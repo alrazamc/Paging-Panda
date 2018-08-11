@@ -3,9 +3,9 @@
    <div class="container">
       <div class="row align-items-center h-100">
          <div class="col-lg-5">
-            <h1 class="">Save your time and money with <?php echo getenv('SITE_NAME') ?></h1>
+            <h1 class="">Automate Facebook Posting</h1>
             <p class="lead mt-5">
-               Your brand stays fresh and relevant with consistent, automatic posting. Grow a bigger audience without extra work. Know everything about your fans with advanced insights that you won't find on Facebook.
+               <?php echo getenv("SITE_NAME") ?> creates posts for your Facebook pages so you can focus on more important things. The only Facebook assistant you will ever need.
             </p>
             <hr class="w-10 ml-0 my-5">
             <div class="row">
@@ -19,7 +19,7 @@
          </div>
          <div class="col-lg-6 ml-auto mt-6">
             <div class="p-5 text-center border border-success rounded">
-               <h4>Bring more leads without extra ad spending</h4>
+               <h4>Recycle your posts automatically</h4>
                <form id="subscribe-form">
                   <div class="form-group">
                      <input type="email" class="form-control form-control-lg" name="" placeholder="Enter your email address..." required>
@@ -46,16 +46,18 @@
       !-->
    <section id="features" class="section">
       <div class="container">
-         <header class="section-header">
-            <small>Features</small>
-            <h2>A smart way to manage your pages</h2>
-            <hr>
+         <header class="section-header mb-2">
+            <h2>How it works?</h2>
          </header>
+         <div class="row">
+            <div class="col-12 text-center">
+               <h2 class="text-success display-3 font-weight-bold" style="font-family: sans-serif;">01</h2>
+            </div>
+         </div>
          <div class="row gap-y align-items-center">
             <div class="col-md-6 ml-auto">
-               <h4>Content Library</h4>
-               <p>Organize your content (text, links, photos, videos) in categories. Reuse the content or select "publish once" category to publish only once. Post the same content to multiple pages. Set an expiry date for seasonal content. </p>
-               <p>Add content in bulk from CSV file or auto-import content from the RSS feed of your website/blog. Advanced filters and many more features...</p>
+               <h4 class="text-center">Add your awesome content</h4>
+               <p class="lead-2">Build an unlimited, categorized online library of content for your pages. <?php echo getenv('SITE_NAME') ?> can even auto-create content for you using RSS feeds from your favorite sites.</p>
             </div>
             <div class="col-md-5 order-md-first">
                <div class="row">
@@ -66,12 +68,15 @@
                </div>
             </div>
          </div>
-         <hr class="my-8">
+         <div class="row">
+            <div class="col-12 text-center">
+               <h2 class="text-success display-3 font-weight-bold" style="font-family: sans-serif;">02</h2>
+            </div>
+         </div>
          <div class="row gap-y align-items-center">
             <div class="col-md-6 mr-auto">
-               <h4>Weekly Schedule</h4>
-               <p>Create, 24/7 posting schedule based on your categories. Using your content and schedule, <?php echo getenv('SITE_NAME') ?> will auto-fill posts queue for next two weeks. You can also manually schedule certain content for specific date/time. Review the post queue to check what's going to be published on which page and when.</p>
-               <p><?php echo getenv('SITE_NAME') ?> will cycle through your content in an orderly fashion and will re-publish the content when all items in a category are published so you will never run out of content for your pages</p>
+               <h4 class="text-center">We handle posting</h4>
+               <p class="lead-2"><?php echo getenv('SITE_NAME') ?> will auto-post your content to your Facebook pages on a schedule you choose. It can recycle your content so your pages will never run out of new posts.</p>
             </div>
             <div class="col-md-5">
                <div class="row">
@@ -83,19 +88,24 @@
                
             </div>
          </div>
-         <hr class="my-8">
+         <div class="row">
+            <div class="col-12 text-center">
+               <h2 class="text-success display-3 font-weight-bold" style="font-family: sans-serif;">03</h2>
+            </div>
+         </div>
          <div class="row gap-y align-items-center">
             <div class="col-md-6 ml-auto">
-               <h4>Page Insights</h4>
-               <p>Analyze 130+ insights metrics in graphical charts to know your audience. Metrics include, but not limited to, impressions, engagements, consumptions, check-ins, positive/negative feedback, fans, post reactions, video views and many more.</p>
-               <p>Export charts to images, PDF, CSV or XLSX files </p>
+               <h4 class="text-center">Relax and have fun</h4>
+               <p class="lead-2">
+                  Check in when you feel like it, or to refresh your feeds with live updates and new content
+               </p>
             </div>
             <div class="col-md-5 order-md-first">
                <div class="row">
-                  <div class="col-6 text-right mb-3"><i class="icon-linegraph lead-8 text-success"></i></div>
-                  <div class="col-6 mb-3"><i class="icon-piechart lead-8 text-success"></i></div>
-                  <div class="col-6 text-right"><i class="icon-bargraph  lead-8 text-success"></i></div>
-                  <div class="col-6"><i class="icon-download lead-8 text-success"></i></div>
+                  <div class="col-6 text-right mb-3"><i class="icon-wine lead-8 text-success"></i></div>
+                  <div class="col-6 mb-3"><i class="icon-bike lead-8 text-success"></i></div>
+                  <div class="col-6 text-right"><i class="icon-hotairballoon  lead-8 text-success"></i></div>
+                  <div class="col-6"><i class="icon-happy lead-8 text-success"></i></div>
                </div>
             </div>
          </div>
@@ -108,26 +118,29 @@
       !-->
    <section class="section bg-gray">
       <div class="container">
+         <header class="section-header mb-2">
+            <h2><?php echo getenv('SITE_NAME') ?> knows what's important to you</h2>
+         </header>
          <div class="row gap-y">
             <div class="col-lg-4">
                <div class="card card-body border text-center">
                   <p class="my-5"><i class="icon-presentation lead-8 text-lighter"></i></p>
-                  <h5>Content Insights</h5>
-                  <p>Get reactions, comments, shares, reach, engaged users, link clicks, video views, negative feedback for each content item</p>
+                  <h5 class="font-weight-bold">Grow bigger audience without extra work</h5>
+                  <p class="lead-2"><?php echo getenv('SITE_NAME') ?> automatically reshares your content over time, it can be seen be more people without you doing any extra work.</p>
                </div>
             </div>
             <div class="col-lg-4">
                <div class="card card-body border text-center">
-                  <p class="my-5"><i class="icon-rss lead-8 text-lighter"></i></p>
-                  <h5>Content Moderation</h5>
-                  <p>Approve or decline content from RSS feeds before publishing. Only approved content is published</p>
+                  <p class="my-5"><i class="icon-refresh lead-8 text-lighter"></i></p>
+                  <h5 class="font-weight-bold">Guarantee your brand stays fresh and relevant</h5>
+                  <p class="lead-2">Facebook prefers new posts in users news feed, Consistent, automatic posting ensures your brand stays in the public eye.</p>
                </div>
             </div>
             <div class="col-lg-4">
                <div class="card card-body border text-center">
-                  <p class="my-5"><i class="icon-calendar lead-8 text-lighter"></i></p>
-                  <h5>Random Slot</h5>
-                  <p>Add a random time slot to your schedule to publish any random content item from your library</p>
+                  <p class="my-5"><i class="icon-linegraph lead-8 text-lighter"></i></p>
+                  <h5 class="font-weight-bold">Know your fans</h5>
+                  <p class="lead-2">Find the content which is loved by your audience. Analyze 100+ data charts that you won't find on Facebook</p>
                </div>
             </div>
          </div>
@@ -148,53 +161,53 @@
          <div class="row gap-y text-center">
             <div class="col-md-4">
                <div class="pricing-1">
-                  <p class="plan-name"><?php echo $plans[0]->name ?></p>
+                  <p class="plan-name lead-3"><?php echo $plans[0]->name ?></p>
                   <br>
                   <h2 class="price">
                      <span class="price-unit">$</span>
                      <span data-bind-radio="pricing"><?php echo round($plans[0]->price) ?></span>
                   </h2>
-                  <p class="small text-muted">Per Month</p>
+                  <p class="text-muted">Per Month</p>
                   <div class="text-muted">
-                     <p class="mb-0">Manage up to <span class="text-success display-4"><?php echo $plans[0]->page_limit ?></span> Facebook pages</p>
-                     <p class="mb-0">All features included</p>
-                     <p class="mb-0"><?php echo $plans[0]->trial_period ?> days free trial - No credit card required</p>
+                     <p class="mb-0 lead-1">Manage up to <span class="text-success display-4"><?php echo $plans[0]->page_limit ?></span> Facebook pages</p>
+                     <p class="mb-0 lead-1">All features included</p>
+                     <p class="mb-0 lead-1"><?php echo $plans[0]->trial_period ?> days free trial - No credit card required</p>
                   </div>
-                  <p class="text-center py-3"><a class="btn btn-outline-success" href="<?php echo site_url("users/signup/".$plans[0]->plan_id) ?>">Get started</a></p>
+                  <p class="text-center py-3"><a class="btn btn-success" href="<?php echo site_url("users/signup/".$plans[0]->plan_id) ?>">Get started</a></p>
                </div>
             </div>
             <div class="col-md-4">
                <div class="pricing-1 popular">
-                  <p class="plan-name"><?php echo $plans[1]->name ?></p>
+                  <p class="plan-name lead-3"><?php echo $plans[1]->name ?></p>
                   <br>
                   <h2 class="price text-success">
                      <span class="price-unit">$</span>
                      <span data-bind-radio="pricing"><?php echo round($plans[1]->price) ?></span>
                   </h2>
-                  <p class="small text-muted">Per Month</p>
+                  <p class="text-muted">Per Month</p>
                   <div class="text-muted">
-                     <p class="mb-0">Manage up to <span class="text-success display-4"><?php echo $plans[1]->page_limit ?></span> Facebook pages</p>
-                     <p class="mb-0">All features included</p>
-                     <p class="mb-0"><?php echo $plans[1]->trial_period ?> days free trial - No credit card required</p>
+                     <p class="mb-0 lead-1">Manage up to <span class="text-success display-4"><?php echo $plans[1]->page_limit ?></span> Facebook pages</p>
+                     <p class="mb-0 lead-1">All features included</p>
+                     <p class="mb-0 lead-1"><?php echo $plans[1]->trial_period ?> days free trial - No credit card required</p>
                   </div>
                   <p class="text-center py-3"><a class="btn btn-success" href="<?php echo site_url("users/signup/".$plans[1]->plan_id) ?>">Get started</a></p>
                </div>
             </div>
             <div class="col-md-4">
                <div class="pricing-1">
-                  <p class="plan-name"><?php echo $plans[2]->name ?></p>
+                  <p class="plan-name lead-3"><?php echo $plans[2]->name ?></p>
                   <br>
                   <h2 class="price">
                      <span class="price-unit">$</span>
                      <span data-bind-radio="pricing"><?php echo round($plans[2]->price) ?></span>
                   </h2>
-                  <p class="small text-muted">Per Month</p>
+                  <p class="text-muted">Per Month</p>
                   <div class="text-muted">
-                     <p class="mb-0">Manage up to <span class="text-success display-4"><?php echo $plans[2]->page_limit ?></span> Facebook pages</p>
-                     <p class="mb-0">All features included</p>
-                     <p class="mb-0"><?php echo $plans[2]->trial_period ?> days free trial - No credit card required</p>
+                     <p class="mb-0 lead-1">Manage up to <span class="text-success display-4"><?php echo $plans[2]->page_limit ?></span> Facebook pages</p>
+                     <p class="mb-0 lead-1">All features included</p>
+                     <p class="mb-0 lead-1"><?php echo $plans[2]->trial_period ?> days free trial - No credit card required</p>
                   </div>
-                  <p class="text-center py-3"><a class="btn btn-outline-success" href="<?php echo site_url("users/signup/".$plans[2]->plan_id) ?>">Get started</a></p>
+                  <p class="text-center py-3"><a class="btn btn-success" href="<?php echo site_url("users/signup/".$plans[2]->plan_id) ?>">Get started</a></p>
                </div>
             </div>
          </div>

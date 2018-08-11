@@ -23,7 +23,7 @@
       <link rel="apple-touch-icon" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/favicon.png">
       <link rel="icon" href="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/favicon.png">
    </head>
-   <body>
+   <body class="">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark" data-navbar="fixed">
          <div class="container">

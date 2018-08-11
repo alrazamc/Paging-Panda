@@ -3,8 +3,10 @@
    <div class="container">
       <div class="row align-items-center h-100">
          <div class="col-lg-5">
-            <h1 class="">Manage your Facebook pages with <?php echo getenv('SITE_NAME') ?></h1>
-            <p class="lead mt-5">Posting to multiple pages made easy. Add content to your library, create weekly schedule and <?php echo getenv("SITE_NAME") ?> will do the rest. Deep insights to better understand your audience</p>
+            <h1 class="">Save your time and money with <?php echo getenv('SITE_NAME') ?></h1>
+            <p class="lead mt-5">
+               Your brand stays fresh and relevant with consistent, automatic posting. Grow a bigger audience without extra work. Know everything about your fans with advanced insights that you won't find on Facebook.
+            </p>
             <hr class="w-10 ml-0 my-5">
             <div class="row">
                <div class="col-6">
@@ -17,13 +19,13 @@
          </div>
          <div class="col-lg-6 ml-auto mt-6">
             <div class="p-5 text-center border border-success rounded">
-               <h4>Save time with content re-sharing feature</h4>
+               <h4>Bring more leads without extra ad spending</h4>
                <form id="subscribe-form">
                   <div class="form-group">
                      <input type="email" class="form-control form-control-lg" name="" placeholder="Enter your email address..." required>
                   </div>
                   <div class="form-group">
-                     <button type="submit" class="btn btn-success btn-block btn-xl">Watch Demo Video</button>
+                     <button type="submit" class="btn btn-success btn-block btn-xl">Watch our Demo Video</button>
                   </div>
                </form>
             </div>

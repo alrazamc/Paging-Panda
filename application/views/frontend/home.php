@@ -1,5 +1,5 @@
  <!-- Header -->
-<header id="home" class="header" style="background-image: linear-gradient(150deg, #fdfbfb 0%, #eee 100%);">
+<header id="home" class="header pt-8 pt-md-9" style="background-image: linear-gradient(150deg, #fdfbfb 0%, #eee 100%);">
    <div class="container">
       <div class="row align-items-center h-100">
          <div class="col-lg-5">
@@ -9,16 +9,14 @@
             </p>
             <hr class="w-10 ml-0 my-5">
             <div class="row">
-               <div class="col-6">
-                  <a class="btn btn-lg btn-round btn-success btn-block" href="#pricing">Get Started</a>
-               </div>
-               <div class="col-6">
-                  <a class="btn btn-lg btn-round btn-outline-success btn-block" href="#features">Features</a>
+               <div class="col-12">
+                  <a class="btn btn-lg btn-success btn-block" href="<?php echo site_url("users/signup/3") ?>">Start 30 days Free Trial</a>
+                  <p class="text-muted text-center mt-1 mb-0">No credit card required - No software to install</p>
                </div>
             </div>
          </div>
          <div class="col-lg-6 ml-auto mt-6">
-            <div class="p-5 text-center border border-success rounded">
+            <div class="p-5 text-center border border-success rounded d-none">
                <h4>Recycle your posts automatically</h4>
                <form id="subscribe-form">
                   <div class="form-group">
@@ -29,8 +27,9 @@
                   </div>
                </form>
             </div>
-            <div class="video-wrapper ratio-16x9 rounded shadow-6 mt-8 mt-lg-0 d-none">
-               
+            <h5 class="text-center">Watch Demo, Complete walk-through</h5>
+            <div class="video-wrapper ratio-16x9 rounded shadow-6 mt-0 mt-md-8 mt-lg-0">
+               <iframe width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="" src="https://www.youtube.com/embed/hCF1IT38IH0?rel=0&amp;showinfo=0"></iframe>
             </div>
          </div>
       </div>
@@ -47,17 +46,17 @@
    <section id="features" class="section">
       <div class="container">
          <header class="section-header mb-2">
-            <h2>How it works?</h2>
+            <h2>How it saves time?</h2>
          </header>
          <div class="row">
             <div class="col-12 text-center">
-               <h2 class="text-success display-3 font-weight-bold" style="font-family: sans-serif;">01</h2>
+               <h2 class="text-success display-3 font-weight-bold">01</h2>
             </div>
          </div>
          <div class="row gap-y align-items-center">
             <div class="col-md-6 ml-auto">
                <h4 class="text-center">Add your awesome content</h4>
-               <p class="lead-2">Build an unlimited, categorized online library of content for your pages. <?php echo getenv('SITE_NAME') ?> can even auto-create content for you using RSS feeds from your favorite sites.</p>
+               <p class="lead-2">Build an unlimited, categorized online library of content for your pages. <?php echo getenv('SITE_NAME') ?> can even auto-create content for you using RSS feeds from your favorite blogs or websites.</p>
             </div>
             <div class="col-md-5 order-md-first">
                <div class="row">
@@ -70,7 +69,7 @@
          </div>
          <div class="row">
             <div class="col-12 text-center">
-               <h2 class="text-success display-3 font-weight-bold" style="font-family: sans-serif;">02</h2>
+               <h2 class="text-success display-3 font-weight-bold">02</h2>
             </div>
          </div>
          <div class="row gap-y align-items-center">
@@ -90,7 +89,7 @@
          </div>
          <div class="row">
             <div class="col-12 text-center">
-               <h2 class="text-success display-3 font-weight-bold" style="font-family: sans-serif;">03</h2>
+               <h2 class="text-success display-3 font-weight-bold" >03</h2>
             </div>
          </div>
          <div class="row gap-y align-items-center">
@@ -143,6 +142,9 @@
                   <p class="lead-2">Find the content which is loved by your audience. Analyze 100+ data charts that you won't find on Facebook</p>
                </div>
             </div>
+            <div class="col-12 text-center">
+               <a class="btn btn-lg btn-outline-success" href="<?php echo site_url("features") ?>">Learn more about features</a>
+            </div>
          </div>
       </div>
    </section>
@@ -153,64 +155,24 @@
       !-->
    <section id="pricing" class="section">
       <div class="container">
-         <header class="section-header">
-            <h2>Flexible Pricing</h2>
-            <hr>
-            <p class="lead">Choose the right plan, register your account and start using <?php echo getenv('SITE_NAME') ?></p>
+         <header class="section-header mb-2">
+            <h2>Get Started</h2>
+            <p class="lead">Register your account and start using <?php echo getenv('SITE_NAME') ?> right away</p>
          </header>
          <div class="row gap-y text-center">
-            <div class="col-md-4">
-               <div class="pricing-1">
-                  <p class="plan-name lead-3"><?php echo $plans[0]->name ?></p>
-                  <br>
-                  <h2 class="price">
-                     <span class="price-unit">$</span>
-                     <span data-bind-radio="pricing"><?php echo round($plans[0]->price) ?></span>
-                  </h2>
-                  <p class="text-muted">Per Month</p>
-                  <div class="text-muted">
-                     <p class="mb-0 lead-1">Manage up to <span class="text-success display-4"><?php echo $plans[0]->page_limit ?></span> Facebook pages</p>
-                     <p class="mb-0 lead-1">All features included</p>
-                     <p class="mb-0 lead-1"><?php echo $plans[0]->trial_period ?> days free trial - No credit card required</p>
-                  </div>
-                  <p class="text-center py-3"><a class="btn btn-success" href="<?php echo site_url("users/signup/".$plans[0]->plan_id) ?>">Get started</a></p>
-               </div>
-            </div>
-            <div class="col-md-4">
-               <div class="pricing-1 popular">
-                  <p class="plan-name lead-3"><?php echo $plans[1]->name ?></p>
-                  <br>
-                  <h2 class="price text-success">
-                     <span class="price-unit">$</span>
-                     <span data-bind-radio="pricing"><?php echo round($plans[1]->price) ?></span>
-                  </h2>
-                  <p class="text-muted">Per Month</p>
-                  <div class="text-muted">
-                     <p class="mb-0 lead-1">Manage up to <span class="text-success display-4"><?php echo $plans[1]->page_limit ?></span> Facebook pages</p>
-                     <p class="mb-0 lead-1">All features included</p>
-                     <p class="mb-0 lead-1"><?php echo $plans[1]->trial_period ?> days free trial - No credit card required</p>
-                  </div>
-                  <p class="text-center py-3"><a class="btn btn-success" href="<?php echo site_url("users/signup/".$plans[1]->plan_id) ?>">Get started</a></p>
-               </div>
-            </div>
-            <div class="col-md-4">
-               <div class="pricing-1">
-                  <p class="plan-name lead-3"><?php echo $plans[2]->name ?></p>
-                  <br>
-                  <h2 class="price">
-                     <span class="price-unit">$</span>
-                     <span data-bind-radio="pricing"><?php echo round($plans[2]->price) ?></span>
-                  </h2>
-                  <p class="text-muted">Per Month</p>
-                  <div class="text-muted">
-                     <p class="mb-0 lead-1">Manage up to <span class="text-success display-4"><?php echo $plans[2]->page_limit ?></span> Facebook pages</p>
-                     <p class="mb-0 lead-1">All features included</p>
-                     <p class="mb-0 lead-1"><?php echo $plans[2]->trial_period ?> days free trial - No credit card required</p>
-                  </div>
-                  <p class="text-center py-3"><a class="btn btn-success" href="<?php echo site_url("users/signup/".$plans[2]->plan_id) ?>">Get started</a></p>
-               </div>
+            <div class="col-md-4 offset-md-4">
+               <a class="btn btn-lg btn-success btn-block" href="<?php echo site_url("users/signup/3") ?>">Start 30 days Free Trial</a>
+               <p class="text-muted text-center mt-1 mb-0">No credit card required - No software to install</p>
             </div>
          </div>
+
+         <div class="row gap-y text-center">
+            <div class="col-md-4 offset-md-4">
+               <p class="lead-2 mb-1">Running <span class="display-4"><?php echo number_format(1425) ?></span> Facebook pages</p>
+               <p class="lead-2 mb-0"><span class="display-4"><?php echo number_format(220) ?></span> Happy customers</p>
+            </div>
+         </div>
+
       </div>
    </section>
    <!--
@@ -221,15 +183,13 @@
    <section id="faq" class="section bg-gray">
       <div class="container">
          <header class="section-header">
-            <small>FAQ</small>
             <h2>Frequently Asked Questions</h2>
-            <hr>
             <p>Got a question? We've got answers. If you have some other questions, Click the messenger button at bottom right or mail us at <a target="_blank" class="text-success" href="mailto:support@pagingpanda.com">support@pagingpanda.com</a></p>
          </header>
          <div class="row gap-y">
             <div class="col-md-6 col-xl-4">
                <h5>Can it post to other social networks?</h5>
-               <p>Sorry, it can't. This tool is built only for Facebook pages</p>
+               <p>Sorry, it can't. This tool is built only for Facebook pages.</p>
             </div>
             <div class="col-md-6 col-xl-4">
                <h5>Can I post to pages I don't own?</h5>
@@ -249,7 +209,7 @@
             </div>
             <div class="col-md-6 col-xl-4">
                <h5>Can I try your service for free?</h5>
-               <p>Of course! We’re happy to offer 7 days free trial for each subscription plan with no credit card required</p>
+               <p>Of course! We’re happy to offer 30 days free trial for each subscription plan with no credit card required</p>
             </div>
          </div>
       </div>

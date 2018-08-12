@@ -88,7 +88,7 @@ class AppLoader
         }
 
         // Last day of trial
-        if($user_status == USER_STATUS_ACTIVE && $on_trial == YES && strtotime( $this->ci->session->userdata('date_registered')." +6 days" ) < time())
+        if($user_status == USER_STATUS_ACTIVE && $on_trial == YES && strtotime( $this->ci->session->userdata('date_registered')." +29 days" ) < time())
         {
             $text = 'Trial period is about to expire. Please <a class="text-success font-weight-500" href="'.site_url('payments/pay').'">Buy a Plan</a> to continue using '.getenv('SITE_NAME');
             $global_alerts .= get_alert_html($text, ALERT_TYPE_WARNING, NO); //NO=>NO dissmiss option

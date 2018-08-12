@@ -36,6 +36,24 @@ class Frontend extends CI_Controller {
         $this->load->view('frontend/front_template', $data);
     }
 
+    //Contact Us
+    public function features()
+    {
+        $data['page_title'] = 'Features | '.getenv('SITE_NAME');
+        $data['view'] = "features";
+        $this->load->view('frontend/front_template', $data);
+    }
+
+    //Pricing
+    public function pricing()
+    {
+        $data['page_title'] = 'Pricing | '.getenv('SITE_NAME');
+        $data['view'] = "pricing";
+        $this->load->model('payments_model');
+        $data['plans'] = $this->payments_model->get_all_plans();
+        $this->load->view('frontend/front_template', $data);
+    }
+
     //privacy policy
     public function privacy()
     {

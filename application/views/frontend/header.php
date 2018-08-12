@@ -37,8 +37,8 @@
             <section class="navbar-mobile">
                <nav class="nav nav-navbar ml-auto">
                   <a class="nav-link" href="<?php echo empty($this->uri->segment(1)) ? '' : site_url() ?>#home">Home</a>
-                  <a class="nav-link" href="<?php echo empty($this->uri->segment(1)) ? '' : site_url() ?>#features">Features</a>
-                  <a class="nav-link" href="<?php echo empty($this->uri->segment(1)) ? '' : site_url() ?>#pricing">Pricing</a>
+                  <a class="nav-link" href="<?php echo site_url('features') ?>">Features</a>
+                  <a class="nav-link" href="<?php echo site_url('pricing') ?>">Pricing</a>
                   <a class="nav-link" href="<?php echo empty($this->uri->segment(1)) ? '' : site_url() ?>#faq">FAQ</a>
                   <a class="nav-link" href="<?php echo site_url('contact') ?>">Contact</a>
                   <a class="nav-link" href="<?php echo site_url('users/login') ?>">Login</a>

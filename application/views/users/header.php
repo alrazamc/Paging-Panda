@@ -32,7 +32,7 @@
             <a class="nav-link" href="<?php echo site_url('users/login') ?>">Login</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="<?php echo site_url('#pricing') ?>">Register</a>
+            <a class="nav-link" href="<?php echo site_url('users/signup/3') ?>">Register</a>
           </li>
         </ul>
       </div>

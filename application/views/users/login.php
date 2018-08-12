@@ -28,7 +28,7 @@
         <p class="text-center">
           <a href="<?php echo site_url('users/forgot_password') ?>" class="text-success">Forgot Password</a>
           <br>
-          New user? <a href="<?php echo site_url('#pricing') ?>"  class="text-success">Register</a>
+          New user? <a href="<?php echo site_url('users/signup/3') ?>"  class="text-success">Register</a>
         </p>
       </div>
     </div>

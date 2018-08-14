@@ -30,8 +30,8 @@
             <div class="navbar-left">
                <button class="navbar-toggler" type="button">&#9776;</button>
                <a class="navbar-brand" href="<?php echo site_url() ?>">
-               <img class="logo-dark" src="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/logo.png" alt="logo" width="160">
-               <img class="logo-light" src="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/logo.png" alt="logo" width="160">
+               <img class="logo-dark" src="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/logo.png" alt="logo" width="202">
+               <img class="logo-light" src="<?php echo getenv('ASSET_BASE_URL') ?>assets/images/logo.png" alt="logo" width="202">
                </a>
             </div>
             <section class="navbar-mobile">

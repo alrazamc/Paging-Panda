@@ -126,6 +126,7 @@
 		$("#welcome-modal").modal('show');
 	});
 </script>
+
 <!-- Facebook Pixel Code -->
 <script>
   !function(f,b,e,v,n,t,s)
@@ -136,12 +137,13 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '237126063803110');
+  fbq('init', '249330235714421');
   fbq('track', 'PageView');
   fbq('track', 'CompleteRegistration');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=237126063803110&ev=PageView&noscript=1"
+  src="https://www.facebook.com/tr?id=249330235714421&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel Code -->
+
 <?php } ?>

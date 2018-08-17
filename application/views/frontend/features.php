@@ -108,7 +108,7 @@
          </header>
          <div class="row gap-y text-center">
             <div class="col-md-4 offset-md-4">
-               <a class="btn btn-lg btn-success btn-block" href="<?php echo site_url("users/signup/3") ?>">Start 30 days Free Trial</a>
+               <a class="btn btn-lg btn-success btn-block" href="<?php echo site_url("users/signup/3") ?>">Start 14 days Free Trial</a>
                <p class="text-muted text-center mt-1 mb-0">No credit card required - No software to install</p>
             </div>
          </div>

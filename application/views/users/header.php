@@ -25,15 +25,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="<?php echo site_url() ?>">Home</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="<?php echo site_url('users/login') ?>">Login</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="<?php echo site_url('users/signup/3') ?>">Register</a>
-          </li>
+          <li class="nav-item mx-1"><a class="nav-link" href="<?php echo site_url() ?>">Home</a></li>
+          <li class="nav-item mx-1"><a class="nav-link" href="<?php echo site_url('features') ?>">Features</a></li>
+          <li class="nav-item mx-1"><a class="nav-link" href="<?php echo site_url('pricing') ?>">Pricing</a></li>
+          <li class="nav-item mx-1"><a class="nav-link" href="<?php echo site_url() ?>#faq">FAQ</a></li>
+          <li class="nav-item mx-1"><a class="nav-link" href="<?php echo site_url('contact') ?>">Contact</a></li>
+          <li class="nav-item mx-1"><a class="nav-link" href="<?php echo site_url('users/login') ?>">Login</a></li>
+          <li class="nav-item mx-1"><a class="nav-link" href="<?php echo site_url('users/signup/3') ?>">Register</a></li>
         </ul>
       </div>
     </div>

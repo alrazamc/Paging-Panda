@@ -1,8 +1,13 @@
 <div class="row">
+  <div class="col-12 mb-3">
+    <h3 class="text-center">Manage all your Facebook pages in one place</h3>
+    <h4 class="text-center text-muted">Save hours of work</h4>
+  </div>
   <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-xl-4 mx-auto">
     <div class="card air-card">
       <div class="card-body">
-        <h5 class="text-center">Signup</h5>
+        <h5 class="text-center mb-1">Signup - 14 days free trial</h5>
+        <p class="m-0 text-center text-muted">No credit card required - No software to install</p>
         <hr class="mt-0">
         <?php echo $this->session->flashdata('alert'); ?>
         <?php  if(validation_errors())  echo get_alert_html(validation_errors(), ALERT_TYPE_ERROR); ?>
